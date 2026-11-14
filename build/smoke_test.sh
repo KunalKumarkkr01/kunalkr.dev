@@ -27,7 +27,8 @@ check() {
 }
 
 check "home page is served"            "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/")" "200"
-check "missing path is a 404"          "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/no-such-page")" "404"
+check "credits keep the CC-BY attribution" "$(curl -s "$BASE_URL/credits.html" | grep -c 'by SeverDoes3D (https://sketchfab.com/SeverDoes3D) licensed under CC-BY-4.0')" "1"
+check "missing path is a 404"         "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/no-such-page")" "404"
 check "page revalidates"               "$(header / Cache-Control)" "$REVALIDATE"
 check "scene.js revalidates"           "$(header /scene.js Cache-Control)" "$REVALIDATE"
 check "résumé PDF revalidates"         "$(header /assets/Kunal_Kumar_Resume.pdf Cache-Control)" "$REVALIDATE"
@@ -37,6 +38,10 @@ check "vendored library cached a week" "$(header /vendor/react.production.min.js
 check "models are gzipped"             "$(header /assets/models/office-assets.glb Content-Encoding)" "gzip"
 check "models have the glTF type"      "$(header /assets/models/office-assets.glb Content-Type)" "model/gltf-binary"
 check "CSP header is sent"             "$(header / Content-Security-Policy | cut -d';' -f1)" "default-src 'self'"
+# GLTFLoader fetches each texture embedded in a .glb from a blob: URL; without blob: here every
+# texture is blocked and the 3D desk renders white.
+check "CSP lets the 3D loader read its textures" \
+  "$(header / Content-Security-Policy | tr ';' '\n' | grep -o "connect-src[^;]*" | grep -c "blob:")" "1"
 check "nosniff header is sent"         "$(header /scene.js X-Content-Type-Options)" "nosniff"
 
 [ "$failures" -eq 0 ] && echo "all smoke checks passed" || echo "$failures smoke check(s) failed"

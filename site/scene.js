@@ -295,7 +295,7 @@ function buildLayer() {
         <div class="dl-meta"><span class="dl-file"></span><span class="dl-pct">0%</span></div>
       </div>
     </div>
-    <a class="desk-credits" href="credits.html" target="_blank" rel="noopener" hidden>3D model credits</a>
+    <a class="desk-credits" href="credits.html" target="_blank" rel="noopener" hidden>Credits</a>
     <button class="desk-enter" type="button">Turn on the computer &#9656;</button>
     <div class="desk-tag desk-resume-tag" hidden>
       <button type="button" aria-expanded="false">Résumé</button>
