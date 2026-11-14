@@ -1,0 +1,53 @@
+# CI - every pull request into main (and every push to main) must pass both jobs.
+# The job names ("Tests", "Docker build") are the required status checks in the
+# "Protect main" ruleset; rename them there too if they change here.
+# Deploys are not done here: Dokploy watches main and rebuilds on each push.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Desktop, profile and CRT frame
+        run: node build/test_crt.js
+      - name: 3D desk logic
+        run: node build/test_scene_logic.mjs
+      - name: Solitaire rules
+        run: node build/test_solitaire.js
+
+  docker:
+    name: Docker build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the production image
+        run: docker build -t kunalos:ci .
+      - name: Start it
+        run: |
+          docker run -d --name kunalos -p 8080:80 kunalos:ci
+          for _ in $(seq 1 20); do curl -fs http://127.0.0.1:8080/ >/dev/null && break; sleep 1; done
+      - name: Smoke test
+        run: bash build/smoke_test.sh
+      - name: Container logs on failure
+        if: failure()
+        run: docker logs kunalos
