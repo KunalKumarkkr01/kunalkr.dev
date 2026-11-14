@@ -37,6 +37,10 @@ check "vendored library cached a week" "$(header /vendor/react.production.min.js
 check "models are gzipped"             "$(header /assets/models/office-assets.glb Content-Encoding)" "gzip"
 check "models have the glTF type"      "$(header /assets/models/office-assets.glb Content-Type)" "model/gltf-binary"
 check "CSP header is sent"             "$(header / Content-Security-Policy | cut -d';' -f1)" "default-src 'self'"
+# GLTFLoader fetches each texture embedded in a .glb from a blob: URL; without blob: here every
+# texture is blocked and the 3D desk renders white.
+check "CSP lets the 3D loader read its textures" \
+  "$(header / Content-Security-Policy | tr ';' '\n' | grep -o "connect-src[^;]*" | grep -c "blob:")" "1"
 check "nosniff header is sent"         "$(header /scene.js X-Content-Type-Options)" "nosniff"
 
 [ "$failures" -eq 0 ] && echo "all smoke checks passed" || echo "$failures smoke check(s) failed"
