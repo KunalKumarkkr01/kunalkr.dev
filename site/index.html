@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kunal Kumar — Lead Software Engineer</title>
+<meta name="description" content="The portfolio of Kunal Kumar, Lead Software Engineer in Pune, India — built as a Windows 95 desktop. .NET and Azure backends, industrial IoT platforms, and AI agents in Microsoft 365 Copilot.">
+<meta name="author" content="Kunal Kumar">
+<meta name="theme-color" content="#008080">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://kunalkr.dev/">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="alternate icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Kunal Kumar">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kunal Kumar">
+<meta property="og:title" content="Kunal Kumar — Lead Software Engineer">
+<meta property="og:description" content="A Windows 95 desktop you can actually use — the portfolio of Kunal Kumar, .NET and Azure backend engineer and tech lead. Open the icons.">
+<meta property="og:url" content="https://kunalkr.dev/">
+<meta property="og:image" content="https://kunalkr.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Windows 95 style desktop with a My Portfolio window open showing Kunal Kumar, Lead Software Engineer.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kunal Kumar — Lead Software Engineer">
+<meta name="twitter:description" content="A Windows 95 desktop you can actually use — the portfolio of Kunal Kumar, .NET and Azure backend engineer and tech lead. Open the icons.">
+<meta name="twitter:image" content="https://kunalkr.dev/og.png">
+
+<script>
+/*
+ * Redirect the dc-runtime's CDN fetches to files vendored in this repo.
+ *
+ * support.js resolves React/ReactDOM through cdnScriptFor(), which prefers
+ * window.__resources[<cdn url>] over the hard-coded unpkg URL. Setting this map
+ * makes the site fully self-hosted (no unpkg dependency at load time) and, as a
+ * side effect, suppresses the runtime's redundant re-fetch of this HTML file.
+ */
+window.__resources = {
+  'https://unpkg.com/react@18.3.1/umd/react.production.min.js': 'vendor/react.production.min.js',
+  'https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js': 'vendor/react-dom.production.min.js'
+};
+</script>
+<script src="./support.js"></script>
+<!-- 3D desk landing: three.js is vendored under vendor/three (see VERSION) and loaded lazily by scene.js. -->
+<script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }</script>
+<script type="module" src="./scene.js" onerror="window.__kunalEnterPending = true; window.dispatchEvent(new Event('kunal:enter'));"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:'VT323';src:url('fonts/vt323.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'MS Sans Serif';src:url('fonts/ms_sans_serif.woff2') format('woff2'),url('fonts/ms_sans_serif.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'MS Sans Serif';src:url('fonts/ms_sans_serif_bold.woff2') format('woff2'),url('fonts/ms_sans_serif_bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+/* Roboto (variable, latin) - used only for the resume pages in the Document Viewer. */
+@font-face{font-family:'Roboto';src:url('fonts/roboto-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+html,body{margin:0;height:100%;overflow:hidden;background:#000;-webkit-font-smoothing:none;font-smooth:never}
+img{image-rendering:pixelated;-ms-interpolation-mode:nearest-neighbor}
+input,textarea,button{font-family:inherit}
+a{color:#000080}a:hover{color:#7b61ff}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes eq95{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
+*::-webkit-scrollbar{width:16px;height:16px}
+*::-webkit-scrollbar-track{background:repeating-conic-gradient(#fff 0 25%,#c0c0c0 0 50%) 0 0/2px 2px}
+*::-webkit-scrollbar-thumb{background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf}
+*::-webkit-scrollbar-button:single-button{background:#c0c0c0;height:16px;width:16px;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf}
+*::-webkit-scrollbar-corner{background:#c0c0c0}
+
+/*
+ * CRT monitor frame - 3D beige monitor (front view, lit from top-left).
+ * --crt-m gap around the case, --crt-bz side/top bezel, --crt-chin bottom
+ * bezel, --crt-fn depth of the sloped tunnel between plastic and glass.
+ */
+.crt-room{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#3a352c 0%,#1a1712 60%,#0c0b09 100%);
+  --crt-m:clamp(4px,1.4vmin,18px);--crt-bz:clamp(18px,5.4vmin,70px);--crt-chin:calc(var(--crt-bz)*1.75 + 16px);--crt-fn:calc(var(--crt-bz) * .62)}
+.crt-body{position:absolute;inset:var(--crt-m);border-radius:clamp(14px,2.6vmin,34px);
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 0%,rgba(255,253,244,.55) 0%,rgba(255,253,244,0) 70%),
+    linear-gradient(180deg,#e7dfc8 0%,#d9d0b6 45%,#c6bb9e 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.85),inset 2px 0 0 rgba(255,255,255,.5),
+    inset 0 -3px 0 rgba(95,84,60,.55),inset -2px 0 0 rgba(95,84,60,.35),
+    inset 0 calc(var(--crt-bz) * -.5) calc(var(--crt-bz) * .6) rgba(110,96,66,.35),
+    inset calc(var(--crt-bz) * -.25) 0 calc(var(--crt-bz) * .5) rgba(110,96,66,.22),
+    0 18px 40px rgba(0,0,0,.75),0 4px 10px rgba(0,0,0,.6)}
+.crt-grain{position:absolute;inset:var(--crt-m);width:calc(100% - 2*var(--crt-m));height:calc(100% - 2*var(--crt-m));border-radius:clamp(14px,2.6vmin,34px);opacity:.14;mix-blend-mode:multiply;pointer-events:none}
+.crt-funnel{position:absolute;
+  left:calc(var(--crt-m) + var(--crt-bz) - var(--crt-fn));right:calc(var(--crt-m) + var(--crt-bz) - var(--crt-fn));
+  top:calc(var(--crt-m) + var(--crt-bz) - var(--crt-fn));bottom:calc(var(--crt-m) + var(--crt-chin) - var(--crt-fn));
+  border-radius:8px;box-shadow:0 -1px 0 1px rgba(110,98,72,.55),0 1px 0 1px rgba(255,255,255,.65)}
+.crt-funnel > i{position:absolute;inset:0;display:block}
+.crt-funnel .ft{clip-path:polygon(0 0,100% 0,calc(100% - var(--crt-fn)) var(--crt-fn),var(--crt-fn) var(--crt-fn));background:linear-gradient(180deg,#a99f84 0%,#6f6650 100%)}
+.crt-funnel .fb{clip-path:polygon(var(--crt-fn) calc(100% - var(--crt-fn)),calc(100% - var(--crt-fn)) calc(100% - var(--crt-fn)),100% 100%,0 100%);background:linear-gradient(0deg,#f1eadb 0%,#d6ccb2 100%)}
+.crt-funnel .fl{clip-path:polygon(0 0,var(--crt-fn) var(--crt-fn),var(--crt-fn) calc(100% - var(--crt-fn)),0 100%);background:linear-gradient(90deg,#d3c9ae 0%,#a49a7f 100%)}
+.crt-funnel .fr{clip-path:polygon(100% 0,100% 100%,calc(100% - var(--crt-fn)) calc(100% - var(--crt-fn)),calc(100% - var(--crt-fn)) var(--crt-fn));background:linear-gradient(270deg,#c2b89c 0%,#8e8469 100%)}
+.crt-screen{position:absolute;left:calc(var(--crt-m) + var(--crt-bz));right:calc(var(--crt-m) + var(--crt-bz));top:calc(var(--crt-m) + var(--crt-bz));bottom:calc(var(--crt-m) + var(--crt-chin));
+  border-radius:clamp(10px,2vmin,26px) / clamp(12px,2.4vmin,30px);overflow:hidden;background:#0b0d0c;isolation:isolate;box-shadow:0 0 0 2px #23211c,0 0 0 4px #4a4436}
+.crt-glass{position:absolute;inset:0;pointer-events:none;z-index:2;border-radius:inherit;
+  background:
+    radial-gradient(ellipse 55% 35% at 24% 10%,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 45%,rgba(255,255,255,0) 100%),
+    linear-gradient(115deg,rgba(255,255,255,0) 62%,rgba(255,255,255,.05) 66%,rgba(255,255,255,0) 72%),
+    radial-gradient(ellipse 75% 70% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,0,0,.5) 100%),
+    repeating-linear-gradient(180deg,rgba(0,0,0,.08) 0 1px,rgba(0,0,0,0) 1px 3px);
+  box-shadow:inset 0 0 calc(var(--crt-bz) * .9) rgba(0,0,0,.7),inset 0 calc(var(--crt-bz) * .25) calc(var(--crt-bz) * .4) rgba(0,0,0,.45)}
+.crt-chin{position:absolute;left:calc(var(--crt-m) + var(--crt-bz) * .8);right:calc(var(--crt-m) + var(--crt-bz) * .8);bottom:var(--crt-m);height:calc(var(--crt-chin) - var(--crt-fn));pointer-events:none}
+.crt-badge{position:absolute;left:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .3);width:auto;filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.crt-model{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:calc(var(--crt-chin) * .17);width:auto}
+.crt-power{position:absolute;right:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .42);width:auto}
+/* Hit area over the big power key (the right-most 52/190 of the control strip). */
+.crt-power-btn{position:absolute;right:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .42);aspect-ratio:52/46;padding:0;border:0;border-radius:8px;background:transparent;cursor:pointer;pointer-events:auto}
+.crt-power-btn:focus-visible{outline:2px dashed #3a352c;outline-offset:2px}
+/* On touch screens the knob is small (about 24 px on a phone): an invisible margin makes it a comfortable tap target. */
+@media (pointer:coarse){.crt-power-btn::after{content:'';position:absolute;inset:-12px}}
+/* A tall, thin screen (a phone): each BIOS line becomes "label value" and wraps, and the Energy Star logo
+   is dropped so it cannot cover the title. Wider screens keep the two-column table. */
+@container (max-width:480px){
+  .bios-energy{display:none}
+  .bios-row{display:block!important;white-space:normal!important}
+  .bios-row>span{overflow:visible!important}
+  .bios-label::after{content:' '}
+}
+/* CRT warm-up: a bright line opens to full screen, then fades into the BIOS text. */
+/* Embedded: scene.js draws the real 3D monitor and lays the desktop over its glass (--es-*), with the
+ * power button on its chin (--ep-*). The CSS frame above stays for narrow screens and #desktop links. */
+html.embedded .crt-room{background:transparent;pointer-events:none;z-index:1}
+html.embedded .crt-body,html.embedded .crt-grain,html.embedded .crt-funnel,html.embedded .crt-chin > :not(.crt-power-btn){display:none}
+html.embedded .crt-screen{left:var(--es-l);top:var(--es-t);width:var(--es-w);height:var(--es-h);right:auto;bottom:auto;pointer-events:auto;box-shadow:none;border-radius:8px}
+html.embedded .crt-power-btn{position:fixed;left:var(--ep-l);top:var(--ep-t);width:var(--ep-s);height:var(--ep-s);right:auto;transform:none;aspect-ratio:auto;border-radius:50%}
+html.embedded .crt-power-btn:hover{box-shadow:0 0 0 2px rgba(255,226,160,.55),0 0 10px rgba(255,226,160,.35)}
+.crt-poweron{position:absolute;inset:0;background:#000;z-index:200;overflow:hidden}
+.crt-poweron i{position:absolute;inset:0;background:#eafcff;box-shadow:0 0 40px #bff6ff;transform:scale(0,.004);animation:crt-on 600ms ease-out forwards}
+@keyframes crt-on{0%{transform:scale(0,.004);opacity:1}35%{transform:scale(1,.004);opacity:1}70%{transform:scale(1,1);opacity:.85}100%{transform:scale(1,1);opacity:0}}
+</style>
+</helmet>
+<div class="crt-room">
+<div class="crt-body"></div>
+<svg class="crt-grain" aria-hidden="true">
+  <filter id="crtGrain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="100%" height="100%" filter="url(#crtGrain)"/>
+</svg>
+<div class="crt-funnel"><i class="ft"></i><i class="fb"></i><i class="fl"></i><i class="fr"></i></div>
+<div class="crt-chin">
+  <svg class="crt-badge" viewBox="0 0 150 34" aria-hidden="true">
+    <defs><linearGradient id="crtSilver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f2"/><stop offset=".5" stop-color="#c9c9c4"/><stop offset="1" stop-color="#a9a9a3"/></linearGradient></defs>
+    <rect x="1" y="1" width="148" height="32" rx="3" fill="url(#crtSilver)" stroke="#7a776c"/>
+    <rect x="9" y="8" width="8" height="8" fill="#d8312a"/><rect x="18" y="8" width="8" height="8" fill="#2f9e3c"/>
+    <rect x="9" y="17" width="8" height="8" fill="#2c5fd6"/><rect x="18" y="17" width="8" height="8" fill="#f2c21b"/>
+    <text x="34" y="23.5" font-family="'MS Sans Serif',Tahoma,sans-serif" font-size="17" font-weight="700" fill="#2a2924" letter-spacing=".4"></text>
+  </svg>
+  <svg class="crt-model" viewBox="0 0 220 20" aria-hidden="true">
+    <text x="110" y="15" text-anchor="middle" font-family="Tahoma,'MS Sans Serif',sans-serif" font-size="14" fill="#8a816b" letter-spacing="3">15&quot; COLOR DISPLAY</text>
+  </svg>
+  <svg class="crt-power" viewBox="0 0 190 46" aria-hidden="true">
+    <defs>
+      <linearGradient id="crtKey" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0e9d4"/><stop offset="1" stop-color="#b8ae93"/></linearGradient>
+      <linearGradient id="crtWell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8f866d"/><stop offset="1" stop-color="#cfc6ab"/></linearGradient>
+    </defs>
+    <rect x="1" y="9" width="104" height="26" rx="5" fill="url(#crtWell)"/>
+    <g fill="url(#crtKey)" stroke="#7c735d" stroke-width=".8">
+      <rect x="7" y="14" width="19" height="15" rx="3"/><rect x="31" y="14" width="19" height="15" rx="3"/>
+      <rect x="55" y="14" width="19" height="15" rx="3"/><rect x="79" y="14" width="19" height="15" rx="3"/>
+    </g>
+    <g fill="#5f5744" font-family="Tahoma,sans-serif" font-size="7" text-anchor="middle">
+      <text x="16.5" y="44">MENU</text><text x="40.5" y="44">&#9664;</text><text x="64.5" y="44">&#9654;</text><text x="88.5" y="44">SEL</text>
+    </g>
+    <circle cx="123" cy="22" r="3.6" fill="#45ff74"/><circle cx="123" cy="22" r="8" fill="#45ff74" opacity=".2"/>
+    <circle cx="122" cy="21" r="1.2" fill="#eaffef"/>
+    <rect x="138" y="3" width="50" height="38" rx="8" fill="url(#crtWell)"/>
+    <rect x="142" y="6" width="42" height="31" rx="6" fill="url(#crtKey)" stroke="#7c735d"/>
+    <path d="M159 15.5 a7 7 0 1 0 8 0" fill="none" stroke="#5f5744" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="163" y1="11.5" x2="163" y2="21" stroke="#5f5744" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+  <button class="crt-power-btn" type="button" aria-label="Power off and return to the desk" title="Power off" onClick="{{ powerOff }}"></button>
+</div>
+<div class="crt-screen" ref="{{ screenRefFn }}">
+<div style="position:absolute;inset:0;zoom:{{ uiScale }};overflow:hidden;container-type:size;background:#000;font-family:'MS Sans Serif','Pixelated MS Sans Serif',Tahoma,Geneva,Verdana,sans-serif;font-size:11px;line-height:12px;color:#000;user-select:none">
+
+<sc-if value="{{ poweringOn }}" hint-placeholder-val="{{ false }}">
+<div class="crt-poweron"><i></i></div>
+</sc-if>
+
+<sc-if value="{{ posting }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#000;font-family:'Perfect DOS VGA 437 Win','VT323',Consolas,monospace;font-size:min(33px,3.7cqh,4.2cqw);line-height:min(30px,3.4cqh,4.6cqw);color:#808080;z-index:200;overflow:hidden" onClick="{{ skipBootNow }}">
+  <img src="components/w100/assets/bios-logo.png" alt="" style="position:absolute;left:26px;top:min(36px,3.6cqh);width:min(44px,4.4cqh);height:auto">
+  <div style="position:absolute;left:calc(26px + min(67px,7cqh));top:min(37px,3.7cqh);display:flex;flex-direction:column;gap:min(5px,.5cqh)">
+    <span>BIOS v2.6 — Kunal Kumar</span>
+    <span>Backend · Cloud Infrastructure · AI</span>
+  </div>
+  <img class="bios-energy" src="components/w100/assets/bios-energy.png" alt="" style="position:absolute;right:0;top:0;width:min(380px,26%);height:auto">
+  <div style="position:absolute;left:26px;top:min(144px,14.5cqh);right:26px;bottom:min(100px,10cqh);display:flex;flex-direction:column;overflow:hidden">
+    <sc-for list="{{ postLines }}" as="l" hint-placeholder-count="8">
+      <div class="bios-row" style="display:grid;grid-template-columns:minmax(0,11em) 1fr;gap:0 1.4em;min-height:min(30px,3.4cqh,4.6cqw);white-space:nowrap;color:{{ l.color }}"><span class="bios-label" style="overflow:hidden;text-overflow:ellipsis">{{ l.text }}</span><span style="overflow:hidden;text-overflow:ellipsis">{{ l.value }}</span></div>
+    </sc-for>
+    <div style="display:flex;align-items:center;height:min(30px,3.4cqh,4.6cqw)"><span style="width:.5em;height:.8em;background:#808080;animation:blink 1s steps(1) infinite"></span></div>
+  </div>
+  <div style="position:absolute;left:26px;bottom:min(24px,2.4cqh);display:flex;flex-direction:column;gap:min(5px,.5cqh)">
+    <span>{{ bootStart }}</span>
+    <span style="color:#4a4a4a">{{ bootSkip }}</span>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ splashing }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:#008080;display:flex;align-items:center;justify-content:center;z-index:190" onClick="{{ skipBootNow }}">
+  <div style="width:420px;background:#c0c0c0;padding:3px;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf">
+    <div style="height:20px;box-sizing:border-box;background:linear-gradient(90deg,#000080 0%,#1084d0 100%);display:flex;align-items:center;gap:3px;padding:3px 2px 3px 3px;color:#fff;font-size:11px;line-height:12px;font-weight:700"><img src="components/w100/assets/a64de9bcd8f7487d.png" width="16" height="16" alt="">Starting up</div>
+    <div style="padding:20px 18px 18px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="components/icons/assets/3ac3e9ba67c0338b.png" width="32" height="32" alt="">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:24px;letter-spacing:-.5px"></div>
+          <div style="font-size:11px;color:#404040">Kunal Kumar · Lead Software Engineer</div>
+        </div>
+      </div>
+      <div style="height:20px;padding:2px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;display:flex;gap:2px;overflow:hidden">
+        <sc-for list="{{ splashBlocks }}" as="b" hint-placeholder-count="18">
+          <div style="width:12px;background:{{ b.bg }}"></div>
+        </sc-for>
+      </div>
+      <div style="font-size:11px;color:#404040">{{ splashStep }}</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:#008080" onMouseDown="{{ deskDown }}" onContextMenu="{{ openCtx }}">
+  <div style="position:absolute;inset:0;background:{{ wallColor }}"></div>
+
+  <div style="position:absolute;left:8px;top:8px;bottom:37px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,76px);gap:4px">
+    <sc-for list="{{ deskApps }}" as="a" hint-placeholder-count="6">
+      <div style="width:78px;height:74px;display:flex;flex-direction:column;align-items:center;gap:5px;padding-top:5px;cursor:default;touch-action:manipulation" onClick="{{ a.select }}" onDoubleClick="{{ a.open }}" onMouseDown="{{ stop }}">
+        <img src="{{ a.icon32 }}" width="32" height="32" alt="" style="opacity:{{ a.iconOpacity }}">
+        <div style="max-width:76px;text-align:center;padding:1px 3px;background:{{ a.labelBg }};color:{{ a.labelFg }};line-height:1.2;text-shadow:{{ a.labelShadow }};outline:{{ a.labelOutline }};outline-offset:-1px">{{ a.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-for list="{{ wins }}" as="w" hint-placeholder-count="0">
+    <div style="{{ w.style }}" onMouseDown="{{ w.focus }}">
+      <div style="height:20px;box-sizing:border-box;flex:none;display:flex;align-items:center;gap:3px;padding:3px 2px 3px 3px;background:{{ w.barBg }};margin:3px 3px 0;touch-action:none" onPointerDown="{{ w.dragStart }}" onDoubleClick="{{ w.toggleMax }}">
+        <img src="{{ w.icon16 }}" width="16" height="16" alt="">
+        <span style="flex:1;color:{{ w.barFg }};font-weight:700;font-size:11px;line-height:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ w.title }}</span>
+        <div style="display:flex;gap:2px" onPointerDown="{{ stop }}">
+          <button style="width:16px;height:14px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ w.minimize }}"><span style="display:block;width:6px;height:2px;background:#000"></span></button>
+          <button style="width:16px;height:14px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;display:flex;align-items:center;justify-content:center" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ w.toggleMax }}"><svg width="9" height="9" viewBox="0 0 9 9"><path d="M 9 0 L 0 0 L 0 9 L 9 9 L 9 0 Z M 8 2 L 1 2 L 1 8 L 8 8 L 8 2 Z" fill="#000" fill-rule="evenodd"></path></svg></button>
+          <button style="width:16px;height:14px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;display:flex;align-items:center;justify-content:center" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ w.close }}"><svg width="8" height="7" viewBox="0 0 8 7"><path d="M 0 0 L 2 0 L 2 1 L 3 1 L 3 2 L 5 2 L 5 1 L 6 1 L 6 0 L 8 0 L 8 1 L 7 1 L 7 2 L 6 2 L 6 3 L 5 3 L 5 4 L 6 4 L 6 5 L 7 5 L 7 6 L 8 6 L 8 7 L 6 7 L 6 6 L 5 6 L 5 5 L 3 5 L 3 6 L 2 6 L 2 7 L 0 7 L 0 6 L 1 6 L 1 5 L 2 5 L 2 4 L 3 4 L 3 3 L 2 3 L 2 2 L 1 2 L 1 1 L 0 1 L 0 0 Z" fill="#000" fill-rule="evenodd"></path></svg></button>
+        </div>
+      </div>
+
+      <div style="height:20px;flex:none;display:flex;align-items:center;gap:0;padding:1px 0;margin:0 3px">
+        <sc-for list="{{ w.menus }}" as="m" hint-placeholder-count="4">
+          <span style="padding:3px 6px;height:18px;box-sizing:border-box;cursor:default;color:#222" style-hover="background:#000080;color:#fff">{{ m }}</span>
+        </sc-for>
+      </div>
+
+      <div style="flex:1;min-height:0;display:flex;flex-direction:column;margin:0 3px 3px;user-select:text">
+
+        <sc-if value="{{ w.isWelcome }}">
+          <div style="flex:1;padding:16px 18px;display:flex;gap:16px">
+            <img src="components/icons/assets/3ac3e9ba67c0338b.png" width="32" height="32" alt="" style="flex:none;margin-top:2px">
+            <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+              <div style="font-size:24px;line-height:1.1">Kunal Kumar</div>
+              <div style="font-size:11px;color:#404040">Lead Software Engineer · Dynamisch · Pune, India</div>
+              <p style="margin:0;font-size:11px;line-height:1.55;max-width:400px;text-wrap:pretty">.NET &amp; Azure backends, industrial IoT platforms and AI agents in Microsoft 365 Copilot. Every icon on this desktop is a part of my profile — {{ openHint }}.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:2px">
+                <sc-for list="{{ quickApps }}" as="q" hint-placeholder-count="4">
+                  <button style="min-width:92px;height:23px;padding:0 10px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ q.open }}">{{ q.label }}</button>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;gap:7px;margin-top:auto;font-size:11px">
+                <span style="width:13px;height:13px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">✓</span>
+                <span>Show this window each time the computer starts</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isSettings }}">
+          <div style="flex:1;display:flex;flex-direction:column;padding:6px 6px 4px;min-height:0">
+            <div style="display:flex;align-items:flex-end;gap:2px;padding-left:2px;position:relative;z-index:2">
+              <sc-for list="{{ aboutTabs }}" as="t" hint-placeholder-count="4">
+                <button style="{{ t.style }}" onClick="{{ t.select }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <div style="flex:1;min-height:0;margin-top:-1px;background:#c0c0c0;padding:14px;overflow:auto;box-shadow:inset -1px -1px 0 #808080,inset 1px 1px 0 #fff,inset -2px -2px 0 #000,inset 2px 2px 0 #dfdfdf">
+              <sc-if value="{{ aboutProfile }}">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;gap:14px;align-items:center">
+                    <div style="width:56px;height:56px;flex:none;padding:2px;box-sizing:border-box;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf"><img src="assets/kunal-photo.jpg" width="52" height="52" alt="Kunal Kumar" style="display:block;width:52px;height:52px;image-rendering:auto"></div>
+                    <div style="display:flex;flex-direction:column;gap:5px">
+                      <div style="font-size:18.72px">Kunal Kumar</div>
+                      <div style="color:#404040">Lead Software Engineer · Team lead</div>
+                      <div style="color:#404040">Pune, India · 5+ years since Aug 2021</div>
+                    </div>
+                  </div>
+                  <fieldset style="border:1px solid #808080;border-right-color:#fff;border-bottom-color:#fff;margin:0;padding:12px 12px 14px">
+                    <legend style="padding:0 4px;font-size:11px">Profile summary</legend>
+                    <p style="margin:0 0 10px;line-height:1.55;text-wrap:pretty">.NET backend engineer and tech lead with 5+ years building APIs and backends for systems where timing and reliability are visible to users — from projector-based gaming lanes that must stay in sync to industrial IoT telemetry. Currently Lead Software Engineer at Dynamisch, leading a team of 6 on an industrial IoT platform: owning the backend, overseeing architecture across the IoT and front-end layers, and running code reviews and releases.</p>
+                    <p style="margin:0;line-height:1.55;text-wrap:pretty">Also leads AI-assisted development: trained an entire engineering organization to use Claude Code day to day and turned senior product knowledge into a shared skills repository, taking bug triage from weeks to hours. Before that, 4+ years at Ciklum growing from junior to senior engineer across industrial IoT (Henkel / Loctite) and EdTech (Hatch Ignite).</p>
+                  </fieldset>
+                </div>
+              </sc-if>
+              <sc-if value="{{ aboutExpertise }}">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="6">
+                    <fieldset style="border:1px solid #808080;border-right-color:#fff;border-bottom-color:#fff;margin:0;padding:10px 12px 12px">
+                      <legend style="padding:0 4px">{{ g.name }}</legend>
+                      <div style="display:flex;flex-wrap:wrap;gap:6px">
+                        <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="5">
+                          <span style="padding:3px 7px;background:#c0c0c0;box-shadow:inset -1px -1px 0 #808080,inset 1px 1px 0 #fff">{{ s }}</span>
+                        </sc-for>
+                      </div>
+                    </fieldset>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ aboutLanguages }}">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <fieldset style="border:1px solid #808080;border-right-color:#fff;border-bottom-color:#fff;margin:0;padding:10px 12px 12px">
+                    <legend style="padding:0 4px">Foreign languages</legend>
+                    <div style="display:flex;justify-content:space-between;padding:5px 0"><span>English</span><span style="color:#404040">Full Professional Proficiency</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Hindi</span><span style="color:#404040">Professional Working Proficiency</span></div>
+                  </fieldset>
+                  <fieldset style="border:1px solid #808080;border-right-color:#fff;border-bottom-color:#fff;margin:0;padding:10px 12px 12px">
+                    <legend style="padding:0 4px">Soft skills</legend>
+                    <div style="display:flex;flex-direction:column;gap:7px">
+                      <sc-for list="{{ softSkills }}" as="s" hint-placeholder-count="6">
+                        <div style="display:flex;align-items:center;gap:8px">
+                          <span style="width:12px;height:12px;flex:none;border-radius:50%;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a;display:flex;align-items:center;justify-content:center"><span style="width:4px;height:4px;border-radius:50%;background:#000"></span></span>
+                          <span>{{ s }}</span>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </fieldset>
+                </div>
+              </sc-if>
+              <sc-if value="{{ aboutEducation }}">
+                <fieldset style="border:1px solid #808080;border-right-color:#fff;border-bottom-color:#fff;margin:0;padding:12px">
+                  <legend style="padding:0 4px">Education</legend>
+                  <div style="display:flex;gap:12px;align-items:flex-start">
+                    <img src="components/icons/assets/65c95699feb567e6.png" width="32" height="32" alt="" style="flex:none">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <div style="font-size:11px;font-weight:700">Bachelor of Engineering (B.E.) – Computer Science</div>
+                      <div style="color:#404040">SJMIT – Visvesvaraya Technological University</div>
+                      <div style="font-family:Consolas,'Courier New',monospace;color:#404040">Graduated 08/2021</div>
+                    </div>
+                  </div>
+                </fieldset>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isGallery }}">
+          <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+            <div style="height:26px;flex:none;display:flex;align-items:center;gap:6px;padding:0 6px;margin:2px 2px 0">
+              <span style="color:#404040">Address</span>
+              <div style="flex:1;height:19px;display:flex;align-items:center;gap:5px;padding:0 4px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-family:Consolas,'Courier New',monospace">
+                <img src="components/icons/assets/2afb393c55d8cf7c.png" width="16" height="16" alt="">C:\KUNAL\PROJECTS
+              </div>
+            </div>
+            <div style="flex:1;min-height:0;margin:4px 2px 0;background:#fff;overflow:auto;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf">
+              <div style="padding:12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px">
+                <sc-for list="{{ projects }}" as="p" hint-placeholder-count="5">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 2px;cursor:default" onClick="{{ p.select }}">
+                    <img src="{{ p.icon }}" width="32" height="32" alt="">
+                    <div style="text-align:center;line-height:1.25;padding:1px 3px;background:{{ p.bg }};color:{{ p.fg }}">{{ p.name }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:none;margin:4px 2px 2px;display:flex;gap:3px">
+              <div style="flex:1;padding:5px 7px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff;display:flex;flex-direction:column;gap:5px;min-height:52px">
+                <div style="font-weight:700">{{ selProject.name }}</div>
+                <div style="color:#404040;line-height:1.45;text-wrap:pretty">{{ selProject.desc }}</div>
+                <div style="font-family:Consolas,'Courier New',monospace;color:#000080">{{ selProject.stack }}</div>
+              </div>
+              <div style="width:96px;flex:none;padding:5px 7px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff;display:flex;flex-direction:column;gap:5px">
+                <div style="color:#404040">{{ selProject.meta }}</div>
+                <div style="margin-top:auto;color:#404040">7 object(s)</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isPdf }}">
+          <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+            <div style="height:26px;flex:none;display:flex;align-items:center;gap:4px;padding:0 4px;margin:2px 2px 0">
+              <button style="width:22px;height:21px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px;font-weight:700" onClick="{{ zoomOut }}">−</button>
+              <div style="width:52px;height:19px;display:flex;align-items:center;justify-content:center;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-family:Consolas,'Courier New',monospace">{{ zoomLabel }}</div>
+              <button style="width:22px;height:21px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px;font-weight:700" onClick="{{ zoomIn }}">+</button>
+              <div style="width:2px;height:18px;margin:0 4px;box-shadow:inset 1px 0 0 #808080,inset -1px 0 0 #fff"></div>
+              <span style="font-family:Consolas,'Courier New',monospace;color:#404040">Kunal_Kumar.pdf · 3 pages</span>
+              <a href="assets/Kunal_Kumar_Resume.pdf" download="Kunal_Kumar.pdf" style="margin-left:auto;height:21px;padding:0 12px;display:flex;align-items:center;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;color:#000;text-decoration:none;font-size:11px">Save As...</a>
+            </div>
+            <div style="flex:1;min-height:0;margin:4px 2px 2px;background:#808080;overflow:auto;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf">
+              <div style="padding:16px;display:flex;justify-content:center">
+                <div style="transform:scale({{ pdfZoom }});transform-origin:top center;display:flex;flex-direction:column;gap:16px;font-family:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:12.5px;line-height:1.6;color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale">
+                  <div style="width:520px;min-height:690px;background:#fff;padding:44px 46px;display:flex;flex-direction:column;gap:12px;box-shadow:3px 3px 0 rgba(0,0,0,.35)">
+                    <div style="display:flex;align-items:center;gap:14px">
+                      <img src="assets/kunal-photo.jpg" width="64" height="64" alt="Kunal Kumar" style="flex:none;width:64px;height:64px;border-radius:50%;image-rendering:auto">
+                      <div style="display:flex;flex-direction:column;gap:4px">
+                        <div style="font-size:24px">Kunal Kumar</div>
+                        <div style="font-family:Consolas,'Courier New',monospace;font-size:10.5px;color:#404040">Lead Software Engineer · Team lead · Pune, India</div>
+                      </div>
+                    </div>
+                    <div style="height:1px;background:#000"></div>
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px">Profile summary</div>
+                    <p style="margin:0">.NET backend engineer and tech lead with 5+ years building APIs and backends for systems where timing and reliability are visible to users — from projector-based gaming lanes that must stay in sync to industrial IoT telemetry. Currently Lead Software Engineer at Dynamisch, leading a team of 6 on an industrial IoT platform: owning the backend, overseeing architecture across the IoT and front-end layers, and running code reviews and releases.</p>
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-top:4px">Key expertise</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 18px">
+                      <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="6"><div><div style="font-weight:700">{{ g.name }}</div><div style="color:#303030">{{ g.joined }}</div></div></sc-for>
+                    </div>
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-top:4px">Languages</div>
+                    <div style="color:#303030">English – Full Professional Proficiency · Hindi – Professional Working Proficiency</div>
+                    <div style="margin-top:auto;font-family:Consolas,'Courier New',monospace;font-size:9px;color:#808080;text-align:right">1 / 3</div>
+                  </div>
+                  <div style="width:520px;min-height:690px;background:#fff;padding:44px 46px;display:flex;flex-direction:column;gap:12px;box-shadow:3px 3px 0 rgba(0,0,0,.35)">
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px">Work experience</div>
+                    <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+                      <div style="display:flex;flex-direction:column;gap:3px;padding-bottom:9px;border-bottom:1px solid #d8d8d8">
+                        <div style="display:flex;justify-content:space-between;gap:12px"><span style="font-weight:700">{{ r.title }} · {{ r.employer }}</span><span style="font-family:Consolas,'Courier New',monospace;font-size:10px;color:#505050;white-space:nowrap">{{ r.dates }}</span></div>
+                        <div style="color:#303030">{{ r.summary }}</div>
+                        <div style="font-family:Consolas,'Courier New',monospace;font-size:9.5px;color:#606060">{{ r.stack }}</div>
+                      </div>
+                    </sc-for>
+                    <div style="margin-top:auto;font-family:Consolas,'Courier New',monospace;font-size:9px;color:#808080;text-align:right">2 / 3</div>
+                  </div>
+                  <div style="width:520px;min-height:690px;background:#fff;padding:44px 46px;display:flex;flex-direction:column;gap:12px;box-shadow:3px 3px 0 rgba(0,0,0,.35)">
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px">Education</div>
+                    <div><div style="font-weight:700">Bachelor of Engineering (B.E.) – Computer Science</div><div style="color:#303030">SJMIT – Visvesvaraya Technological University · Graduated 08/2021</div></div>
+                    <div style="font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-top:4px">Soft skills</div>
+                    <div style="color:#303030">Ownership · Problem Solving · Mentorship · Cross-team Collaboration · Communication · Delivery Focus</div>
+                    <div style="margin-top:auto;font-family:Consolas,'Courier New',monospace;font-size:9px;color:#808080;text-align:right">3 / 3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isTerminal }}">
+          <div style="flex:1;margin:2px;background:#000;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a;padding:10px 12px;overflow:auto;font-family:Consolas,'Courier New',monospace;font-size:13px;line-height:1.5;color:#c8c8c8;display:flex;flex-direction:column" onClick="{{ focusTerm }}" ref="{{ termRef }}">
+            <sc-for list="{{ termLines }}" as="l" hint-placeholder-count="8"><div style="white-space:pre-wrap;color:{{ l.color }}">{{ l.text }}</div></sc-for>
+            <div style="display:flex;gap:0;align-items:center"><span style="color:#c8c8c8">C:\KUNAL&gt;</span><input value="{{ termInput }}" onChange="{{ termChange }}" onKeyDown="{{ termKey }}" ref="{{ termInputRef }}" spellcheck="false" style="flex:1;background:transparent;border:0;outline:0;color:#c8c8c8;font-family:Consolas,'Courier New',monospace;font-size:13px;padding:0 0 0 2px"></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isMail }}">
+          <form style="flex:1;display:flex;flex-direction:column;gap:8px;padding:10px 12px 12px" onSubmit="{{ sendMail }}">
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:52px;color:#404040">To:</span><div style="flex:1;height:19px;display:flex;align-items:center;padding:0 4px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf">Kunal Kumar &lt;{{ contactEmail }}&gt;</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:52px;color:#404040">From:</span><input name="from" type="email" required placeholder="you@company.com" style="flex:1;height:19px;border:0;outline:0;padding:0 4px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-size:11px"></div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:52px;color:#404040">Subject:</span><input name="subject" required placeholder="Let's talk about..." style="flex:1;height:19px;border:0;outline:0;padding:0 4px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-size:11px"></div>
+            <textarea name="body" required placeholder="Write your message" style="flex:1;min-height:90px;resize:none;border:0;outline:0;padding:5px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-family:Consolas,'Courier New',monospace;font-size:12.5px;line-height:1.5"></textarea>
+            <div style="display:flex;align-items:center;gap:10px">
+              <button type="submit" style="min-width:74px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080">Send</button>
+              <span style="color:#404040">{{ mailStatus }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;padding-top:6px;box-shadow:inset 0 1px 0 #808080,inset 0 2px 0 #fff">
+              <sc-for list="{{ contactLinks }}" as="l" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:8px"><span style="width:52px;color:#404040">{{ l.name }}:</span><a href="{{ l.href }}" target="_blank" rel="noreferrer">{{ l.host }}</a></div>
+              </sc-for>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ w.isNotes }}">
+          <div style="flex:1;display:flex;gap:4px;padding:4px;min-height:0">
+            <div style="width:180px;flex:none;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;padding:2px;overflow:auto;display:flex;flex-direction:column;gap:1px">
+              <sc-for list="{{ notes }}" as="n" hint-placeholder-count="2">
+                <button style="text-align:left;border:0;padding:4px 5px;background:{{ n.bg }};color:{{ n.fg }};cursor:default;font-size:11px;line-height:1.3;display:flex;flex-direction:column;gap:2px" onClick="{{ n.select }}"><span>{{ n.title }}</span><span style="font-family:Consolas,'Courier New',monospace;font-size:11px;opacity:.75">{{ n.date }}</span></button>
+              </sc-for>
+            </div>
+            <div style="flex:1;min-width:0;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;padding:10px 12px;overflow:auto;display:flex;flex-direction:column;gap:10px;font-family:Consolas,'Courier New',monospace">
+              <div style="font-size:11px;color:#606060">{{ noteDate }} · draft</div>
+              <div style="font-size:15px;line-height:1.35;text-wrap:pretty">{{ noteTitle }}</div>
+              <p style="margin:0;font-size:12.5px;line-height:1.6;text-wrap:pretty">{{ noteBody }}</p>
+            </div>
+          </div>
+        </sc-if>
+
+
+        <sc-if value="{{ w.isCalendar }}">
+          <div style="flex:1;margin:4px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;overflow:auto">
+            <div style="display:flex;align-items:center;gap:0;position:sticky;top:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #808080,inset 1px 1px 0 #fff;font-weight:700">
+              <div style="width:118px;padding:4px 6px;box-shadow:inset -1px 0 0 #808080">Dates</div>
+              <div style="flex:1;padding:4px 6px">Role</div>
+            </div>
+            <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+              <div style="display:flex;align-items:flex-start;gap:0;border-bottom:1px solid #e0e0e0">
+                <div style="width:118px;flex:none;padding:8px 6px;font-family:Consolas,'Courier New',monospace;font-size:11.5px;color:#303030">{{ r.dates }}</div>
+                <div style="flex:1;padding:8px 8px 10px;display:flex;flex-direction:column;gap:4px">
+                  <div style="display:flex;align-items:center;gap:7px"><img src="components/icons/assets/0fdfad81c9e66b32.png" width="16" height="16" alt=""><span style="font-weight:700">{{ r.title }}</span></div>
+                  <div style="color:#000080">{{ r.employer }}</div>
+                  <div style="line-height:1.5;color:#303030;text-wrap:pretty">{{ r.summary }}</div>
+                  <div style="font-family:Consolas,'Courier New',monospace;font-size:11px;color:#606060">{{ r.stack }}</div>
+                </div>
+              </div>
+            </sc-for>
+            <div style="display:flex;align-items:flex-start">
+              <div style="width:118px;flex:none;padding:8px 6px;font-family:Consolas,'Courier New',monospace;font-size:11.5px;color:#303030">08/2021</div>
+              <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;align-items:center;gap:7px"><img src="components/icons/assets/65c95699feb567e6.png" width="16" height="16" alt=""><span style="font-weight:700">B.E. Computer Science</span></div>
+                <div style="color:#303030">SJMIT – Visvesvaraya Technological University</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isMusic }}">
+          <div style="flex:1;padding:10px;display:flex;flex-direction:column;gap:10px">
+            <div style="background:#000;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a;padding:8px 10px;display:flex;flex-direction:column;gap:6px;font-family:Consolas,'Courier New',monospace;color:#00e08a">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span>TRACK 01</span><span>{{ trackTime }}</span></div>
+              <div style="font-size:13px">Deploy on a Friday</div>
+              <div style="display:flex;gap:3px;height:22px;align-items:flex-end">
+                <sc-for list="{{ eqBars }}" as="b" hint-placeholder-count="12">
+                  <div style="{{ b.style }}"></div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="height:14px;padding:2px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;display:flex"><div style="height:100%;background:#000080;width:{{ progress }}"></div></div>
+            <div style="display:flex;gap:4px">
+              <button style="width:34px;height:24px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080">|◀◀</button>
+              <button style="width:44px;height:24px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ togglePlay }}">{{ playGlyph }}</button>
+              <button style="width:34px;height:24px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080">▶▶|</button>
+              <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
+                <img src="components/icons/assets/3b83f2b17faa2329.png" width="16" height="16" alt="">
+                <div style="width:60px;height:6px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff;position:relative"><div style="position:absolute;left:38px;top:-5px;width:9px;height:16px;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080"></div></div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isAssistant }}">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;padding:6px;min-height:0">
+            <div style="flex:1;min-height:0;overflow:auto;background:#fff;padding:8px;display:flex;flex-direction:column;gap:9px;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf" ref="{{ chatRef }}">
+              <sc-for list="{{ chat }}" as="m" hint-placeholder-count="2">
+                <div style="{{ m.rowStyle }}">
+                  <img src="{{ m.icon }}" width="16" height="16" alt="" style="flex:none;margin-top:2px">
+                  <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;flex:none">
+              <button style="height:20px;padding:0 8px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ toggleChips }}">{{ chipsToggleLabel }}</button>
+              <sc-if value="{{ chipsOpen }}">
+              <sc-for list="{{ chatChips }}" as="c" hint-placeholder-count="4">
+                <button style="height:20px;padding:0 8px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ c.run }}">{{ c.label }}</button>
+              </sc-for>
+              </sc-if>
+            </div>
+            <form style="display:flex;gap:4px;flex:none" onSubmit="{{ chatSend }}">
+              <input value="{{ chatInput }}" onChange="{{ chatChange }}" onKeyDown="{{ chatKey }}" ref="{{ chatInputRefFn }}" placeholder="Type a question and press Enter" style="flex:1;height:21px;border:0;outline:0;padding:0 5px;background:#fff;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf;font-size:11px">
+              <button type="submit" style="width:56px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080">Ask</button>
+            </form>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isTtt }}">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px">
+            <div style="display:grid;grid-template-columns:repeat(3,58px);gap:3px">
+              <sc-for list="{{ tttCells }}" as="c" hint-placeholder-count="9">
+                <button style="width:58px;height:58px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-family:inherit;font-size:30px;font-weight:700;cursor:default;color:{{ c.color }}" onClick="{{ c.play }}">{{ c.v }}</button>
+              </sc-for>
+            </div>
+            <div style="font-size:11px">{{ tttMsg }}</div>
+            <div style="font-family:Consolas,'Courier New',monospace;font-size:11px;color:#404040">{{ tttScore }}</div>
+            <button style="min-width:88px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ tttReset }}">New Game</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isMine }}">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:11px;background:#c0c0c0;box-shadow:inset 3px 3px 0 #fff,inset -3px -3px 0 #808080">
+            <div style="display:flex;align-items:center;justify-content:space-between;align-self:stretch;height:44px;box-sizing:border-box;padding:9px;gap:11px;background:#c0c0c0;box-shadow:inset -2px -2px 0 #fff,inset 2px 2px 0 #808080">
+              <div style="width:42.25px;height:26px;box-sizing:border-box;background:#000;padding:1.625px;display:flex;gap:1.625px;box-shadow:inset -0.542px -0.542px 0 #fff,inset 0.542px 0.542px 0 #0a0a0a,inset -1.083px -1.083px 0 #dfdfdf,inset 1.083px 1.083px 0 #808080">
+                <sc-for list="{{ mineLeftDigits }}" as="d" hint-placeholder-count="3"><div style="width:11.917px;height:22.75px;overflow:hidden;flex:none"><div style="width:22px;height:42px;transform:scale(0.5417);transform-origin:0 0"><x-import component-from-global-scope="Numbers" from="./components/w100/Components.bundle.js" property1="{{ d }}" style="width:22px;height:42px" hint-size="22px,42px"></x-import></div></div></sc-for>
+              </div>
+              <button style="width:26px;height:26px;border:0;padding:0 2px;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;display:flex;align-items:center;justify-content:center;overflow:hidden" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ mineReset }}"><x-import component-from-global-scope="Emoji" from="./components/w100/Components.bundle.js" property1="{{ mineFace }}" style="width:20.831px;height:21.186px" hint-size="20.831px,21.186px"></x-import></button>
+              <div style="width:42.25px;height:26px;box-sizing:border-box;background:#000;padding:1.625px;display:flex;gap:1.625px;box-shadow:inset -0.542px -0.542px 0 #fff,inset 0.542px 0.542px 0 #0a0a0a,inset -1.083px -1.083px 0 #dfdfdf,inset 1.083px 1.083px 0 #808080">
+                <sc-for list="{{ mineTimeDigits }}" as="d" hint-placeholder-count="3"><div style="width:11.917px;height:22.75px;overflow:hidden;flex:none"><div style="width:22px;height:42px;transform:scale(0.5417);transform-origin:0 0"><x-import component-from-global-scope="Numbers" from="./components/w100/Components.bundle.js" property1="{{ d }}" style="width:22px;height:42px" hint-size="22px,42px"></x-import></div></div></sc-for>
+              </div>
+            </div>
+            <div style="box-shadow:inset -3px -3px 0 #fff,inset 3px 3px 0 #808080;padding:3px">
+              <div style="{{ mineGrid }}">
+                <sc-for list="{{ mineCells }}" as="c" hint-placeholder-count="81">
+                  <div style="width:16px;height:16px;cursor:default;touch-action:manipulation" onClick="{{ c.open }}" onContextMenu="{{ c.flag }}" onPointerDown="{{ c.press }}" onPointerUp="{{ c.release }}" onPointerLeave="{{ c.release }}" onPointerCancel="{{ c.release }}"><x-import component-from-global-scope="InteractivePieces" from="./components/w100/Components.bundle.js" type="{{ c.type }}" style="width:16px;height:16px;pointer-events:none" hint-size="16px,16px"></x-import></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isSnake }}">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px">
+            <div style="{{ snakeBoard }}">
+              <sc-for list="{{ snakeParts }}" as="p" hint-placeholder-count="4">
+                <div style="{{ p.style }}"></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;justify-content:space-between;width:100%;font-family:Consolas,'Courier New',monospace;font-size:11px;color:#404040"><span>{{ snakeScore }}</span><span>{{ snakeBest }}</span></div>
+            <div style="display:flex;gap:6px">
+              <button style="min-width:70px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ snakeToggle }}">{{ snakeBtn }}</button>
+              <button style="min-width:78px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ snakeReset }}">New Game</button>
+            </div>
+            <sc-if value="{{ snakeTouch }}">
+              <div style="display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(2,30px);gap:4px;touch-action:manipulation">
+                <span></span>
+                <button style="{{ padStyle }}" onClick="{{ padUp }}">▲</button>
+                <span></span>
+                <button style="{{ padStyle }}" onClick="{{ padLeft }}">◀</button>
+                <button style="{{ padStyle }}" onClick="{{ padDown }}">▼</button>
+                <button style="{{ padStyle }}" onClick="{{ padRight }}">▶</button>
+              </div>
+            </sc-if>
+            <div style="font-size:11px;color:#404040">{{ snakeMsg }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ w.isSol }}">
+          <div style="flex:1;display:flex;flex-direction:column;min-height:0">
+            <div style="flex:1;min-height:0;overflow:auto;background:#00803f;padding:10px;display:flex;flex-direction:column;gap:14px">
+              <div style="{{ solRowStyle }}">
+                <div style="{{ solStockStyle }}" onClick="{{ solDrawClick }}"><span style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(255,255,255,.7);font-size:16px">{{ solStockLabel }}</span></div>
+                <div style="{{ solSlotStyle }}">
+                  <sc-for list="{{ solWaste }}" as="c" hint-placeholder-count="0">
+                    <div style="{{ c.style }}" onClick="{{ c.click }}" onDoubleClick="{{ c.dbl }}"><span style="color:{{ c.color }};font-weight:700">{{ c.face }}</span><span style="color:{{ c.color }};display:block;text-align:right;font-size:14px;line-height:1">{{ c.suit }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="flex:1"></div>
+                <div style="{{ solPilesStyle }}">
+                  <sc-for list="{{ solFound }}" as="f" hint-placeholder-count="4">
+                    <div style="{{ f.style }}" onClick="{{ f.click }}"><span style="color:{{ f.color }};font-weight:700">{{ f.face }}</span><span style="color:{{ f.color }};display:block;text-align:right;font-size:14px;line-height:1">{{ f.suit }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="{{ solTabRowStyle }}">
+                <sc-for list="{{ solTab }}" as="p" hint-placeholder-count="7">
+                  <div style="{{ p.style }}" onClick="{{ p.click }}">
+                    <sc-if value="{{ p.empty }}"><div style="{{ p.emptyStyle }}"></div></sc-if>
+                    <sc-for list="{{ p.cards }}" as="c" hint-placeholder-count="3">
+                      <div style="{{ c.style }}" onClick="{{ c.click }}" onDoubleClick="{{ c.dbl }}">
+                        <sc-if value="{{ c.up }}"><span style="color:{{ c.color }};font-weight:700">{{ c.face }}</span><span style="color:{{ c.color }};font-size:13px">&nbsp;{{ c.suit }}</span></sc-if>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:none;display:flex;align-items:center;gap:8px;padding:5px 6px">
+              <button style="min-width:78px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ solReset }}">Deal Again</button>
+              <sc-if value="{{ solCanFinish }}">
+                <button style="min-width:84px;height:23px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ solFinishClick }}">Auto-finish</button>
+              </sc-if>
+              <span style="font-family:Consolas,'Courier New',monospace;font-size:11px;color:#404040">{{ solMoves }}</span>
+              <span style="font-size:11px;color:#404040;margin-left:auto">{{ solMsg }}</span>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+
+      <div style="flex:none;height:20px;margin:0 3px 3px;display:flex;gap:2px">
+        <div style="flex:1;padding:3px 6px;color:#404040;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ w.status }}</div>
+        <div style="width:74px;flex:none;padding:3px 6px;color:#404040;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff">{{ w.statusRight }}</div>
+      </div>
+      <div style="position:absolute;right:2px;bottom:2px;width:16px;height:16px;cursor:nwse-resize;touch-action:none" onPointerDown="{{ w.resizeStart }}"></div>
+    </div>
+  </sc-for>
+
+  <sc-if value="{{ ctxOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="{{ ctxStyle }}" onMouseDown="{{ stop }}">
+      <sc-for list="{{ ctxItems }}" as="i" hint-placeholder-count="6">
+        <button style="display:flex;align-items:center;justify-content:space-between;gap:28px;width:100%;border:0;padding:4px 18px 4px 22px;background:transparent;color:#000;font-size:11px;cursor:default;text-align:left" style-hover="background:#000080;color:#fff" onClick="{{ i.run }}"><span>{{ i.label }}</span><span style="opacity:.6">{{ i.hint }}</span></button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ startOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:2px;bottom:31px;width:212px;background:#c0c0c0;padding:3px;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;display:flex;z-index:9000" onMouseDown="{{ stop }}">
+      <div style="width:22px;flex:none;background:#000080;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px">
+        <div style="writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:16px;letter-spacing:.5px;white-space:nowrap"></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;padding:1px 0">
+        <sc-for list="{{ startItems }}" as="s" hint-placeholder-count="8">
+          <sc-if value="{{ s.isSep }}"><div style="height:2px;margin:3px 3px;box-shadow:inset 0 1px 0 #808080,inset 0 -1px 0 #fff"></div></sc-if>
+          <sc-if value="{{ s.isItem }}">
+            <button style="display:flex;align-items:center;gap:8px;width:100%;border:0;padding:4px 5px;background:{{ s.bg }};color:{{ s.fg }};font-size:11px;cursor:default;text-align:left" onMouseEnter="{{ s.hover }}" onClick="{{ s.run }}">
+              <img src="{{ s.icon }}" width="24" height="24" alt="">
+              <span style="flex:1">{{ s.label }}</span>
+              <span style="font-size:10px">{{ s.arrow }}</span>
+            </button>
+          </sc-if>
+        </sc-for>
+      </div>
+      <sc-if value="{{ subOpen }}">
+        <div style="position:absolute;left:208px;bottom:{{ subBottom }};width:214px;background:#c0c0c0;padding:3px;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;display:flex;flex-direction:column">
+          <sc-for list="{{ subItems }}" as="s" hint-placeholder-count="6">
+            <button style="display:flex;align-items:center;gap:8px;width:100%;border:0;padding:4px 5px;background:transparent;color:#000;font-size:11px;cursor:default;text-align:left" style-hover="background:#000080;color:#fff" onClick="{{ s.run }}">
+              <img src="{{ s.icon }}" width="16" height="16" alt="">
+              <span>{{ s.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;height:29px;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #dfdfdf,inset -2px -2px 0 #808080,inset 2px 2px 0 #fff;display:flex;align-items:center;gap:3px;padding:3px;z-index:9500" onMouseDown="{{ stop }}">
+    <button style="{{ startBtnStyle }}" onClick="{{ toggleStart }}">
+      <img src="components/w100/assets/a64de9bcd8f7487d.png" width="16" height="16" alt="">
+      <span style="font-weight:700">Start</span>
+    </button>
+    <div style="width:2px;height:22px;margin:0 2px;box-shadow:inset 1px 0 0 #808080,inset -1px 0 0 #fff"></div>
+    <div style="flex:1;display:flex;gap:3px;overflow:hidden">
+      <sc-for list="{{ taskButtons }}" as="t" hint-placeholder-count="0">
+        <button style="{{ t.style }}" onClick="{{ t.click }}">
+          <img src="{{ t.icon }}" width="16" height="16" alt="">
+          <span style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis">{{ t.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="flex:none;height:22px;display:flex;align-items:center;gap:6px;padding:0 6px;background:#c0c0c0;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff">
+      <button style="width:16px;height:16px;padding:0;border:0;background:transparent;cursor:default;opacity:{{ botTrayOpacity }}" title="Show or hide BIT" onClick="{{ toggleBot }}"><img src="components/icons/assets/d0ecdb07aa53909a.png" width="16" height="16" alt=""></button>
+      <button style="width:16px;height:16px;padding:0;border:0;background:transparent;cursor:default;opacity:{{ factsTrayOpacity }}" title="Did you know?" onClick="{{ toggleFacts }}"><img src="components/icons/assets/c73c8520a7650b4a.png" width="16" height="16" alt=""></button>
+      <img src="components/icons/assets/3b83f2b17faa2329.png" width="16" height="16" alt="">
+      <img src="components/icons/assets/a247763c2cc0dc66.png" width="16" height="16" alt="">
+      <span style="font-size:11px">{{ clock }}</span>
+    </div>
+  </div>
+
+
+  <!-- "Did you know?": a small bulb icon in the desktop's top-right corner. It sits below the windows
+       like a desktop icon; the card it unfolds stacks with them (factsZ), so later windows cover it. -->
+  <sc-if value="{{ factsOn }}" hint-placeholder-val="{{ false }}">
+    <button style="position:absolute;top:10px;right:12px;z-index:2;width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" title="Did you know?" aria-label="Did you know?" aria-expanded="{{ factsExpanded }}" onClick="{{ toggleFacts }}"><img src="components/icons/assets/c73c8520a7650b4a.png" width="16" height="16" alt=""></button>
+    <sc-if value="{{ factsOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:46px;right:12px;z-index:{{ factsZ }};width:262px;background:#c0c0c0;padding:3px;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf,2px 2px 0 rgba(0,0,0,.3)" onMouseDown="{{ raiseFacts }}">
+        <div style="height:18px;display:flex;align-items:center;gap:4px;padding:0 3px;background:linear-gradient(90deg,#000080 0%,#1084d0 100%);color:#fff;font-weight:700;font-size:11px">
+          <img src="components/icons/assets/c73c8520a7650b4a.png" width="16" height="16" alt="">
+          <span style="flex:1">Did you know?</span>
+          <span style="font-weight:400">{{ factIndex }}</span>
+        </div>
+        <div style="background:#ffffe1;margin:3px;padding:8px 9px;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff;display:flex;flex-direction:column;gap:7px">
+          <span style="line-height:1.5;text-wrap:pretty">{{ factText }}</span>
+          <a href="{{ factUrl }}" target="_blank" rel="noreferrer" style="color:#000080;font-size:11px">Source: {{ factSource }}</a>
+        </div>
+        <div style="display:flex;gap:4px;justify-content:flex-end;padding:0 3px 2px">
+          <button style="min-width:56px;height:20px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ nextFact }}">Next</button>
+          <button style="min-width:48px;height:20px;border:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;font-size:11px;cursor:default" style-active="box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080" onClick="{{ toggleFacts }}">Close</button>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <!-- BIT sits bottom-right above the taskbar; a click opens its chat window. It stacks with the windows
+       (botZ), so a window opened later covers it; showing it again from the tray brings it back on top. -->
+  <sc-if value="{{ botOn }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;right:14px;bottom:38px;z-index:{{ botZ }}" onMouseDown="{{ stop }}">
+      <div ref="{{ faceRef }}" style="position:relative;width:64px;height:62px;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf,2px 2px 0 rgba(0,0,0,.35);padding:5px;cursor:pointer" title="Ask BIT about Kunal" onClick="{{ botClick }}">
+        <div style="height:38px;background:#0b1c14;box-shadow:inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #3a5a4a;display:flex;align-items:center;justify-content:center;gap:8px">
+          <div style="position:relative;width:13px;height:13px;border-radius:50%;background:#dff7e6">
+            <div style="{{ pupilStyle }}"></div>
+          </div>
+          <div style="position:relative;width:13px;height:13px;border-radius:50%;background:#dff7e6">
+            <div style="{{ pupilStyle }}"></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 2px 0">
+          <span style="width:6px;height:6px;background:#00c46a;box-shadow:inset -1px -1px 0 rgba(0,0,0,.4)"></span>
+          <span style="font-size:9px;letter-spacing:1px;color:#222">BIT</span>
+          <span style="width:14px;height:4px;background:#808080;box-shadow:inset -1px -1px 0 #fff"></span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ saverOn }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#000;z-index:9990;cursor:none" onClick="{{ wakeSaver }}">
+      <canvas ref="{{ saverRef }}" style="width:100%;height:100%;display:block"></canvas>
+      <div style="position:absolute;left:0;right:0;bottom:44px;text-align:center;color:#3a3a3a;font-size:11px;font-family:Consolas,'Courier New',monospace">{{ saverHint }}</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ scanlinesOn }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(0,0,0,.13) 0 1px,transparent 1px 3px);z-index:9900"></div>
+  </sc-if>
+</div>
+</sc-if>
+
+</div>
+<div class="crt-glass"></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;wallpaper&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Teal&quot;,&quot;options&quot;:[&quot;Teal&quot;,&quot;Plum&quot;,&quot;Slate&quot;,&quot;Olive&quot;],&quot;tsType&quot;:&quot;'Teal'|'Plum'|'Slate'|'Olive'&quot;,&quot;section&quot;:&quot;Display properties&quot;},&quot;scanlines&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display properties&quot;},&quot;screensaver&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Display properties&quot;},&quot;idleSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:45,&quot;min&quot;:10,&quot;max&quot;:180,&quot;step&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Display properties&quot;},&quot;assistant&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;skipBoot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;showWelcome&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+/*
+ * CONTACT - every outward-facing contact detail on the site, in one place.
+ *
+ * Consumed by: the Contact window's To: field, its GitHub/LinkedIn rows and its
+ * mailto: hand-off, and BIT's scripted answer about reaching Kunal. Change a
+ * value here and all of them update together.
+
+ */
+const CONTACT = {
+  email:    'kunaljmit036@gmail.com',
+  github:   'https://github.com/kunalkumarkkr01',
+  linkedin: 'https://www.linkedin.com/in/kunalkumar036',
+  resume:   'assets/Kunal_Kumar_Resume.pdf',
+};
+
+/*
+ * Strips scheme and trailing slash so a URL reads as a hostname in the UI.
+ * shortUrl('https://www.linkedin.com/in/kunal/') -> 'linkedin.com/in/kunal'
+ */
+const shortUrl = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/+$/, '');
+
+/*
+ * IS_TOUCH - true when the primary input is a finger rather than a pointer.
+ *
+ * The Windows 95 metaphor assumes a mouse: double-click to open, right-click to
+ * flag, arrow keys to steer. Where this is true the UI swaps in touch
+ * equivalents (single tap, press-and-hold, an on-screen D-pad) and the on-screen
+ * copy changes to match. Checked via `hover: none` + `pointer: coarse` rather
+ * than the presence of touch events, so hybrid laptops keep the mouse UI.
+ */
+const IS_TOUCH = typeof matchMedia === 'function'
+  && matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+/* Verb used wherever the UI tells the visitor how to open something. */
+const OPEN_VERB = IS_TOUCH ? 'Tap' : 'Double-click';
+/* BIT's starting stack level: above the desktop icons, below the first window (windows start above 10). */
+const BIT_START_Z = 5;
+/* On phones every window opens maximised, so BIT keeps a tray-level stack slot above them. */
+const BIT_TOP_Z = 9600;
+
+/* Below this viewport width a floating window is narrower than it is usable, so new windows open maximised. */
+const MAXIMISE_BELOW_PX = 700;
+
+/* UI scale steps: the whole desktop is zoomed by one factor chosen from the viewport width. */
+const UI_SCALE_PHONE_BELOW_PX = 700;
+const UI_SCALE_LAPTOP_BELOW_PX = 1700;
+const UI_SCALE_PHONE = 1;
+const UI_SCALE_LAPTOP = 1.25;
+const UI_SCALE_LARGE = 1.5;
+/* The 3D monitor's glass is smaller than the viewport, so the desktop is drawn at 1:1 there. */
+const UI_SCALE_EMBEDDED = 1;
+
+/* How long the CRT power-on line plays before the BIOS screen appears. */
+const POWERON_MS = 650;
+
+/* Height of the taskbar, and how much of a window must stay on screen after a resize. */
+const TASKBAR_PX = 29;
+const KEEP_VISIBLE_X_PX = 40;
+const KEEP_VISIBLE_Y_PX = 20;
+
+/* Evaluated once at load, like IS_TOUCH: the trivia panel is desktop-only. */
+const IS_NARROW = typeof window !== 'undefined' && window.innerWidth < MAXIMISE_BELOW_PX;
+
+/* How long a finger must rest on a Minesweeper cell before it plants a flag. */
+const MINE_HOLD_MS = 400;
+
+/*
+ * FACTS - trivia for the desktop panel, each with a source a visitor can open.
+ *
+ * Several entries exist because the popular telling is wrong: the moth did not
+ * coin "bug", 404 is not a room number, Wi-Fi is not an abbreviation, and Space
+ * Invaders did not drain Japan of coins. Those were checked, not recalled.
+ */
+const FACTS = [
+  { t: 'The first recorded computer "bug" was a real moth, taped into a Harvard Mark II logbook on 9 September 1947. It did not coin the word — engineers had called faults bugs since Edison\'s day.', s: 'Smithsonian', u: 'https://americanhistory.si.edu/collections/object/nmah_334663' },
+  { t: 'Wi-Fi is not short for anything. The alliance hired a branding firm to replace "IEEE 802.11b Direct Sequence"; "Wireless Fidelity" was a tagline added afterwards.', s: 'Phil Belanger', u: 'https://www.snopes.com/news/2024/07/23/wi-fi-definition-origin/' },
+  { t: '404 is not named after a room at CERN. The leading 4 means client error, and HTTP borrowed its numbering from FTP.', s: 'MDN', u: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404' },
+  { t: 'Space Invaders did not cause a 100-yen coin shortage. Japan minted fewer 100-yen coins in 1978 than in the years either side of it.', s: 'Arcade Historian', u: 'http://allincolorforaquarter.blogspot.com/2013/11/video-game-myth-busters-space-invaders.html' },
+  { t: 'The world\'s first webcam pointed at a coffee pot in Cambridge, so researchers could see whether a trip down the corridor was worth it.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Trojan_Room_coffee_pot' },
+  { t: 'The first registered .com domain was symbolics.com, on 15 March 1985.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Symbolics' },
+  { t: 'Nokia started in 1865 as a paper mill on the banks of the Nokianvirta river.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Nokia' },
+  { t: 'The first message sent over ARPANET was meant to be LOGIN. The system crashed after two letters, so it read LO.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/ARPANET' },
+  { t: 'Python is named after Monty Python\'s Flying Circus. The snake came later, from publishers.', s: 'Python docs', u: 'https://docs.python.org/3/faq/general.html' },
+  { t: 'Java was called Oak until a trademark search forced a rename. The tree was outside James Gosling\'s office.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Java_(programming_language)' },
+  { t: 'Firefox\'s logo is a red panda. "Firefox" is another name for the animal, not a burning fox.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Red_panda' },
+  { t: 'Bluetooth is named after Harald "Bluetooth" Gormsson, and its logo is a bind rune of his initials.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Bluetooth' },
+  { t: 'The first YouTube video, "Me at the zoo", is 19 seconds long and was uploaded on 23 April 2005.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Me_at_the_zoo' },
+  { t: 'Google is a misspelling of googol, the number 1 followed by a hundred zeros.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Google' },
+  { t: 'For most of the word\'s life, a "computer" was a person whose job was doing calculations.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Human_computer' },
+  { t: 'The Apollo Guidance Computer flew to the Moon with roughly 4 KB of RAM.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Apollo_Guidance_Computer' },
+  { t: 'HTTP 418, "I\'m a teapot", comes from an April Fools\' RFC published in 1998.', s: 'RFC 2324', u: 'https://www.rfc-editor.org/rfc/rfc2324' },
+  { t: 'Ray Tomlinson chose @ for email in 1971 because it was the one symbol that never appeared in people\'s names.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Ray_Tomlinson' },
+  { t: 'Amazon was very nearly called Cadabra, until a lawyer misheard it as "cadaver".', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/History_of_Amazon' },
+  { t: 'Linux was almost named Freax. The administrator of the FTP server renamed the directory to linux without asking.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/History_of_Linux' },
+  { t: 'Unix time counts seconds from midnight on 1 January 1970, and always will.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Unix_time' },
+  { t: 'The computer mouse was patented as an "X-Y Position Indicator for a Display System".', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Computer_mouse' },
+  { t: 'IBM\'s RAMAC, the first hard drive, stored 5 MB in 1956 across fifty 24-inch platters.', s: 'IBM', u: 'https://www.ibm.com/history/ramac' },
+  { t: 'Brain, the first PC virus, carried its authors\' real names, address and phone number in the code.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Brain_(computer_virus)' },
+  { t: 'Hedy Lamarr co-patented frequency hopping during the Second World War — an ancestor of Wi-Fi and Bluetooth.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Hedy_Lamarr' },
+  { t: 'Margaret Hamilton led the Apollo flight software team and popularised the term "software engineering".', s: 'NASA', u: 'https://www.nasa.gov/people/margaret-hamilton/' },
+  { t: 'The Morris Worm of 1988 was meant to measure the internet. It infected roughly 6,000 machines instead.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Morris_worm' },
+  { t: 'Intel\'s 1994 Pentium division bug cost the company around $475 million.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Pentium_FDIV_bug' },
+  { t: 'The first spam email was sent in 1978, to 393 people on ARPANET.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/History_of_email_spam' },
+  { t: '"Hello, world" first appeared in a 1972 Bell Labs tutorial for the B language.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/"Hello,_World!"_program' },
+  { t: 'Ada Lovelace\'s 1843 Note G is widely considered the first algorithm published for a machine to run.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Ada_Lovelace' },
+  { t: 'Grace Hopper handed out 30 cm lengths of wire she called "nanoseconds" — how far light travels in one.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Grace_Hopper' },
+  { t: 'Linus Torvalds wrote the first working version of Git in about ten days.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Git' },
+  { t: 'C is named after B, which was named after BCPL. The next one was not called D.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/C_(programming_language)' },
+  { t: 'QWERTY was laid out for mechanical typewriters in the 1870s and has outlived every proposed replacement.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/QWERTY' },
+  { t: 'Email is about two decades older than the World Wide Web.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/History_of_email' },
+  { t: 'Wikipedia went live on 15 January 2001 as a side project to feed a peer-reviewed encyclopedia that never took off.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/History_of_Wikipedia' },
+  { t: 'Moore\'s Law came from a 1965 magazine article. It is an observation about economics, not a law of physics.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Moore%27s_law' },
+  { t: 'Colossus broke German ciphers from 1943, but stayed classified so long that its builders got no credit for decades.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Colossus_computer' },
+  { t: 'IPv4 has about 4.3 billion addresses. The central pool ran dry in February 2011.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/IPv4_address_exhaustion' },
+  { t: 'The Konami Code is up, up, down, down, left, right, left, right, B, A — and it still works on a surprising number of sites.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Konami_Code' },
+  { t: 'The word robot comes from a 1920 Czech play. It means forced labour.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/R.U.R.' },
+  { t: 'Tennis for Two, an oscilloscope game built in 1958 to entertain lab visitors, predates Pong by fourteen years.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Tennis_for_Two' },
+  { t: 'Tetris was written in 1984 by Alexey Pajitnov at a Soviet research centre, on hardware without graphics.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Tetris' },
+  { t: 'The first emoji set was 176 pixel drawings made in 1999 for a Japanese pager network. MoMA has them.', s: 'MoMA', u: 'https://www.moma.org/collection/works/196070' },
+  { t: 'Bill Gates has repeatedly denied ever saying 640K of memory ought to be enough for anybody.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Bill_Gates' },
+  { t: 'ENIAC\'s original programmers were six women, and for years they were left out of the photographs\' captions.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/ENIAC' },
+  { t: 'The transistor was demonstrated at Bell Labs just before Christmas in 1947.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Transistor' },
+  { t: '"Bit" was coined by John Tukey; "byte" was coined at IBM and spelled oddly on purpose so nobody would typo it into bit.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Byte' },
+  { t: 'SQL was originally SEQUEL, and had to be renamed because an aircraft company already owned the trademark.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/SQL' },
+  { t: 'There is a real specification for running IP over carrier pigeon. It has a stated latency problem.', s: 'RFC 1149', u: 'https://www.rfc-editor.org/rfc/rfc1149' },
+  { t: 'CAPTCHA stands for Completely Automated Public Turing test to tell Computers and Humans Apart.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/CAPTCHA' },
+  { t: 'The save icon is a floppy disk, an object most people using it have never handled.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Floppy_disk' },
+  { t: 'The first banner ad ran in 1994 and about 44% of people who saw it clicked. Nothing has come close since.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Web_banner' },
+  { t: 'Dennis Ritchie, who created C and co-created Unix, died a week after Steve Jobs and was barely reported.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Dennis_Ritchie' },
+  { t: 'The @ symbol is centuries older than email — merchants used it to mean "at the rate of".', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/At_sign' },
+  { t: 'Stack Overflow launched in 2008 because its founders were annoyed at having to read expert-answer sites full of ads.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Stack_Overflow' },
+  { t: 'The Y2K problem was largely averted because an estimated $300 billion was spent fixing it first.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Year_2000_problem' },
+  { t: 'Vim\'s notorious exit sequence has its own Stack Overflow question with millions of views.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Vim_(text_editor)' },
+  { t: 'Windows 95\'s boot music was composed by Brian Eno, who was asked for something "inspiring, universal, optimistic" — and made it 3.25 seconds long.', s: 'Wikipedia', u: 'https://en.wikipedia.org/wiki/Microsoft_Windows' },
+];
+
+const IC = 'components/icons/assets/';
+const I = {
+  computer: IC + '3ac3e9ba67c0338b.png', settings: IC + 'c13987f18bdd8028.png', filetext: IC + '55676ab0ce71ca53.png',
+  folder: IC + '18e89b59ea5a4312.png', folderOpen: IC + '90b706a41c3a4aae.png', mail: IC + '0219671a273c5a83.png',
+  globe: IC + '1215c2603f62cac9.png', audio: IC + 'bb76da73e4fb07f1.png', help: IC + '65c95699feb567e6.png',
+  network: IC + 'b402a8099c5c8bf4.png', notepad: IC + '9ac1f271c11b2c4f.png', keys: IC + '510637b654b3c877.png',
+  find: IC + '5376e453a2732a86.png', cd: IC + 'e6c30d02b2627722.png', timedate: IC + '0fdfad81c9e66b32.png',
+  camera: IC + 'd6b877062a24e71a.png', regedit: IC + 'cd83bf10147bc632.png', tree: IC + '32734bfda2fd0b9a.png',
+  computer16: IC + '0d0ed391795cd91c.png', settings16: IC + '09700094bddfdc73.png', filetext16: IC + '8b7e73a28818d22d.png',
+  folder16: IC + '2afb393c55d8cf7c.png', mail16: IC + '034f5e2ecf56c643.png', globe16: IC + '981cd5d2029e6b96.png',
+  audio16: IC + '3b83f2b17faa2329.png', help16: IC + 'f76a834b14cf6585.png', notepad16: IC + '2b4fa2057916564f.png',
+  network16: IC + 'f327aefbdf109bab.png', folderOpen16: IC + '7132827b416f8269.png', timedate16: IC + 'a247763c2cc0dc66.png',
+  tree16: IC + '92b5fb147a264d11.png',
+  winmine: IC + '5d0e9093c6f455b3.png', winmine16: IC + '856a571e60411fb5.png',
+  sol: IC + '68c08a0a03dd81f9.png', sol16: IC + '9956b619434b7a13.png',
+  joy: IC + '2981d5f1dd21417b.png', bulb: IC + 'c73c8520a7650b4a.png',
+  // Drawn by build/make_snake_icon.py - the bundled pack has no snake.
+  snake: IC + 'snake-32.png', snake16: IC + 'snake-16.png',
+  // Likewise build/make_tictactoe_icon.py - no noughts and crosses either.
+  ttt: IC + 'ttt-32.png', ttt16: IC + 'ttt-16.png',
+  freecell: IC + '1c5b930dfbf87088.png',
+  chat32: IC + '9cef1dd086dce8b1.png', chat16: IC + 'd0ecdb07aa53909a.png',
+  joy16: IC + '005d949b523453bc.png', lights: IC + 'b807482426fe35fc.png', lights16: IC + '2accbc06f46c9374.png',
+  user: IC + 'dd7feed47b32dcdb.png', user16: IC + '89ed81f908d684c9.png',
+};
+const RANKS = ['', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+const SUITS = ['♠', '♥', '♦', '♣'];
+const CARD_W = 46, CARD_H = 64;
+/* Solitaire on phone-width screens: smaller cards and gaps so the seven columns fit without scrolling. */
+const SOL_CARD = IS_NARROW ? { w: 34, h: 48, gap: 4 } : { w: CARD_W, h: CARD_H, gap: 8 };
+/* A taskbar button's full width; with many windows open they shrink evenly, as in Windows 95. */
+const TASK_BUTTON_PX = 154;
+const RAISED = 'inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf';
+const FRAME = 'inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #dfdfdf,inset -2px -2px 0 #808080,inset 2px 2px 0 #fff';
+const SUNKEN = 'inset -1px -1px 0 #fff,inset 1px 1px 0 #808080,inset -2px -2px 0 #dfdfdf,inset 2px 2px 0 #0a0a0a';
+const PRESSED = 'inset 1px 1px 0 #0a0a0a,inset -1px -1px 0 #fff,inset 2px 2px 0 #808080';
+
+class Component extends DCLogic {
+  APPS = [
+    { id: 'welcome', label: 'My Portfolio', title: 'My Portfolio', icon32: I.computer, icon16: I.computer16, w: 520, h: 340, menus: ['File', 'View', 'Help'], status: OPEN_VERB + ' a desktop icon to open it', statusRight: '' },
+    { id: 'settings', label: 'About Me', title: 'Control Panel — About Me', icon32: I.settings, icon16: I.settings16, w: 580, h: 430, menus: ['File', 'View', 'Help'], status: 'Profile, expertise, languages and education', statusRight: '4 pages' },
+    { id: 'gallery', label: 'Projects', title: 'Projects — C:\\KUNAL\\PROJECTS', icon32: I.folder, icon16: I.folder16, w: 620, h: 440, menus: ['File', 'View', 'Help'], status: 'Click a project to read its details', statusRight: '7 object(s)' },
+    { id: 'pdf', label: 'Resume.pdf', title: 'Document Viewer — Kunal_Kumar.pdf', icon32: I.filetext, icon16: I.filetext16, w: 600, h: 540, menus: ['File', 'View', 'Help'], status: 'Kunal_Kumar.pdf', statusRight: '3 pages' },
+    { id: 'terminal', label: 'Skills Prompt', title: 'Skills Prompt', icon32: I.keys, icon16: I.keys, w: 580, h: 380, menus: ['File', 'Help'], status: 'Type help and press Enter', statusRight: 'C:\\KUNAL' },
+    { id: 'mail', label: 'Contact', title: 'Mail — New Message', icon32: I.mail, icon16: I.mail16, w: 500, h: 430, menus: ['File', 'Help'], status: 'Send opens your own mail client', statusRight: 'Outbox' },
+    { id: 'assistant', label: 'Ask BIT', title: 'BIT — Desktop Assistant', icon32: I.chat32, icon16: I.chat16, w: 430, h: 440, menus: ['File', 'Help'], status: 'Ask about Kunal’s work, stack or experience', statusRight: 'Online' },
+    { id: 'notes', label: 'Writing', title: 'Notepad — writing.txt', icon32: I.notepad, icon16: I.notepad16, w: 600, h: 400, menus: ['File', 'View', 'Help'], status: '4 drafts', statusRight: 'Read-only' },
+    { id: 'calendar', label: 'Experience', title: 'Experience — Aug 2021 to Present', icon32: I.timedate, icon16: I.timedate16, w: 620, h: 460, menus: ['File', 'View', 'Help'], status: '5 roles · 5+ years', statusRight: 'Agenda' },
+    { id: 'music', label: 'Media Player', title: 'Media Player', icon32: I.audio, icon16: I.audio16, w: 300, h: 260, menus: ['File', 'Device', 'Help'], status: 'Side quests', statusRight: 'CD Audio' },
+    { id: 'tictactoe', label: 'Tic-Tac-Toe', title: 'Tic-Tac-Toe', icon32: I.ttt, icon16: I.ttt16, w: 260, h: 330, menus: ['Game', 'Help'], status: 'You are X — computer plays O', statusRight: 'Hard' },
+    { id: 'minesweeper', label: 'Minesweeper', title: 'Minesweeper', icon32: I.winmine, icon16: I.winmine16, w: 180, h: 300, menus: ['Game', 'Help'], status: IS_TOUCH ? 'Tap opens · press and hold flags' : 'Left click opens · right click flags', statusRight: 'Beginner' },
+    { id: 'snake', label: 'Snake', title: 'Snake', icon32: I.snake, icon16: I.snake16, w: 330, h: 340, menus: ['Game', 'Help'], status: IS_TOUCH ? 'Use the arrows below to steer' : 'Arrow keys or WASD to steer', statusRight: 'Speed 1' },
+    { id: 'solitaire', label: 'Solitaire', title: 'Solitaire — Klondike', icon32: I.sol, icon16: I.sol16, w: 600, h: 470, menus: ['Game', 'Help'], status: 'Click a card, then its destination · double-click to send home', statusRight: 'Draw 1' },
+  ];
+
+  DESK = ['welcome', 'settings', 'gallery', 'pdf', 'terminal', 'mail', 'assistant',
+    'tictactoe', 'minesweeper', 'snake', 'solitaire'];
+  GAMES = ['tictactoe', 'minesweeper', 'snake', 'solitaire'];
+  SKILLS = [
+    { name: 'Backend & Architecture', items: ['REST APIs', 'WebSocket APIs', 'ASP.NET Core', 'Microservices', 'Serverless', 'Event-driven Systems', 'Azure AD / Entra ID', 'JWT / RBAC Auth'] },
+    { name: 'Cloud & IoT', items: ['Azure', 'Azure IoT Hub', 'Azure Functions', 'App Services', 'API Management', 'Key Vault', 'Azure SQL', 'AWS Lambda', 'Redis', 'CDN'] },
+    { name: 'AI & Agents', items: ['Claude Code', 'Microsoft 365 Copilot', 'Model Context Protocol (MCP)', 'OpenAI Whisper', 'Python / OpenCV'] },
+    { name: 'Languages', items: ['C#', '.NET', 'TypeScript', 'JavaScript', 'Node.js', 'SQL', 'Python', 'Java'] },
+    { name: 'Databases', items: ['Azure SQL Database', 'SQL Server', 'MySQL', 'SQLite'] },
+    { name: 'DevOps & Tooling', items: ['Azure DevOps', 'GitHub Actions', 'Docker', 'CI/CD', 'SonarQube', 'Swagger / OpenAPI', 'Postman'] },
+    { name: 'Game & Real-time', items: ['Unity', 'Phaser.js', 'Electron', 'WebSockets', 'Multi-display rendering', 'Spine 2D'] },
+  ];
+  ROLES = [
+    { title: 'Lead Software Engineer', employer: 'Dynamisch', dates: '02/2026 – Present', summary: 'Leads a team of 6 on a greenfield industrial IoT platform for a global industrial equipment manufacturer; owns the backend and oversees architecture across the IoT, backend and front-end layers. Shipped Phases 1 and 2 to production while absorbing mid-delivery change requests; now leading Phase 3. Built the platform’s AI agent in Microsoft 365 Copilot on an MCP server that exposes the portal’s features as tools. Also AI consultant for Blue Ridge Global: trained the whole organization on Claude Code and built a shared skills repository, taking bug triage from weeks to hours.', stack: '.NET · Azure · Azure IoT Hub · Microsoft 365 Copilot · MCP · Claude Code' },
+    { title: 'Lead Software Engineer', employer: 'Shwaira', dates: '10/2025 – 01/2026', summary: 'Designed the architecture of the same greenfield industrial IoT platform from scratch: .NET backend on Azure, Azure IoT Hub for device connectivity, React (Vite) front end and CI/CD in Azure DevOps. Led the 6-person team as the sole backend developer and delivered Phase 1 in four months.', stack: '.NET · Azure · Azure IoT Hub · React (Vite) · Azure DevOps' },
+    { title: 'Software Engineer (SDE 3)', employer: 'Ciklum India', dates: 'Apr 2024 – Oct 2025', summary: 'Henkel (Loctite) industrial IoT R&D platform, built from scratch and deployed across 10 sites, monitoring wear on a protective coating applied to industrial pipes and T-joints. Led a 6-person cross-functional team while building the entire backend in ASP.NET Core on Azure: the dashboard’s REST APIs, the database schema, Azure AD (Entra ID) authentication and CI/CD.', stack: 'C# · ASP.NET Core · Azure · SQL · Entra ID · Azure DevOps' },
+    { title: 'Software Engineer (SDE 2)', employer: 'Ciklum India', dates: 'Jan 2023 – Mar 2024', summary: 'Hatch Early Learning. IgniteTable: led 6 people on a stack new to all of them (Phaser.js and TypeScript in Electron) and delivered 36 games from a templated pipeline. Hatch Ignite, played by 60,000+ children in US preschools: led a 16-person team through an accessibility overhaul of 500+ games, with keyboard play, colour-blind-friendly highlighting and an OpenAI Whisper captioning pipeline he built. Also cut regression testing from 10–12 to 7–8 days and per-game CDN cache storage by 50–65%.', stack: 'Unity · C# · Phaser.js · TypeScript · Electron · AWS Lambda · Node.js · Whisper' },
+    { title: 'Junior Software Engineer', employer: 'Ciklum India', dates: 'Aug 2021 – Dec 2022', summary: 'FIT:MATCH × Savage X Fenty in-store body-scan fitting: a Unity iOS app rendering LiDAR scans as interactive 3D point clouds, and an Android kiosk talking to a local C# server over REST and WebSockets. Before that, a projected axe-throwing platform that ran fully offline: game UI, local lane APIs and a multi-lane match mode across projectors.', stack: 'Unity · C# · REST · WebSockets · SQLite · Intel RealSense' },
+  ];
+  PROJECTS = [
+    { name: 'Industrial IoT Platform', icon: I.folder, meta: 'Dynamisch, 2025–now', desc: 'Greenfield platform for a global industrial equipment manufacturer: devices connect through Azure IoT Hub to a .NET backend on Azure, with a React front end. Phases 1 and 2 are in production; Phase 3 is underway.', stack: '.NET · Azure · IoT Hub · React' },
+    { name: 'Copilot IoT Agent', icon: I.network, meta: 'Dynamisch, 2026', desc: 'An AI agent in Microsoft 365 Copilot, backed by an MCP server that exposes the IoT portal’s features as tools, so users can ask about a device’s data in plain language.', stack: 'Microsoft 365 Copilot · MCP · .NET' },
+    { name: 'Loctite Monitoring', icon: I.folder, meta: 'Henkel, 2024–25', desc: 'Industrial IoT R&D platform deployed to 10 sites, tracking wear on a protective coating on pipes and T-joints. He built the whole backend: APIs, schema, Entra ID auth and CI/CD.', stack: 'ASP.NET Core · Azure · Entra ID' },
+    { name: 'Hatch Ignite', icon: I.cd, meta: 'Hatch, 2023–24', desc: 'Unity early-learning games played by 60,000+ preschoolers: an accessibility overhaul of 500+ games, Whisper-generated captions in English and Spanish, and leaner CDN caching.', stack: 'Unity · Whisper · AWS Lambda' },
+    { name: 'IgniteTable Games', icon: I.cd, meta: 'Hatch, 2023', desc: '36 games for a multi-touch learning table where four children play on one screen, built from a templated pipeline of shared building blocks.', stack: 'Phaser.js · TypeScript · Electron' },
+    { name: 'FIT:MATCH Kiosk', icon: I.regedit, meta: 'Savage X Fenty, 2022', desc: 'In-store body-scan fitting: LiDAR scans shown as 3D point clouds on iOS, plus a RealSense kiosk talking to a local C# server.', stack: 'Unity · C# · WebSockets' },
+    { name: 'Axe Throwing Lanes', icon: I.regedit, meta: 'Venues, 2021–22', desc: 'Projected axe-throwing that runs fully offline: a multi-lane match mode with up to three lanes and a shared scoreboard, each on its own projector, scores kept in sync.', stack: 'Unity · C# · SQLite' },
+  ];
+  NOTES = [
+    { title: 'Idempotent event processing on Azure Functions', date: '2026-08-18', body: 'IoT Hub and Event Hubs both guarantee at-least-once delivery, which means a checkpoint that fails to commit hands you the same batch again. The failure mode is quiet: alert counts drift upward and nobody notices until a customer asks why one machine tripped four times. The fix is a deterministic key per event — device id plus the enqueued timestamp, never a generated GUID — and a unique constraint in SQL, so a replay becomes a swallowed duplicate-key violation instead of a second row. Keep that constraint in the database rather than in a cache: a cache miss during a restart is exactly when replays arrive. Process a partition in one transaction so a partial failure re-delivers cleanly, and log the duplicate count instead of suppressing it — a rising number means something upstream is retrying harder than it should.' },
+    { title: 'Keep telemetry snapshots away from raw payloads', date: '2026-07-30', body: 'A dashboard query and an audit query want opposite things from the same event. The dashboard wants the latest value per device: small, indexed, hot. The audit wants the exact bytes that arrived, kept for years. Putting both in one wide table means every current-state query drags full payloads across the wire, and the table is too busy to archive. Splitting it three ways — a snapshot row per device updated in place, an event summary row per state change, and raw payloads keyed by the same event id — keeps the dashboard on a table roughly the size of the fleet rather than the size of its history. Raw storage can then sit on blob or a partitioned table with a real retention policy, and nobody has to argue about deleting data to make a chart faster.' },
+    { title: 'Sub-second fan-out with Azure SignalR', date: '2026-07-12', body: 'Polling a telemetry API every few seconds is the default answer and the wrong one: it costs the most when nothing is happening. Azure SignalR in serverless mode lets an isolated Azure Function negotiate the connection and then push, so cost tracks change rather than time. The part worth getting right is groups. Subscribing every client to everything and filtering in the browser works until one site has a few hundred devices; joining each connection to a group per site, and to a per-device group only while a detail view is open, keeps fan-out proportional to what someone is actually looking at. Negotiate through your own function so the socket gets the same Azure AD role check as the REST API — otherwise it quietly becomes a way around your authorization.' },
+    { title: 'When Container Apps beats Functions', date: '2026-06-21', body: 'Functions are the right default for event processing: they scale on queue depth, cost nothing idle, and the isolated worker model keeps dependencies sane. They stop being the default the moment a workload wants to hold something open — a long-lived connection, a warm in-process cache, a background loop that no trigger fires. Cold starts and the execution time limit turn into daily friction, and the workarounds get elaborate. Container Apps keeps scale-to-zero and KEDA-driven scaling but gives you an ordinary long-running process, which is a far shorter conversation than reshaping the design to fit a trigger. The trade is that you now own a container image and its patching. Rule of thumb: if the work starts when a message arrives and ends when it is handled, leave it in Functions.' },
+  ];
+  LINKS = [
+    { name: 'GitHub', host: shortUrl(CONTACT.github), href: CONTACT.github },
+    { name: 'LinkedIn', host: shortUrl(CONTACT.linkedin), href: CONTACT.linkedin },
+    { name: 'Email', host: CONTACT.email, href: 'mailto:' + CONTACT.email },
+    { name: 'Resume PDF', host: 'Kunal_Kumar.pdf', href: CONTACT.resume },
+  ];
+  POST = [
+    { text: 'Platform', value: ':BIOS v2.6', color: '#808080' },
+    { text: 'Operator', value: ':Kunal Kumar', color: '#c0c0c0' },
+    { text: 'Role', value: ':Lead Software Engineer @ Dynamisch', color: '#c0c0c0' },
+    { text: 'Location', value: ':Pune, India', color: '#c0c0c0' },
+    { text: '', value: '', color: '#808080' },
+    { text: 'Primary Master', value: ':C# · .NET · ASP.NET Core · Azure', color: '#808080' },
+    { text: 'Primary Slave', value: ':Node.js · TypeScript', color: '#808080' },
+    { text: 'Secondary Master', value: ':Azure SQL · SQL Server · MySQL', color: '#808080' },
+    { text: 'Secondary Slave', value: ':Azure IoT Hub · M365 Copilot · MCP', color: '#808080' },
+    { text: '', value: '', color: '#808080' },
+    { text: 'RAM', value: ':5+ years of production systems', color: '#808080' },
+    { text: 'Storage Quota', value: ':C:\\KUNAL\\PROJECTS (' + this.PROJECTS.length + ' volumes)', color: '#808080' },
+    { text: 'Storage Usage', value: ':RESUME.PDF loaded (3 pages)', color: '#808080' },
+    { text: 'Team', value: ':6 engineers on the IoT platform', color: '#808080' },
+    { text: '', value: '', color: '#808080' },
+    { text: 'Current Date Time', value: ':' + new Date().toLocaleString(), color: '#808080' },
+    { text: 'Timezone', value: ':' + (Intl.DateTimeFormat().resolvedOptions().timeZone || 'Local'), color: '#808080' },
+    { text: '', value: '', color: '#808080' },
+    { text: 'Verifying operator identity', value: ':OK', color: '#c0c0c0' },
+    { text: 'Starting up...', value: '', color: '#c0c0c0' },
+  ];
+
+  state = { phase: 'off', onDesk: true, booted: false, shown: 0, splashFill: 0, wins: [], z: 10, startOpen: false, startSub: null, time: new Date(),
+    ctx: null, deskSel: null, aboutTab: 'profile', uiScale: 1, pdfZoom: 1, note: 0, project: 0, playing: false, progress: 22,
+    mailStatus: '', termLines: [], termInput: '',
+    ttt: null, mine: null, snake: null, sol: null,
+    chat: [], chatInput: '', chatBusy: false,
+    botHidden: false, botZ: BIT_START_Z, chipsOpen: true, pupil: { x: 0, y: 0 }, saver: false,
+    fact: 0, factsOpen: false, factsZ: 0 };
+  termRef = React.createRef(); termInputRef = React.createRef();
+  chatRef = React.createRef(); faceRef = React.createRef(); saverRef = React.createRef();
+  /*
+   * screenRefFn - ref callback for the CRT screen box that the desktop renders into.
+   * Params: el - the screen DOM element (null on unmount).
+   * Returns: nothing; stores the node on this.screenEl for the geometry helpers.
+   * Usage: <div class="crt-screen" ref="{{ screenRefFn }}">.
+   */
+  screenRefFn = el => { this.screenEl = el; };
+
+  /*
+   * makeKeyHandler - builds the window keydown handler for the desktop.
+   * Returns: a function(e) that skips the boot, wakes the screensaver and steers Snake;
+   * it ignores every key while the visitor is on the 3D desk.
+   * Usage: this.keyFn = this.makeKeyHandler(); window.addEventListener('keydown', this.keyFn).
+   */
+  makeKeyHandler() {
+    return e => {
+      if (this.state.onDesk) return;
+      if (this.state.phase !== 'desktop') return this.skip();
+      this.poke();
+      const top = this.topWin();
+      if (top && top.app === 'snake') {
+        const d = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] }[e.key];
+        if (d) { e.preventDefault(); this.snakeTurn(d); }
+      }
+    };
+  }
+
+  componentDidMount() {
+    // The clock, tips, facts and BIT's eyes only update inside the computer: on the 3D desk the desktop
+    // is hidden, and re-rendering it there would only take frames from the 3D scene.
+    this.tick = setInterval(this.whenAwake(() => this.setState(s => ({ time: new Date(), mine: s.mine && s.mine.started && !s.mine.dead && !s.mine.won ? { ...s.mine, t: (s.mine.t || 0) + 1 } : s.mine }))), 1000);
+    this.keyFn = this.makeKeyHandler();
+    this.actFn = this.whenAwake(e => { this.poke(); if (e.type === 'mousemove') this.aimEyes(e); });
+    window.addEventListener('keydown', this.keyFn);
+    this.resizeFn = () => this.onResize();
+    window.addEventListener('resize', this.resizeFn);
+    this.setState({ uiScale: this.currentUiScale() });
+    ['mousemove', 'mousedown', 'wheel', 'touchstart'].forEach(t => window.addEventListener(t, this.actFn, { passive: true }));
+    this.lastAct = Date.now();
+    this.idleT = setInterval(() => {
+      const ms = (this.props.idleSeconds ?? 45) * 1000;
+      if (this.state.phase === 'desktop' && !this.state.onDesk && !this.state.saver && (this.props.screensaver ?? true) && Date.now() - this.lastAct > ms) this.startSaver();
+    }, 1000);
+    // Facts start at a random one so two visitors do not see the same first card.
+    this.setState({ fact: Math.floor(Math.random() * FACTS.length) });
+    this.factT = setInterval(this.whenAwake(() => this.setState(s => ({ fact: (s.fact + 1) % FACTS.length }))), 25000);
+    this.setState({ termLines: this.banner(), ttt: this.tttNew(), mine: this.mineNew(), snake: this.snakeNew(), sol: this.solNew(), chat: [{ who: 'bot', text: 'Hi, I’m BIT — the assistant that lives on this desktop. Ask me about Kunal’s experience, stack, or any project in C:\\KUNAL\\PROJECTS.' }] });
+    // The desktop stays powered off until the visitor enters the computer from the 3D desk.
+    this.enterFn = () => this.enterComputer();
+    window.addEventListener('kunal:enter', this.enterFn);
+    this.consumePendingEnter();
+  }
+  componentWillUnmount() {
+    [this.tick, this.postT, this.splashT, this.prog, this.idleT, this.snakeT, this.factT].forEach(clearInterval);
+    clearTimeout(this.botT); clearTimeout(this.mineHold); clearTimeout(this.powerT);
+    window.removeEventListener('kunal:enter', this.enterFn);
+    cancelAnimationFrame(this.raf); cancelAnimationFrame(this.eyeRaf);
+    window.removeEventListener('keydown', this.keyFn);
+    window.removeEventListener('resize', this.resizeFn);
+    ['mousemove', 'mousedown', 'wheel', 'touchstart'].forEach(t => window.removeEventListener(t, this.actFn));
+  }
+  componentDidUpdate() {
+    const el = this.termRef.current; if (el) el.scrollTop = el.scrollHeight;
+    const c = this.chatRef.current; if (c) c.scrollTop = c.scrollHeight;
+  }
+
+  /*
+   * padTurn - steers Snake from the on-screen D-pad shown on touch devices.
+   *
+   * Mirrors what the arrow keys do, and starts a fresh game on the first press
+   * so a visitor never has to find the Start button before they can play.
+   *
+   * padTurn([0, -1])  // head north
+   */
+  padTurn(d) {
+    const sn = this.state.snake;
+    if (sn && !sn.running && !sn.dead) this.snakeStart();
+    this.snakeTurn(d);
+  }
+
+  /*
+   * whenAwake - wraps a timer or event callback so it does nothing while the visitor is on the 3D desk.
+   * Params: fn - the callback. Returns: the wrapped callback (same arguments).
+   * Usage: setInterval(this.whenAwake(() => this.setState(...)), 1000).
+   */
+  whenAwake(fn) { return (...args) => { if (!this.state.onDesk) fn(...args); }; }
+
+  poke() { this.lastAct = Date.now(); if (this.state.saver) this.stopSaver(); }
+  aimEyes(e) {
+    if (this.eyeRaf) return;
+    this.eyeRaf = requestAnimationFrame(() => {
+      this.eyeRaf = 0;
+      const f = this.faceRef.current; if (!f) return;
+      const r = f.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 220) * 3;
+      this.setState({ pupil: { x: +(dx / d * k).toFixed(2), y: +(dy / d * k).toFixed(2) } });
+    });
+  }
+  startSaver() {
+    this.stars = Array.from({ length: 220 }, () => ({ x: (Math.random() * 2 - 1), y: (Math.random() * 2 - 1), z: Math.random() }));
+    this.setState({ saver: true }, () => this.saverLoop());
+  }
+  stopSaver() { cancelAnimationFrame(this.raf); this.setState({ saver: false }); }
+  saverLoop() {
+    if (!this.state.saver) return;
+    const c = this.saverRef.current;
+    if (c) {
+      const w = c.clientWidth, h = c.clientHeight;
+      if (c.width !== w) { c.width = w; c.height = h; }
+      const g = c.getContext('2d');
+      g.fillStyle = '#000'; g.fillRect(0, 0, w, h);
+      for (const s of this.stars) {
+        s.z -= 0.006;
+        if (s.z <= 0.02) { s.x = Math.random() * 2 - 1; s.y = Math.random() * 2 - 1; s.z = 1; }
+        const px = w / 2 + (s.x / s.z) * w * 0.35, py = h / 2 + (s.y / s.z) * h * 0.35;
+        if (px < 0 || px > w || py < 0 || py > h) continue;
+        const sz = Math.max(1, Math.round((1 - s.z) * 3.4));
+        g.fillStyle = ['#4a4a4a', '#8f8f8f', '#d0d0d0', '#fff'][Math.min(3, sz - 1)] || '#fff';
+        g.fillRect(px | 0, py | 0, sz, sz);
+      }
+    }
+    this.raf = requestAnimationFrame(() => this.saverLoop());
+  }
+
+  tttNew() { return { b: Array(9).fill(''), over: null, busy: false, score: (this.state && this.state.ttt ? this.state.ttt.score : { you: 0, cpu: 0, tie: 0 }) }; }
+  tttWin(b) {
+    const L = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+    for (const [a, c, d] of L) if (b[a] && b[a] === b[c] && b[a] === b[d]) return b[a];
+    return b.every(Boolean) ? 'tie' : null;
+  }
+  tttMinimax(b, me) {
+    const r = this.tttWin(b);
+    if (r === 'O') return { s: 1 }; if (r === 'X') return { s: -1 }; if (r === 'tie') return { s: 0 };
+    let best = null;
+    for (let i = 0; i < 9; i++) {
+      if (b[i]) continue;
+      b[i] = me ? 'O' : 'X';
+      const s = this.tttMinimax(b, !me).s;
+      b[i] = '';
+      if (!best || (me ? s > best.s : s < best.s)) best = { s, i };
+    }
+    return best;
+  }
+  tttPlay(i) {
+    const g = this.state.ttt;
+    if (!g || g.over || g.b[i] || g.busy) return;
+    const b = g.b.slice(); b[i] = 'X';
+    let over = this.tttWin(b);
+    if (over) return this.setState({ ttt: { ...g, b, over, score: this.tttScore(g.score, over) } });
+    this.setState({ ttt: { ...g, b, busy: true } });
+    setTimeout(() => {
+      const nb = b.slice(); const m = this.tttMinimax(nb, true);
+      if (m && m.i !== undefined) nb[m.i] = 'O';
+      const o = this.tttWin(nb);
+      this.setState(s => ({ ttt: { ...s.ttt, b: nb, busy: false, over: o, score: o ? this.tttScore(s.ttt.score, o) : s.ttt.score } }));
+    }, 320);
+  }
+  tttScore(sc, r) { return { you: sc.you + (r === 'X' ? 1 : 0), cpu: sc.cpu + (r === 'O' ? 1 : 0), tie: sc.tie + (r === 'tie' ? 1 : 0) }; }
+
+  mineNew() {
+    const W = 9, H = 9, M = 10, n = W * H;
+    const cells = Array.from({ length: n }, () => ({ m: false, o: false, f: false, n: 0 }));
+    let placed = 0;
+    while (placed < M) { const i = Math.floor(Math.random() * n); if (!cells[i].m) { cells[i].m = true; placed++; } }
+    const nb = i => { const x = i % W, y = (i / W) | 0, out = [];
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx, ny = y + dy;
+        if ((dx || dy) && nx >= 0 && nx < W && ny >= 0 && ny < H) out.push(ny * W + nx);
+      } return out; };
+    cells.forEach((c, i) => { c.n = nb(i).filter(j => cells[j].m).length; });
+    return { W, H, M, cells, dead: false, won: false, started: false, t: 0 };
+  }
+  mineOpen(i) {
+    const g = this.state.mine; if (!g || g.dead || g.won || g.cells[i].f) return;
+    const cells = g.cells.map(c => ({ ...c }));
+    const W = g.W, H = g.H;
+    const nb = k => { const x = k % W, y = (k / W) | 0, out = [];
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx, ny = y + dy;
+        if ((dx || dy) && nx >= 0 && nx < W && ny >= 0 && ny < H) out.push(ny * W + nx);
+      } return out; };
+    if (cells[i].m) { cells.forEach(c => { if (c.m) c.o = true; }); cells[i].hit = true; return this.setState({ mine: { ...g, cells, dead: true, started: true } }); }
+    const stack = [i];
+    while (stack.length) {
+      const k = stack.pop(); const c = cells[k];
+      if (c.o || c.f) continue;
+      c.o = true;
+      if (c.n === 0) nb(k).forEach(j => { if (!cells[j].o && !cells[j].m) stack.push(j); });
+    }
+    const won = cells.every(c => c.m || c.o);
+    this.setState({ mine: { ...g, cells, won, started: true } });
+  }
+  mineFlag(i) {
+    const g = this.state.mine; if (!g || g.dead || g.won || g.cells[i].o) return;
+    const cells = g.cells.map((c, k) => k === i ? { ...c, f: !c.f } : c);
+    this.setState({ mine: { ...g, cells, started: true } });
+  }
+
+  snakeNew() { return { W: 20, H: 14, body: [[8, 7], [7, 7], [6, 7]], dir: [1, 0], next: [1, 0], food: [14, 7], score: 0, best: (this.state && this.state.snake ? this.state.snake.best : 0), dead: false, running: false }; }
+  snakeStart() {
+    clearInterval(this.snakeT);
+    const g = this.state.snake && !this.state.snake.dead ? this.state.snake : this.snakeNew();
+    this.setState({ snake: { ...g, running: true } });
+    this.snakeT = setInterval(() => this.snakeStep(), 130);
+  }
+  snakePause() { clearInterval(this.snakeT); this.setState(s => ({ snake: { ...s.snake, running: false } })); }
+  snakeReset() { clearInterval(this.snakeT); this.setState(s => ({ snake: { ...this.snakeNew(), best: s.snake ? s.snake.best : 0 } })); }
+  snakeTurn(d) {
+    this.setState(s => {
+      const g = s.snake; if (!g) return null;
+      if (d[0] === -g.dir[0] && d[1] === -g.dir[1]) return null;
+      return { snake: { ...g, next: d } };
+    });
+    if (this.state.snake && !this.state.snake.running && !this.state.snake.dead) this.snakeStart();
+  }
+  snakeStep() {
+    this.setState(s => {
+      const g = s.snake; if (!g || g.dead) return null;
+      const dir = g.next, head = [g.body[0][0] + dir[0], g.body[0][1] + dir[1]];
+      const hit = head[0] < 0 || head[1] < 0 || head[0] >= g.W || head[1] >= g.H || g.body.some(b => b[0] === head[0] && b[1] === head[1]);
+      if (hit) { clearInterval(this.snakeT); return { snake: { ...g, dead: true, running: false, best: Math.max(g.best, g.score) } }; }
+      const body = [head, ...g.body];
+      let food = g.food, score = g.score;
+      if (head[0] === food[0] && head[1] === food[1]) {
+        score += 10;
+        do { food = [Math.floor(Math.random() * g.W), Math.floor(Math.random() * g.H)]; } while (body.some(b => b[0] === food[0] && b[1] === food[1]));
+      } else body.pop();
+      return { snake: { ...g, body, dir, food, score } };
+    });
+  }
+
+  solNew() {
+    const deck = [];
+    for (let s = 0; s < 4; s++) for (let r = 1; r <= 13; r++) deck.push({ r, s, id: s * 13 + r });
+    for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
+    const tab = [];
+    for (let i = 0; i < 7; i++) {
+      const pile = deck.splice(0, i + 1).map((c, k) => ({ ...c, up: k === i }));
+      tab.push(pile);
+    }
+    return { stock: deck.map(c => ({ ...c, up: false })), waste: [], found: [[], [], [], []], tab, sel: null, moves: 0, won: false };
+  }
+  solRed(c) { return c.s === 1 || c.s === 2; }
+
+  /*
+   * solFoundIndex - which foundation, if any, will accept this card right now.
+   *
+   * A foundation takes an Ace when empty, otherwise the next rank up in the
+   * same suit. Returns -1 when no pile will take it.
+   *
+   * solFoundIndex(game, {r: 1, s: 0})  // -> index of the first empty foundation
+   */
+  solFoundIndex(g, c) {
+    return g.found.findIndex(f => f.length
+      ? (f[f.length - 1].s === c.s && f[f.length - 1].r === c.r - 1)
+      : c.r === 1);
+  }
+  solDraw() {
+    this.setState(s => {
+      const g = s.sol;
+      if (!g.stock.length) return { sol: { ...g, stock: g.waste.slice().reverse().map(c => ({ ...c, up: false })), waste: [], sel: null } };
+      const stock = g.stock.slice(), c = stock.pop();
+      return { sol: { ...g, stock, waste: [...g.waste, { ...c, up: true }], sel: null } };
+    });
+  }
+  solTake(g, sel) {
+    const n = { ...g, waste: g.waste.slice(), found: g.found.map(f => f.slice()), tab: g.tab.map(t => t.slice()) };
+    let cards;
+    if (sel.from === 'waste') cards = [n.waste.pop()];
+    else if (sel.from === 'found') cards = [n.found[sel.pile].pop()];
+    else { cards = n.tab[sel.pile].splice(sel.index); }
+    return { n, cards };
+  }
+  solFlip(n) { n.tab.forEach(p => { const t = p[p.length - 1]; if (t && !t.up) t.up = true; }); return n; }
+  solToFound(sel) {
+    const g = this.state.sol;
+    const card = sel.from === 'waste' ? g.waste[g.waste.length - 1] : g.tab[sel.pile][sel.index];
+    if (!card) return false;
+    if (sel.from === 'tab' && sel.index !== g.tab[sel.pile].length - 1) return false;
+    const fi = this.solFoundIndex(g, card);
+    if (fi < 0) return false;
+    const { n, cards } = this.solTake(g, sel);
+    n.found[fi].push(cards[0]); n.moves++; n.sel = null;
+    this.solFlip(n);
+    n.won = n.found.every(f => f.length === 13);
+    this.setState({ sol: n });
+    return true;
+  }
+  solClickCard(from, pile, index) {
+    const g = this.state.sol;
+    const sel = g.sel;
+    const select = () => this.setState({ sol: { ...g, sel: { from, pile, index } } });
+    if (!sel) {
+      if (from === 'tab' && !g.tab[pile][index].up) return;
+      return select();
+    }
+    if (sel.from === from && sel.pile === pile && sel.index === index) return this.setState({ sol: { ...g, sel: null } });
+    // The waste is a source, never a destination. Treating a click on it as a
+    // drop target played the held card onto tableau pile 0 instead.
+    if (from !== 'tab') return select();
+    this.solDrop('tab', pile);
+  }
+
+  /*
+   * solSelectFound - take the top card back off a foundation.
+   *
+   * Klondike lets you retrieve a card you have already sent home when you need
+   * it to unblock the tableau. With a card already in hand the click still
+   * means "play it here", so this only picks up when nothing is held.
+   *
+   * solSelectFound(0)  // holds the top card of the first foundation
+   */
+  solSelectFound(i) {
+    const g = this.state.sol;
+    if (g.sel && g.sel.from === 'found' && g.sel.pile === i) {
+      return this.setState({ sol: { ...g, sel: null } });
+    }
+    if (g.sel) return this.solDrop('found', i);
+    if (!g.found[i].length) return;
+    this.setState({ sol: { ...g, sel: { from: 'found', pile: i, index: g.found[i].length - 1 } } });
+  }
+
+  /*
+   * solCanAutoFinish - true once the outcome is certain but cards remain.
+   *
+   * With nothing face down in the tableau every card is reachable, so the game
+   * is already won and the rest is only clicking. Stock and waste may still
+   * hold cards; solAutoFinish cycles them.
+   */
+  solCanAutoFinish(g) {
+    return !!g && !g.won
+      && g.tab.every(p => p.every(c => c.up))
+      && g.found.reduce((n, f) => n + f.length, 0) < 52;
+  }
+
+  /*
+   * solAutoFinish - play out a decided game.
+   *
+   * Repeatedly sends every available tableau top and waste card home, drawing
+   * and recycling when nothing else will move. The dry counter stops it if a
+   * full pass through stock and waste yields nothing, so it can never spin.
+   */
+  solAutoFinish() {
+    const start = this.state.sol;
+    if (!this.solCanAutoFinish(start)) return;
+
+    const g = { ...start, stock: start.stock.slice(), waste: start.waste.slice(),
+      found: start.found.map(f => f.slice()), tab: start.tab.map(t => t.slice()) };
+
+    let dry = 0;
+    while (!g.found.every(f => f.length === 13)) {
+      let moved = false;
+
+      for (let p = 0; p < 7; p++) {
+        const c = g.tab[p][g.tab[p].length - 1];
+        const fi = c ? this.solFoundIndex(g, c) : -1;
+        if (fi >= 0) { g.found[fi].push(g.tab[p].pop()); g.moves++; moved = true; }
+      }
+      const w = g.waste[g.waste.length - 1];
+      const wf = w ? this.solFoundIndex(g, w) : -1;
+      if (wf >= 0) { g.found[wf].push(g.waste.pop()); g.moves++; moved = true; }
+
+      if (moved) { dry = 0; continue; }
+
+      if (g.stock.length) g.waste.push({ ...g.stock.pop(), up: true });
+      else if (g.waste.length) { g.stock = g.waste.reverse().map(c => ({ ...c, up: false })); g.waste = []; }
+      else break;
+
+      if (++dry > g.stock.length + g.waste.length + 2) break;
+    }
+
+    g.sel = null;
+    g.won = g.found.every(f => f.length === 13);
+    this.setState({ sol: g });
+  }
+  solDrop(target, pile) {
+    const g = this.state.sol, sel = g.sel;
+    if (!sel) return;
+    const src = sel.from === 'waste' ? g.waste.slice(-1) : sel.from === 'found' ? g.found[sel.pile].slice(-1) : g.tab[sel.pile].slice(sel.index);
+    const card = src[0];
+    if (!card) return this.setState({ sol: { ...g, sel: null } });
+    let ok = false;
+    if (target === 'found') {
+      const f = g.found[pile];
+      ok = src.length === 1 && (f.length ? f[f.length - 1].s === card.s && f[f.length - 1].r === card.r - 1 : card.r === 1);
+    } else {
+      const t = g.tab[pile], top = t[t.length - 1];
+      ok = top ? (top.up && this.solRed(top) !== this.solRed(card) && top.r === card.r + 1) : card.r === 13;
+      if (sel.from === 'tab' && sel.pile === pile) ok = false;
+    }
+    if (!ok) return this.setState({ sol: { ...g, sel: null } });
+    const { n, cards } = this.solTake(g, sel);
+    if (target === 'found') n.found[pile].push(cards[0]); else n.tab[pile].push(...cards);
+    n.moves++; n.sel = null;
+    this.solFlip(n);
+    n.won = n.found.every(f => f.length === 13);
+    this.setState({ sol: n });
+  }
+
+  /*
+   * BIT_INTENTS - the offline brain behind the "Ask BIT" assistant.
+   *
+   * Each entry pairs `on` (trigger phrases to look for in the visitor's
+   * question) with `say` (a builder that renders the answer from the same
+   * SKILLS / ROLES / PROJECTS / CONTACT data every other window reads, so an
+   * answer can never drift from what the desktop shows).
+   *
+   * Ordered most specific first - bitReply breaks score ties by this order.
+   * Deliberately has no model call: the assistant has to keep working on a
+   * plain static host with no backend and no API key.
+   */
+  BIT_INTENTS = [
+    { on: ['salary', 'ctc', 'compensation', 'how much do you', 'age', 'married', 'girlfriend', 'religion', 'caste', 'personal life', 'phone number', 'home address'],
+      say: () => 'That one is off my map - I only carry what is on this desktop. For anything personal or commercial, open the Contact app and ask Kunal directly.' },
+
+    { on: ['who made this', 'who built this', 'made this site', 'built this site', 'this website', 'this desktop', 'windows 95', 'retro', 'how is this built', 'what is this site'],
+      say: () => 'Kunal built this. It is a Windows 95 desktop rendered in the browser - every icon opens a real window, and the games actually play. The whole thing is one static page, no backend.' },
+
+    { on: ['minesweeper', 'solitaire', 'snake', 'tic tac toe', 'tictactoe', 'play a game', 'games on'],
+      say: () => 'Start then Games has Minesweeper, Snake, Solitaire and Tic-Tac-Toe, and they all really work. Minesweeper is Beginner, Solitaire is Klondike draw-1, and Tic-Tac-Toe will not let you win.' },
+
+    { on: ['telemetry', 'iot hub', 'iot', 'ingestion', 'sensor', 'industrial', 'device'],
+      say: function () { const p = this.PROJECTS[0]; return p.name + ' (' + p.meta + ') is what he leads today. ' + p.desc + ' Stack: ' + p.stack + '. He also built its AI agent in Microsoft 365 Copilot, and before this he built the Henkel (Loctite) IoT backend at Ciklum.'; } },
+
+    { on: ['copilot', 'mcp', 'model context', 'claude', 'ai agent', 'agent', 'ai', 'llm', 'genai', 'artificial intelligence', 'blue ridge'],
+      say: function () { const p = this.PROJECTS[1]; return p.name + ': ' + p.desc + ' He also led AI-assisted development at Blue Ridge Global as a consultant - training the whole organization to use Claude Code and turning senior product knowledge into a shared skills repository, which took bug triage from weeks to hours.'; } },
+
+    { on: ['loctite', 'henkel', 'dashboard', 'entra', 'azure ad'],
+      say: function () { const p = this.PROJECTS[2]; return p.name + ' (' + p.meta + '): ' + p.desc + ' Stack: ' + p.stack + '. He led a 6-person cross-functional team while also being its only backend developer.'; } },
+
+    { on: ['hatch', 'ignite', 'accessibility', 'whisper', 'caption', 'preschool', 'edtech', 'education games'],
+      say: function () { const p = this.PROJECTS[3], t = this.PROJECTS[4]; return p.name + ' (' + p.meta + '): ' + p.desc + ' He led a 16-person team on it. Before that, ' + t.name + ' (' + t.meta + '): ' + t.desc; } },
+
+    { on: ['fit match', 'fitmatch', 'savage', 'fenty', 'lidar', 'kiosk', 'body scan', 'realsense', 'point cloud'],
+      say: function () { const p = this.PROJECTS[5]; return p.name + ' (' + p.meta + '): ' + p.desc + ' Stack: ' + p.stack + '.'; } },
+
+    { on: ['axe', 'throwing', 'lane', 'projector', 'offline', 'multi display'],
+      say: function () { const p = this.PROJECTS[6]; return p.name + ' (' + p.meta + '): ' + p.desc + ' It was his first project - Unity game UI, local APIs feeding the master lane controller, SQLite storage, and the on-site install at the first venue (10 lanes).'; } },
+
+    { on: ['lead', 'leadership', 'team', 'manage', 'mentor', 'people'],
+      say: () => 'He has led teams since 2023: 6 on IgniteTable, 16 on Hatch Ignite, 6 on Henkel (Loctite), and 6 on the industrial IoT platform today - code reviews, client calls, mentoring and releases.' },
+
+    { on: ['open to', 'hiring', 'hire', 'available', 'opportunit', 'looking for work', 'contact', 'reach him', 'reach kunal', 'get in touch', 'email', 'linkedin', 'github'],
+      say: () => 'Yes - he reads everything. Email is ' + CONTACT.email + ', and the Contact app on this desktop will open your mail client pre-addressed. GitHub and LinkedIn are listed in the Contact window too.' },
+
+    { on: ['resume', 'cv', 'pdf', 'download'],
+      say: () => 'Resume.pdf is on the desktop - it opens in a viewer with a Save As... button, or you can type OPEN RESUME in the Skills Prompt.' },
+
+    { on: ['education', 'degree', 'college', 'university', 'graduat', 'studied', 'b.e', 'engineering degree'],
+      say: () => 'B.E. in Computer Science from SJMIT, Visvesvaraya Technological University, graduated August 2021. He has been working professionally ever since.' },
+
+    { on: ['where is he', 'where does he live', 'location', 'based', 'city', 'pune', 'relocat', 'remote'],
+      say: () => 'Pune, India. Most of his work has been with distributed teams, so remote and hybrid are both familiar territory.' },
+
+    { on: ['speak', 'spoken language', 'english', 'hindi', 'fluent'],
+      say: () => 'English at full professional proficiency and Hindi at professional working proficiency.' },
+
+    { on: ['right now', 'currently', 'current role', 'present', 'these days', 'where does he work', 'who does he work for'],
+      say: function () { const r = this.ROLES[0]; return 'Right now he is ' + r.title + ' at ' + r.employer + ' (' + r.dates + '). ' + r.summary + ' Stack: ' + r.stack + '.'; } },
+
+    { on: ['experience', 'career', 'years', 'seniority', 'history', 'background', 'previous', 'past role', 'jobs', 'employer', 'ciklum', 'shwaira', 'dynamisch'],
+      say: function () { return '5+ years, five roles since August 2021: ' + this.ROLES.map(r => r.title + ' at ' + r.employer + ' (' + r.dates + ')').join('; ') + '. Open the Experience app for the full agenda view.'; } },
+
+    { on: ['cloud', 'azure', 'aws', 'serverless', 'function app', 'key vault', 'apim', 'api management'],
+      say: function () { const g = this.SKILLS.find(x => x.name === 'Cloud & IoT'); return g.name + ': ' + g.items.join(', ') + '. Azure is the deeper side - .NET backends, Azure IoT Hub, Entra ID auth and Azure DevOps pipelines in production - with AWS Lambda, Node.js and CDN work from Hatch Ignite.'; } },
+
+    { on: ['backend', 'api', 'microservice', 'rest', 'auth', 'jwt', 'rbac', 'event driven', 'distributed'],
+      say: function () { const g = this.SKILLS[0]; return g.name + ': ' + g.items.join(', ') + '. That is the core of what he does - production distributed systems, not side projects.'; } },
+
+    { on: ['database', 'sql', 'postgres', 'mysql', 'data store'],
+      say: function () { const g = this.SKILLS.find(x => x.name === 'Databases'); return g.name + ': ' + g.items.join(', ') + '.'; } },
+
+    { on: ['devops', 'ci cd', 'cicd', 'pipeline', 'docker', 'sonar', 'swagger', 'openapi', 'postman', 'tooling'],
+      say: function () { const g = this.SKILLS.find(x => x.name === 'DevOps & Tooling'); return g.name + ': ' + g.items.join(', ') + '.'; } },
+
+    { on: ['unity', 'electron', 'phaser', 'spine', 'game dev', 'gamedev', 'real time', 'realtime'],
+      say: function () { const g = this.SKILLS.find(x => x.name === 'Game & Real-time'); return g.name + ': ' + g.items.join(', ') + '. His first three years were games and real-time systems - synced projector lanes, kiosks and early-learning games - which is where the reliability instinct comes from.'; } },
+
+    { on: ['c#', '.net', 'node', 'typescript', 'javascript', 'java', 'programming language', 'what language'],
+      say: function () { const g = this.SKILLS.find(x => x.name === 'Languages'); return g.name + ': ' + g.items.join(', ') + '. C# and .NET are the primary stack; Node.js and TypeScript cover the serverless and real-time work.'; } },
+
+    { on: ['skill', 'stack', 'tech', 'technolog', 'expertise', 'good at', 'know how', 'tools'],
+      say: function () { return this.SKILLS.length + ' areas: ' + this.SKILLS.map(g => g.name).join(', ') + '. Ask about any one of them and I will list it out, or open About Me for the full Control Panel view.'; } },
+
+    { on: ['project', 'portfolio', 'built', 'shipped', 'what has he made'],
+      say: function () { return this.PROJECTS.length + ' in C:\\KUNAL\\PROJECTS: ' + this.PROJECTS.map(p => p.name + ' (' + p.meta + ')').join('; ') + '. Name one and I will go deeper.'; } },
+
+    { on: ['what does kunal do', 'what does he do', 'who is kunal', 'who is he', 'about kunal', 'about him', 'tell me about kunal', 'for a living', 'profile', 'summary', 'introduce'],
+      say: () => 'Kunal Kumar is a Lead Software Engineer at Dynamisch in Pune, India - a .NET backend engineer and tech lead with 5+ years building APIs and backends where timing and reliability are visible to users, from synced gaming lanes to industrial IoT telemetry. Today he leads a team of 6 and drives AI-assisted development with Claude Code and Microsoft 365 Copilot agents. Ask me about his stack, a project, or his experience.' },
+
+    { on: ['what can you', 'who are you', 'help', 'what do you do', 'options', 'commands'],
+      say: () => 'I answer questions about Kunal from what is on this desktop: his stack, his five roles since 2021, the projects in C:\\KUNAL\\PROJECTS, his education, and how to reach him. Try "which cloud stack?" or "tell me about the IoT work".' },
+
+    { on: ['hi', 'hello', 'hey', 'yo', 'howdy', 'good morning', 'good evening', 'sup'],
+      say: () => 'Hi. I am BIT, and Kunal is the only thing I know about. Ask me about his stack, his experience, a project, or how to reach him.' },
+  ];
+
+  /*
+   * bitReply - picks the best-matching intent for a visitor's question.
+   *
+   * Normalises the question, then scores every intent by which of its trigger
+   * phrases appear in it. Longer phrases score higher so "cloud stack" beats a
+   * bare "stack"; triggers of three characters or fewer must match as whole
+   * words so "hi" does not fire on "hire". Ties go to the earlier (more
+   * specific) intent. Returns the fallback line when nothing scores.
+   *
+   * bitReply('which cloud stack?') -> 'Cloud Platforms: Azure Functions, ...'
+   */
+  bitReply(question) {
+    const q = ' ' + String(question).toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim() + ' ';
+    let best = null, bestScore = 0;
+    for (const intent of this.BIT_INTENTS) {
+      let score = 0;
+      for (const phrase of intent.on) {
+        const hit = phrase.length <= 3 ? q.includes(' ' + phrase + ' ') : q.includes(' ' + phrase);
+        if (hit) score += phrase.split(' ').length * 2 + phrase.length / 10;
+      }
+      if (score > bestScore) { bestScore = score; best = intent; }
+    }
+    if (!best) return 'I only know what is on this desktop, and that one is outside it. Try asking about Kunal\'s stack, his cloud or backend work, a project like the industrial IoT platform or Hatch Ignite, his education, or how to reach him.';
+    return best.say.call(this);
+  }
+
+  /*
+   * askBot - appends the visitor's line to the transcript and answers it.
+   *
+   * The answer comes from bitReply and is available immediately; the short
+   * delay is cosmetic, so "BIT is thinking..." has time to show and the reply
+   * does not snap in instantly (which reads as canned rather than fast).
+   */
+  askBot(q) {
+    const text = (q || '').trim();
+    if (!text || this.state.chatBusy) return;
+    this.setState(s => ({ chat: [...s.chat, { who: 'you', text }], chatInput: '', chatBusy: true }));
+    const reply = this.bitReply(text);
+    clearTimeout(this.botT);
+    this.botT = setTimeout(
+      () => this.setState(s => ({ chat: [...s.chat, { who: 'bot', text: reply }], chatBusy: false })),
+      Math.min(850, 240 + reply.length * 2));
+  }
+
+  boot() {
+    clearInterval(this.postT); clearInterval(this.splashT); clearTimeout(this.powerT);
+    if (this.props.skipBoot) return this.setState({ phase: 'desktop', shown: 0, wins: [], startOpen: false }, () => this.openWelcome());
+    this.setState({ phase: 'poweron', shown: 0, splashFill: 0, wins: [], startOpen: false, ctx: null });
+    this.powerT = setTimeout(() => this.runPost(), POWERON_MS);
+  }
+
+  /*
+   * runPost - plays the BIOS power-on self-test lines, then hands over to the splash screen.
+   * Usage: scheduled by boot() once the CRT power-on line has finished.
+   */
+  runPost() {
+    clearInterval(this.postT);
+    this.setState({ phase: 'post' });
+    this.postT = setInterval(() => {
+      this.setState(s => {
+        const n = s.shown + 1;
+        if (n >= this.POST.length) { clearInterval(this.postT); setTimeout(() => this.splash(), 550); }
+        return { shown: n };
+      });
+    }, 105);
+  }
+  splash() {
+    this.setState({ phase: 'splash', splashFill: 0 });
+    this.splashT = setInterval(() => {
+      this.setState(s => {
+        const f = s.splashFill + 1;
+        if (f >= 18) { clearInterval(this.splashT); setTimeout(() => this.setState({ phase: 'desktop' }, () => this.openWelcome()), 320); }
+        return { splashFill: f };
+      });
+    }, 55);
+  }
+  skip() { clearInterval(this.postT); clearInterval(this.splashT); clearTimeout(this.powerT); this.setState({ phase: 'desktop' }, () => this.openWelcome()); }
+
+  /*
+   * enterComputer - the visitor has zoomed into the monitor: wake the desktop.
+   * The first entry powers on and boots; later entries resume exactly where they left off.
+   * Usage: bound to the window 'kunal:enter' event that the 3D scene dispatches.
+   */
+  /*
+   * consumePendingEnter - honours an enter request made before this component mounted.
+   * The scene can ask to enter (deep link, Enter button) before the dc-runtime has
+   * hydrated; it sets window.__kunalEnterPending, which is picked up here exactly once.
+   * Usage: called at the end of componentDidMount.
+   */
+  consumePendingEnter() {
+    if (!window.__kunalEnterPending) return;
+    window.__kunalEnterPending = false;
+    this.enterComputer();
+  }
+
+  enterComputer() {
+    const first = !this.state.booted;
+    window.__kunalEnterPending = false;
+    this.lastAct = Date.now();
+    this.setState({ onDesk: false, booted: true, time: new Date(), uiScale: this.currentUiScale() }, () => { if (first) this.boot(); });
+  }
+
+  /*
+   * exitComputer - the visitor pressed the monitor's power button: go back to the 3D desk.
+   * Pauses anything that would keep running unseen, then tells the scene via 'kunal:exit'.
+   * Usage: chin power button and Start > Shut Down.
+   */
+  exitComputer() {
+    if (this.state.snake && this.state.snake.running) this.snakePause();
+    if (this.state.saver) this.stopSaver();
+    this.setState({ onDesk: true, startOpen: false, startSub: null, ctx: null });
+    window.dispatchEvent(new Event('kunal:exit'));
+  }
+  openWelcome() { if (this.props.showWelcome !== false && !this.state.wins.length) this.open('welcome'); }
+  banner() {
+    return [
+      { text: 'Skills Prompt', color: '#fff' },
+      { text: '(C) Copyright Kunal Kumar 1995-2026', color: '#c8c8c8' },
+      { text: '', color: '#c8c8c8' },
+      { text: 'Type HELP for a list of commands.', color: '#c8c8c8' },
+    ];
+  }
+
+  /*
+   * uiScaleFor - the desktop zoom factor for a given viewport width.
+   * Params: viewportWidth - window.innerWidth in CSS px.
+   * Returns: 1 on phones, 1.25 on laptops, 1.5 on large monitors.
+   * Usage: this.setState({ uiScale: this.uiScaleFor(window.innerWidth) }).
+   */
+  uiScaleFor(viewportWidth) {
+    if (viewportWidth < UI_SCALE_PHONE_BELOW_PX) return UI_SCALE_PHONE;
+    if (viewportWidth < UI_SCALE_LAPTOP_BELOW_PX) return UI_SCALE_LAPTOP;
+    return UI_SCALE_LARGE;
+  }
+
+  /*
+   * currentUiScale - the zoom factor to use right now.
+   * Returns: UI_SCALE_EMBEDDED while the desktop sits on the 3D monitor's glass (html.embedded,
+   * set by scene.js), which is smaller than the viewport; otherwise uiScaleFor(window.innerWidth).
+   * Usage: whenever uiScale is (re)computed - mount, resize, entering the computer.
+   */
+  currentUiScale() {
+    if (this.onGlass()) return UI_SCALE_EMBEDDED;
+    return this.uiScaleFor(window.innerWidth);
+  }
+
+  /*
+   * onGlass - true while the desktop is laid over the 3D monitor's glass.
+   * Returns: boolean; scene.js marks this with the 'embedded' class on <html>.
+   * Usage: picking the zoom factor and whether new windows open maximised.
+   */
+  onGlass() {
+    return document.documentElement.classList.contains('embedded');
+  }
+
+  /*
+   * screenSize - size of the CRT screen in desktop units (CSS px before zoom).
+   * Returns: { w, h }. Falls back to the viewport when the screen is not mounted.
+   * Usage: window placement and clamping, e.g. const { w } = this.screenSize().
+   */
+  screenSize() {
+    const el = this.screenEl, k = this.state.uiScale || 1;
+    if (!el) return { w: window.innerWidth / k, h: window.innerHeight / k };
+    return { w: el.clientWidth / k, h: el.clientHeight / k };
+  }
+
+  /*
+   * toScreen - converts a pointer position to desktop units inside the CRT screen.
+   * Params: clientX, clientY - pointer coordinates from a mouse/touch event.
+   * Returns: { x, y } relative to the screen's top-left, divided by the zoom.
+   * Usage: placing the right-click menu where the pointer is.
+   */
+  toScreen(clientX, clientY) {
+    const k = this.state.uiScale || 1;
+    const r = this.screenEl ? this.screenEl.getBoundingClientRect() : { left: 0, top: 0 };
+    return { x: (clientX - r.left) / k, y: (clientY - r.top) / k };
+  }
+
+  /*
+   * onResize - re-picks the zoom factor and pulls stranded windows back on screen.
+   * Usage: window 'resize' listener registered in componentDidMount.
+   */
+  onResize() {
+    this.setState({ uiScale: this.currentUiScale() }, () => {
+      const { w, h } = this.screenSize();
+      const maxX = Math.max(0, w - KEEP_VISIBLE_X_PX), maxY = Math.max(0, h - TASKBAR_PX - KEEP_VISIBLE_Y_PX);
+      this.setState(s => ({ wins: s.wins.map(win => ({ ...win, x: Math.min(win.x, maxX), y: Math.min(win.y, maxY) })) }));
+    });
+  }
+
+  /*
+   * toggleFacts - unfolds the "Did you know?" card from its top-right icon (on top of every open window),
+   * or folds it back. Usage: the bulb icon, the card's Close button and the taskbar tray bulb.
+   */
+  toggleFacts() {
+    this.setState(s => s.factsOpen ? { factsOpen: false } : { factsOpen: true, z: s.z + 1, factsZ: s.z + 1 });
+  }
+
+  /* raiseFacts - brings the open trivia card above the windows, like focusing a window. */
+  raiseFacts() {
+    if (this.state.factsZ === this.state.z) return;
+    this.setState(s => ({ z: s.z + 1, factsZ: s.z + 1 }));
+  }
+
+  /*
+   * toggleBot - the taskbar tray button. Hidden BIT comes back above the windows; a BIT covered by a window is
+   * brought forward first (so one tap always shows it); a BIT already in front is hidden.
+   */
+  toggleBot() {
+    this.setState(s => {
+      const topWindow = Math.max(0, ...s.wins.filter(w => !w.min).map(w => w.z));
+      if (s.botHidden || (!IS_NARROW && s.botZ < topWindow)) return { botHidden: false, z: s.z + 1, botZ: s.z + 1 };
+      return { botHidden: true };
+    });
+  }
+
+  open(id) {
+    const app = this.APPS.find(a => a.id === id);
+    const ex = this.state.wins.find(w => w.app === id);
+    if (ex) return this.setState(s => ({ z: s.z + 1, startOpen: false, startSub: null, ctx: null, wins: s.wins.map(w => w.id === ex.id ? { ...w, min: false, z: s.z + 1 } : w) }));
+    const scr = this.screenSize(), vw = scr.w, vh = scr.h - TASKBAR_PX, n = this.state.wins.length;
+    const w = Math.min(app.w, vw - 24), h = Math.min(app.h, vh - 24);
+    const x = id === 'welcome' ? Math.round((vw - w) / 2) : Math.min(120 + n * 28, Math.max(8, vw - w - 12));
+    const y = id === 'welcome' ? Math.max(10, Math.round((vh - h) / 2) - 10) : Math.min(28 + n * 24, Math.max(6, vh - h - 8));
+    // On a phone-width screen a floating window is unusable, so it opens filling the desktop.
+    // The 3D monitor's glass is narrow too, but only exists on wide viewports, so windows float there.
+    const max = vw < MAXIMISE_BELOW_PX && !this.onGlass();
+    this.setState(s => ({ z: s.z + 1, startOpen: false, startSub: null, ctx: null, wins: [...s.wins, { id: Date.now() + Math.random(), app: id, x, y, w, h, z: s.z + 1, min: false, max }] }));
+    if (id === 'terminal') setTimeout(() => this.termInputRef.current && this.termInputRef.current.focus(), 60);
+  }
+  upd(id, patch) { this.setState(s => ({ wins: s.wins.map(w => w.id === id ? { ...w, ...(typeof patch === 'function' ? patch(w) : patch) } : w) })); }
+  focus(id) { const w = this.state.wins.find(x => x.id === id); if (!w || w.z === this.state.z) return; this.setState(s => ({ z: s.z + 1, wins: s.wins.map(x => x.id === id ? { ...x, z: s.z + 1 } : x) })); }
+  drag(id, e, mode) {
+    if (e.button !== 0) return;
+    // Capturing the pointer keeps pointermove in this document even if the
+    // cursor crosses an element that would otherwise swallow it mid-drag.
+    const grip = e.currentTarget;
+    try { grip.setPointerCapture(e.pointerId); } catch (err) { /* older browsers */ }
+    const win = this.state.wins.find(x => x.id === id); if (!win || (win.max && mode === 'move')) return;
+    this.focus(id);
+    // Pointer deltas are viewport px; window geometry is in zoomed desktop units.
+    const sx = e.clientX, sy = e.clientY, o = { ...win }, k = this.state.uiScale || 1;
+    const dx = ev => Math.round((ev.clientX - sx) / k), dy = ev => Math.round((ev.clientY - sy) / k);
+    const move = ev => mode === 'move'
+      ? this.upd(id, { x: o.x + dx(ev), y: Math.max(0, o.y + dy(ev)) })
+      : this.upd(id, { w: Math.max(260, o.w + dx(ev)), h: Math.max(180, o.h + dy(ev)) });
+    const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up);
+      try { grip.releasePointerCapture(e.pointerId); } catch (err) { /* already released */ } };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+    e.preventDefault(); e.stopPropagation();
+  }
+  topWin() { return this.state.wins.filter(w => !w.min).sort((a, b) => b.z - a.z)[0]; }
+
+  runCmd(raw) {
+    const cmd = raw.trim(); const out = [{ text: 'C:\\KUNAL>' + cmd, color: '#c8c8c8' }];
+    const [c, arg] = cmd.split(/\s+/);
+    const say = (t, color = '#c8c8c8') => out.push({ text: t, color });
+    switch ((c || '').toLowerCase()) {
+      case '': out.pop(); break;
+      case 'help': say('HELP      This list'); say('WHOAMI    Operator identity'); say('SKILLS    Full expertise dump'); say('CLOUD     Azure and AWS services'); say('EXP       Work history'); say('DIR       List projects'); say('OPEN x    x = about|projects|resume|contact|writing|links|experience|music'); say('CLS       Clear the screen'); break;
+      case 'whoami': say('KUNAL KUMAR — Lead Software Engineer @ Dynamisch', '#00e08a'); say('Pune, India · .NET & Azure backend · Industrial IoT · AI agents'); break;
+      case 'skills': this.SKILLS.forEach(g => { say(g.name.toUpperCase(), '#fff'); say('  ' + g.items.join(', ')); }); break;
+      case 'cloud': say('AZURE : IoT Hub, Functions, App Services, API Management,'); say('        Azure SQL, Key Vault, Entra ID (Azure AD), DevOps'); say('AWS   : Lambda, Redis, CDN'); break;
+      case 'exp': this.ROLES.forEach(r => say(r.dates.padEnd(20) + r.title + ' · ' + r.employer)); break;
+      case 'dir': say(' Directory of C:\\KUNAL\\PROJECTS'); say(''); this.PROJECTS.forEach(p => say(' ' + p.name.toUpperCase().padEnd(22) + '<DIR>   ' + p.stack)); say(''); say('        ' + this.PROJECTS.length + ' file(s)'); break;
+      case 'cls': return this.setState({ termLines: [], termInput: '' });
+      case 'open': {
+        const map = { about: 'settings', projects: 'gallery', resume: 'pdf', contact: 'mail', writing: 'notes', links: 'mail', experience: 'calendar', music: 'music' };
+        const k = (arg || '').toLowerCase();
+        if (map[k]) { this.open(map[k]); say('Opening ' + k + '...'); } else say('Invalid application: ' + (arg || ''), '#ff6b5e');
+        break;
+      }
+      default: say('Bad command or file name: ' + c, '#ff6b5e');
+    }
+    this.setState(s => ({ termLines: [...s.termLines, ...out], termInput: '' }));
+  }
+
+  assistantVals(s) {
+    const px = s.pupil.x, py = s.pupil.y;
+    const pupil = { position: 'absolute', left: 4, top: 4, width: 5, height: 5, background: '#0b1c14',
+      transform: 'translate(' + px + 'px,' + py + 'px)' };
+    return {
+      botOn: (this.props.assistant ?? true) && !s.botHidden && s.phase === 'desktop',
+      faceRef: this.faceRef, pupilStyle: pupil,
+      botZ: IS_NARROW ? BIT_TOP_Z : s.botZ, botTrayOpacity: s.botHidden ? 0.45 : 1,
+      toggleBot: () => this.toggleBot(),
+      botClick: () => { this.open('assistant'); setTimeout(() => this.chatInputRef && this.chatInputRef.focus(), 80); },
+      chat: s.chat.map((m, i) => ({ key: i, text: m.text, isYou: m.who === 'you',
+        rowStyle: { display: 'flex', gap: 7, alignItems: 'flex-start', flexDirection: m.who === 'you' ? 'row-reverse' : 'row' },
+        bubbleStyle: { maxWidth: '78%', padding: '6px 8px', lineHeight: 1.5, background: m.who === 'you' ? '#000080' : '#c0c0c0',
+          color: m.who === 'you' ? '#fff' : '#000', boxShadow: m.who === 'you' ? 'none' : 'inset -1px -1px 0 #808080,inset 1px 1px 0 #fff' },
+        icon: m.who === 'you' ? I.user16 : I.chat16 })),
+      chatRef: this.chatRef, chatInput: s.chatInput, chatBusy: s.chatBusy,
+      chatStatus: s.chatBusy ? 'BIT is thinking…' : 'Ask about Kunal’s work, stack or experience',
+      chatChange: e => this.setState({ chatInput: e.target.value }),
+      chatKey: e => { if (e.key === 'Enter') { e.preventDefault(); this.askBot(e.target.value); } },
+      chatSend: e => { e.preventDefault(); this.askBot(this.state.chatInput); },
+      chatInputRefFn: el => { this.chatInputRef = el; },
+      chipsOpen: s.chipsOpen,
+      chipsToggleLabel: s.chipsOpen ? 'Hide suggestions' : 'Suggestions',
+      toggleChips: () => this.setState(st => ({ chipsOpen: !st.chipsOpen })),
+      chatChips: ['What does Kunal do?', 'Tell me about the IoT work', 'Which cloud stack?', 'Is he open to roles?']
+        .map(t => ({ label: t, run: () => this.askBot(t) })),
+    };
+  }
+  gameVals(s) {
+    const t = s.ttt || { b: Array(9).fill(''), score: { you: 0, cpu: 0, tie: 0 } };
+    const m = s.mine || this.mineNew();
+    const sn = s.snake || { W: 20, H: 14, body: [], food: [0, 0], score: 0, best: 0 };
+    const g = s.sol || this.solNew();
+    const CELL = 22, SCELL = 14;
+    const numColor = ['', '#0000ff', '#008000', '#ff0000', '#000080', '#800000', '#008080', '#000', '#808080'];
+    const face = ({ position: 'absolute' });
+    const cardStyle = (extra) => Object.assign({ position: 'absolute', width: SOL_CARD.w, height: SOL_CARD.h, background: '#fff',
+      border: '1px solid #000', borderRadius: 3, boxSizing: 'border-box', padding: '2px 3px', fontSize: 11, lineHeight: 1.1,
+      cursor: 'default', userSelect: 'none' }, extra);
+    const backStyle = (top) => cardStyle({ top, left: 0, background: 'repeating-linear-gradient(45deg,#000080 0 3px,#3b4ba8 3px 6px)' });
+    const sel = g.sel;
+    const isSel = (from, pile, index) => sel && sel.from === from && sel.pile === pile && (from === 'tab' ? index >= sel.index : true);
+
+    return {
+      tttCells: t.b.map((v, i) => ({ v, color: v === 'X' ? '#000080' : '#a00', play: () => this.tttPlay(i) })),
+      tttMsg: t.over === 'X' ? 'You win.' : t.over === 'O' ? 'Computer wins.' : t.over === 'tie' ? 'Cat’s game.' : t.busy ? 'Computer thinking…' : 'Your move (X)',
+      tttScore: 'You ' + t.score.you + '  ·  CPU ' + t.score.cpu + '  ·  Tie ' + t.score.tie,
+      tttReset: () => this.setState({ ttt: this.tttNew() }),
+
+      mineCells: m.cells.map((c, i) => ({
+        type: c.o ? (c.m ? (c.hit ? 'mine pressed' : 'mine') : (c.n ? String(c.n) : 'null')) : (c.f ? ((m.dead && !c.m) ? 'x' : 'flag mark') : 'default'),
+        // A hold that already planted a flag must not also open the cell on the click that follows.
+        open: () => { if (this.mineHeld) { this.mineHeld = false; return; } this.mineOpen(i); },
+        flag: e => { e.preventDefault(); e.stopPropagation(); this.mineFlag(i); },
+        press: () => { if (!IS_TOUCH) return; clearTimeout(this.mineHold);
+          this.mineHold = setTimeout(() => { this.mineHeld = true; this.mineFlag(i); }, MINE_HOLD_MS); },
+        release: () => clearTimeout(this.mineHold),
+      })),
+      mineGrid: { display: 'grid', gridTemplateColumns: 'repeat(' + m.W + ',16px)', gap: 0 },
+      mineLeftDigits: String(Math.max(0, m.M - m.cells.filter(c => c.f).length)).padStart(3, '0').split(''),
+      mineTimeDigits: String(Math.min(999, m.t || 0)).padStart(3, '0').split(''),
+      mineFace: m.dead ? 'lose' : m.won ? 'win' : 'standard',
+      mineReset: () => this.setState({ mine: this.mineNew() }),
+
+      snakeBoard: { position: 'relative', width: sn.W * SCELL, height: sn.H * SCELL, background: '#0b1c14',
+        boxShadow: 'inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #000' },
+      snakeParts: [
+        ...sn.body.map((b, i) => ({ key: 'b' + i, style: { position: 'absolute', left: b[0] * SCELL, top: b[1] * SCELL,
+          width: SCELL, height: SCELL, background: i === 0 ? '#7dffb0' : '#00c46a', boxShadow: 'inset -1px -1px 0 rgba(0,0,0,.45)' } })),
+        { key: 'f', style: { position: 'absolute', left: sn.food[0] * SCELL + 2, top: sn.food[1] * SCELL + 2, width: SCELL - 4, height: SCELL - 4, background: '#ff5252' } },
+      ],
+      snakeScore: 'Score ' + sn.score, snakeBest: 'Best ' + sn.best,
+      snakeMsg: sn.dead ? 'Game over — press New Game'
+        : sn.running ? (IS_TOUCH ? 'Steer with the arrows below' : 'Arrow keys or WASD')
+        : (IS_TOUCH ? 'Press Start, then steer below' : 'Press Start (or an arrow key)'),
+      snakeBtn: sn.running ? 'Pause' : 'Start',
+      snakeToggle: () => { if (sn.dead) return this.snakeReset(); sn.running ? this.snakePause() : this.snakeStart(); },
+      snakeReset: () => this.snakeReset(),
+
+      solStockStyle: cardStyle({ position: 'relative', background: g.stock.length ? 'repeating-linear-gradient(45deg,#000080 0 3px,#3b4ba8 3px 6px)' : 'transparent',
+        border: g.stock.length ? '1px solid #000' : '1px dashed rgba(255,255,255,.5)' }),
+      solStockLabel: g.stock.length ? '' : '↻',
+      solDrawClick: () => this.solDraw(),
+      solWaste: g.waste.slice(-1).map(c => ({
+        face: RANKS[c.r], suit: SUITS[c.s], color: this.solRed(c) ? '#c00' : '#000',
+        style: cardStyle({ position: 'relative', outline: isSel('waste', 0, 0) ? '2px solid #ffd400' : 'none', outlineOffset: -2 }),
+        click: () => this.solClickCard('waste', 0, 0), dbl: () => this.solToFound({ from: 'waste', pile: 0, index: 0 }),
+      })),
+      solFound: g.found.map((f, i) => {
+        const c = f[f.length - 1];
+        return { has: !!c, face: c ? RANKS[c.r] : '', suit: c ? SUITS[c.s] : SUITS[i], color: c ? (this.solRed(c) ? '#c00' : '#000') : 'rgba(255,255,255,.45)',
+          style: cardStyle({ position: 'relative', background: c ? '#fff' : 'transparent', border: c ? '1px solid #000' : '1px dashed rgba(255,255,255,.5)' }),
+          outline: isSel('found', i, 0) ? '2px solid #ffd400' : 'none',
+          click: () => this.solSelectFound(i) };
+      }),
+      solTab: g.tab.map((pile, pi) => ({
+        style: { position: 'relative', width: SOL_CARD.w, minHeight: SOL_CARD.h + 8, flex: 'none' },
+        empty: pile.length === 0,
+        emptyStyle: cardStyle({ top: 0, left: 0, background: 'transparent', border: '1px dashed rgba(255,255,255,.45)' }),
+        click: () => this.solDrop('tab', pi),
+        cards: pile.map((c, ci) => {
+          const top = pile.slice(0, ci).reduce((acc, p) => acc + (p.up ? 16 : 7), 0);
+          return { key: c.id, up: c.up, face: RANKS[c.r], suit: SUITS[c.s], color: this.solRed(c) ? '#c00' : '#000',
+            style: c.up ? cardStyle({ top, left: 0, outline: isSel('tab', pi, ci) ? '2px solid #ffd400' : 'none', outlineOffset: -2 }) : backStyle(top),
+            click: e => { e.stopPropagation(); this.solClickCard('tab', pi, ci); },
+            dbl: e => { e.stopPropagation(); this.solToFound({ from: 'tab', pile: pi, index: ci }); } };
+        }),
+      })),
+      solMoves: 'Moves ' + g.moves,
+      solRowStyle: { display: 'flex', gap: SOL_CARD.gap, flex: 'none' },
+      solSlotStyle: { width: SOL_CARD.w, height: SOL_CARD.h, flex: 'none', position: 'relative' },
+      solPilesStyle: { display: 'flex', gap: SOL_CARD.gap },
+      solTabRowStyle: { display: 'flex', gap: SOL_CARD.gap, flex: 1, alignItems: 'flex-start' },
+      solCanFinish: this.solCanAutoFinish(g),
+      solFinishClick: () => this.solAutoFinish(),
+      solMsg: g.won ? 'You cleared the table.'
+        : this.solCanAutoFinish(g) ? 'Every card is face up \u2014 finish it.'
+        : (sel ? 'Now click where it goes' : 'Click a card, then its destination'),
+      solReset: () => this.setState({ sol: this.solNew() }),
+    };
+  }
+
+  renderVals() {
+    const s = this.state, top = this.topWin();
+    const stop = e => e.stopPropagation();
+    const wallMap = { Teal: '#008080', Plum: '#6a4f8f', Slate: '#54606e', Olive: '#7a7a4f' };
+    const wallColor = wallMap[this.props.wallpaper ?? 'Teal'] || '#008080';
+    const app = id => this.APPS.find(a => a.id === id);
+
+    const wins = s.wins.map(w => {
+      const a = app(w.app), active = top && top.id === w.id;
+      return {
+        ...w, title: a.title, icon16: a.icon16, menus: a.menus, status: a.status, statusRight: a.statusRight,
+        barBg: active ? 'linear-gradient(90deg,#000080 0%,#1084d0 100%)' : 'linear-gradient(90deg,#808080 0%,#b5b5b5 100%)', barFg: active ? '#fff' : '#c0c0c0',
+        style: { position: 'absolute', display: 'flex', flexDirection: 'column', left: w.max ? 0 : w.x, top: w.max ? 0 : w.y,
+          width: w.max ? '100%' : w.w, height: w.max ? 'calc(100% - 29px)' : w.h, background: '#c0c0c0',
+          boxShadow: FRAME, zIndex: w.z, display: w.min ? 'none' : 'flex', overflow: 'hidden' },
+        focus: () => this.focus(w.id), dragStart: e => this.drag(w.id, e, 'move'), resizeStart: e => this.drag(w.id, e, 'resize'),
+        toggleMax: () => this.upd(w.id, x => ({ max: !x.max })), minimize: () => this.upd(w.id, { min: true }),
+        close: () => this.setState(st => ({ wins: st.wins.filter(x => x.id !== w.id) })),
+        isWelcome: w.app === 'welcome', isSettings: w.app === 'settings', isGallery: w.app === 'gallery', isPdf: w.app === 'pdf',
+        isTerminal: w.app === 'terminal', isMail: w.app === 'mail', isNotes: w.app === 'notes',
+        isCalendar: w.app === 'calendar', isMusic: w.app === 'music', isAssistant: w.app === 'assistant',
+        isTtt: w.app === 'tictactoe', isMine: w.app === 'minesweeper', isSnake: w.app === 'snake', isSol: w.app === 'solitaire',
+      };
+    });
+
+    const taskButtons = s.wins.map(w => {
+      const a = app(w.app), active = top && top.id === w.id;
+      return { icon: a.icon16, label: a.label,
+        style: { minWidth: 0, maxWidth: TASK_BUTTON_PX, height: 22, flex: '0 1 ' + TASK_BUTTON_PX + 'px', display: 'flex', alignItems: 'center', gap: 5,
+          padding: '0 6px', border: 0, background: active ? '#c0c0c0' : '#c0c0c0', boxShadow: active ? PRESSED : RAISED,
+          fontFamily: 'inherit', fontSize: 11, fontWeight: active ? 700 : 400, cursor: 'default', textAlign: 'left' },
+        click: () => { if (w.min) return this.upd(w.id, { min: false }); if (active) return this.upd(w.id, { min: true }); this.focus(w.id); } };
+    });
+
+    const startRun = id => () => this.open(id);
+    const startItems = [
+      { key: 'programs', label: 'Programs', icon: I.folderOpen, arrow: '▸', sub: this.APPS.filter(a => a.id !== 'welcome' && !this.GAMES.includes(a.id)).map(a => ({ label: a.label, icon: a.icon16, run: startRun(a.id) })) },
+      { key: 'games', label: 'Games', icon: I.joy, arrow: '▸', sub: this.GAMES.map(id => { const a = app(id); return { label: a.label, icon: a.icon16, run: startRun(id) }; }) },
+      { key: 'documents', label: 'Documents', icon: I.filetext, arrow: '▸', sub: [{ label: 'Kunal_Kumar.pdf', icon: I.filetext16, run: startRun('pdf') }, { label: 'writing.txt', icon: I.notepad16, run: startRun('notes') }] },
+      { key: 'settings', label: 'Settings', icon: I.settings, arrow: '▸', sub: [{ label: 'About Me', icon: I.settings16, run: startRun('settings') }, { label: 'Experience', icon: I.timedate16, run: startRun('calendar') }] },
+      { key: 'find', label: 'Find', icon: I.find, arrow: '▸', sub: [{ label: 'Projects', icon: I.folder16, run: startRun('gallery') }, { label: 'Skills Prompt', icon: I.keys, run: startRun('terminal') }] },
+      { key: 'help', label: 'Help', icon: I.help, arrow: '', run: startRun('welcome') },
+      { key: 'run', label: 'Run...', icon: I.keys, arrow: '', run: startRun('terminal') },
+      { key: 'sep', isSep: true },
+      { key: 'shut', label: 'Shut Down...', icon: I.computer, arrow: '', run: () => this.exitComputer() },
+    ].map(it => it.isSep ? { isSep: true, isItem: false } : {
+      ...it, isSep: false, isItem: true,
+      bg: s.startSub === it.key ? '#000080' : 'transparent', fg: s.startSub === it.key ? '#fff' : '#000',
+      // On touch, the synthetic mouseenter that precedes a tap would open the
+      // submenu and let the tap's toggle immediately close it again.
+      hover: () => { if (IS_TOUCH) return; this.setState({ startSub: it.sub ? it.key : null }); },
+      run: it.run || (() => this.setState(st => ({ startSub: st.startSub === it.key ? null : it.key }))),
+    });
+    const subSource = startItems.find(it => it.isItem && it.key === s.startSub && it.sub);
+    const subIndex = startItems.findIndex(it => it.isItem && it.key === s.startSub);
+
+    const note = this.NOTES[s.note], sel = this.PROJECTS[s.project];
+    const tabStyle = on => ({ border: 0, padding: on ? '5px 12px 6px' : '4px 12px 5px', marginBottom: on ? -1 : 0,
+      background: '#c0c0c0', boxShadow: 'inset -1px -1px 0 #808080,inset 1px 1px 0 #fff,inset -2px 0 0 #000',
+      fontFamily: 'inherit', fontSize: 11, fontWeight: on ? 700 : 400, cursor: 'default', position: 'relative',
+      zIndex: on ? 3 : 1, top: on ? 0 : 2 });
+
+    return {
+      stop, wallColor, scanlinesOn: this.props.scanlines ?? false,
+      screenRefFn: this.screenRefFn, uiScale: s.uiScale,
+      poweringOn: s.phase === 'poweron', powerOff: () => this.exitComputer(),
+      posting: s.phase === 'post', splashing: s.phase === 'splash', ready: s.phase === 'desktop',
+      // Phones have no keyboard: a tap on the BIOS screen skips straight to the desktop.
+      bootStart: IS_TOUCH ? 'Tap the screen to start up' : 'Press ENTER to start up',
+      bootSkip: IS_TOUCH ? '' : 'Press any key to skip the boot sequence',
+      postLines: this.POST.slice(0, s.shown), skipBootNow: () => this.skip(),
+      splashBlocks: Array.from({ length: 18 }, (_, i) => ({ bg: i < s.splashFill ? '#000080' : 'transparent' })),
+      splashStep: ['Loading device drivers...', 'Reading C:\\KUNAL\\PROFILE...', 'Preparing desktop...'][Math.min(2, Math.floor(s.splashFill / 6))],
+
+      deskApps: this.DESK.map(id => {
+        const a = app(id), on = s.deskSel === id;
+        return { ...a, iconOpacity: on ? 0.75 : 1, labelBg: on ? '#000a71' : 'transparent', labelFg: '#fff',
+          labelShadow: on ? 'none' : '1px 1px 0 rgba(0,0,0,.55)', labelOutline: on ? '1px dashed #fff' : 'none',
+          // A tap has no hover state to preview a selection, so on touch it opens straight away.
+          select: () => IS_TOUCH ? this.open(id) : this.setState({ deskSel: id }), open: () => this.open(id) };
+      }),
+      deskDown: () => this.setState(st => (st.startOpen || st.ctx || st.deskSel) ? { startOpen: false, startSub: null, ctx: null, deskSel: null } : null),
+      wins, taskButtons,
+      quickApps: [['settings', 'About Me'], ['gallery', 'Projects'], ['pdf', 'Resume.pdf'], ['mail', 'Contact']].map(([id, label]) => ({ label, open: () => this.open(id) })),
+
+      startOpen: s.startOpen, startItems,
+      startBtnStyle: { height: 23, display: 'flex', alignItems: 'center', gap: 4, padding: '3px 4px', border: 0, fontWeight: 700,
+        background: '#c0c0c0', boxShadow: s.startOpen ? PRESSED : RAISED, fontFamily: 'inherit', fontSize: 11, cursor: 'default' },
+      toggleStart: () => this.setState(st => ({ startOpen: !st.startOpen, startSub: null, ctx: null })),
+      subOpen: !!subSource, subItems: subSource ? subSource.sub : [],
+      subBottom: (() => {
+        if (!subSource) return '4px';
+        const h = it => it.isSep ? 8 : 32;
+        const total = startItems.reduce((t, it) => t + h(it), 0);
+        const offset = startItems.slice(0, subIndex).reduce((t, it) => t + h(it), 0);
+        const subH = subSource.sub.length * 26 + 6;
+        return Math.max(2, Math.min(total - subH + 6, total - offset - subH + 34)) + 'px';
+      })(),
+
+      clock: s.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+
+      ctxOpen: !!s.ctx,
+      ctxStyle: s.ctx ? { position: 'absolute', left: s.ctx.x, top: s.ctx.y, width: 176, background: '#c0c0c0', padding: '2px',
+        boxShadow: RAISED, display: 'flex', flexDirection: 'column', zIndex: 9800 } : {},
+      openCtx: e => { e.preventDefault(); const p = this.toScreen(e.clientX, e.clientY), scr = this.screenSize(); this.setState({ ctx: { x: Math.min(p.x, scr.w - 186), y: Math.min(p.y, scr.h - 210) }, startOpen: false }); },
+      ctxItems: [
+        { label: 'Arrange Icons', hint: '▸', run: () => this.setState({ ctx: null }) },
+        { label: 'Refresh', hint: '', run: () => this.setState({ ctx: null }) },
+        { label: 'New Folder', hint: '', run: () => { this.setState({ ctx: null }); this.open('gallery'); } },
+        { label: 'MS-DOS Prompt', hint: '', run: () => { this.setState({ ctx: null }); this.open('terminal'); } },
+        { label: 'Properties', hint: '', run: () => { this.setState({ ctx: null }); this.open('settings'); } },
+        { label: 'Restart', hint: '', run: () => { this.setState({ ctx: null }); this.boot(); } },
+      ],
+
+      aboutTabs: [['profile', 'Profile'], ['expertise', 'Expertise'], ['languages', 'Languages'], ['education', 'Education']].map(([id, label]) => ({
+        label, style: tabStyle(s.aboutTab === id), select: () => this.setState({ aboutTab: id }) })),
+      aboutProfile: s.aboutTab === 'profile', aboutExpertise: s.aboutTab === 'expertise',
+      aboutLanguages: s.aboutTab === 'languages', aboutEducation: s.aboutTab === 'education',
+      skillGroups: this.SKILLS.map(g => ({ ...g, joined: g.items.join(', ') })),
+      softSkills: ['Ownership', 'Problem Solving', 'Mentorship', 'Cross-team Collaboration', 'Communication', 'Delivery Focus'],
+      roles: this.ROLES, links: this.LINKS,
+      // Contact shows only the profiles; the To: field already carries the email.
+      contactLinks: this.LINKS.filter(l => l.name === 'GitHub' || l.name === 'LinkedIn'),
+      projects: this.PROJECTS.map((p, i) => ({ ...p, bg: s.project === i ? '#000080' : 'transparent', fg: s.project === i ? '#fff' : '#000', select: () => this.setState({ project: i }) })),
+      selProject: sel,
+
+      pdfZoom: s.pdfZoom, zoomLabel: Math.round(s.pdfZoom * 100) + '%',
+      zoomIn: () => this.setState({ pdfZoom: Math.min(1.5, s.pdfZoom + 0.1) }), zoomOut: () => this.setState({ pdfZoom: Math.max(0.6, s.pdfZoom - 0.1) }),
+
+      termLines: s.termLines, termInput: s.termInput, termRef: this.termRef, termInputRef: this.termInputRef,
+      focusTerm: () => this.termInputRef.current && this.termInputRef.current.focus(),
+      termChange: e => this.setState({ termInput: e.target.value }),
+      termKey: e => { if (e.key === 'Enter') this.runCmd(e.target.value); },
+
+      mailStatus: s.mailStatus,
+      contactEmail: CONTACT.email,
+      sendMail: e => { e.preventDefault(); const f = new FormData(e.target);
+        window.location.href = 'mailto:' + CONTACT.email + '?subject=' + encodeURIComponent(f.get('subject')) + '&body=' + encodeURIComponent(f.get('body') + '\n\n— ' + f.get('from'));
+        this.setState({ mailStatus: 'Handing off to your mail client...' }); },
+
+      notes: this.NOTES.map((n, i) => ({ ...n, bg: s.note === i ? '#000080' : 'transparent', fg: s.note === i ? '#fff' : '#000', select: () => this.setState({ note: i }) })),
+      noteTitle: note.title, noteBody: note.body, noteDate: note.date,
+
+      playing: s.playing, playGlyph: s.playing ? '❚❚' : '▶', progress: s.progress + '%',
+      trackTime: '0' + Math.floor(s.progress * 0.03) + ':' + String(Math.floor(s.progress * 1.8) % 60).padStart(2, '0'),
+      togglePlay: () => { const p = !s.playing; this.setState({ playing: p }); clearInterval(this.prog);
+        if (p) this.prog = setInterval(() => this.setState(st => ({ progress: (st.progress + 1) % 100 })), 400); },
+      eqBars: Array.from({ length: 12 }, (_, i) => ({ style: { width: 5, height: 22, flex: 'none', background: '#00e08a',
+        transformOrigin: 'bottom', transform: s.playing ? undefined : 'scaleY(0.18)',
+        animation: s.playing ? 'eq95 ' + (0.55 + (i % 4) * 0.18) + 's steps(4) ' + (i * 0.07) + 's infinite' : 'none' } })),
+
+      ...this.assistantVals(s), ...this.gameVals(s),
+      openHint: IS_TOUCH ? 'tap one to open it' : 'double-click one to open it',
+      saverHint: IS_TOUCH ? 'tap to resume' : 'move the mouse to resume',
+      snakeTouch: IS_TOUCH,
+      padStyle: { border: 0, background: '#c0c0c0', boxShadow: RAISED, fontFamily: 'inherit', fontSize: 13, cursor: 'default' },
+      padUp: () => this.padTurn([0, -1]), padDown: () => this.padTurn([0, 1]),
+      padLeft: () => this.padTurn([-1, 0]), padRight: () => this.padTurn([1, 0]),
+      // Hidden on phone-width viewports, where windows open maximised and a
+      // floating panel would sit on top of whatever the visitor opened.
+      factsOn: s.phase === 'desktop' && !IS_NARROW,
+      factsOpen: s.factsOpen, factsExpanded: String(s.factsOpen), factsZ: s.factsZ,
+      toggleFacts: () => this.toggleFacts(), raiseFacts: e => { e.stopPropagation(); this.raiseFacts(); },
+      factText: FACTS[s.fact].t, factSource: FACTS[s.fact].s, factUrl: FACTS[s.fact].u,
+      factIndex: (s.fact + 1) + '/' + FACTS.length,
+      nextFact: () => this.setState(st => ({ fact: (st.fact + 1) % FACTS.length })),
+      factsTrayOpacity: s.factsOpen ? 1 : 0.45,
+      saverOn: s.saver, saverRef: this.saverRef, wakeSaver: () => this.poke(),
+    };
+  }
+}
+</script>
+</body>
+</html>

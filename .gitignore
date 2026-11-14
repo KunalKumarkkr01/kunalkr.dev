@@ -1,0 +1,6 @@
+# The raw design export - site/ is generated from it by build/patch_*.py
+_export/
+*.zip
+
+# Windows bash crash dumps
+*.stackdump

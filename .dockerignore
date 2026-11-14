@@ -1,0 +1,7 @@
+# Only site/, nginx.conf and the Dockerfile belong in the image.
+_export/
+build/
+*.zip
+.git/
+.gitignore
+README.md

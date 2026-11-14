@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'MS Sans Serif';src:url('fonts/ms_sans_serif.woff2') format('woff2');font-weight:400}
+@font-face{font-family:'MS Sans Serif';src:url('fonts/ms_sans_serif_bold.woff2') format('woff2');font-weight:700}
+*{box-sizing:border-box}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;-webkit-font-smoothing:none}
+img{image-rendering:pixelated}
+body{background:#008080;font-family:'MS Sans Serif',Tahoma,sans-serif;font-size:22px;color:#000;position:relative}
+.raised{box-shadow:inset -2px -2px 0 #0a0a0a,inset 2px 2px 0 #fff,inset -4px -4px 0 #808080,inset 4px 4px 0 #dfdfdf}
+.icons{position:absolute;left:34px;top:30px;display:flex;flex-direction:column;gap:26px}
+.ico{width:150px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.ico img{width:64px;height:64px}
+.ico span{color:#fff;text-shadow:2px 2px 0 #000;font-size:20px}
+.win{position:absolute;left:290px;top:96px;width:820px;background:#c0c0c0;padding:6px}
+.bar{height:40px;background:linear-gradient(90deg,#000080,#1084d0);display:flex;align-items:center;gap:8px;padding:0 6px;color:#fff;font-weight:700;font-size:22px}
+.bar img{width:32px;height:32px}
+.btns{margin-left:auto;display:flex;gap:4px}
+.btns i{width:32px;height:28px;background:#c0c0c0;box-shadow:inset -2px -2px 0 #0a0a0a,inset 2px 2px 0 #fff,inset -4px -4px 0 #808080,inset 4px 4px 0 #dfdfdf;display:block}
+.menu{height:38px;display:flex;align-items:center;gap:26px;padding:0 12px;color:#222;font-size:21px}
+.body{padding:30px 38px 34px;display:flex;gap:26px}
+.body>img{width:64px;height:64px;flex:none;margin-top:6px}
+h1{margin:0;font-size:62px;line-height:1;font-weight:400;letter-spacing:-1px}
+.sub{margin-top:14px;font-size:23px;color:#404040}
+.tags{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+.tags b{font-weight:400;font-size:20px;padding:7px 14px;background:#c0c0c0;box-shadow:inset -2px -2px 0 #0a0a0a,inset 2px 2px 0 #fff,inset -4px -4px 0 #808080,inset 4px 4px 0 #dfdfdf}
+.status{margin:8px 6px 0;display:flex;gap:6px;font-size:19px;color:#000}
+.status div{padding:6px 10px;box-shadow:inset -2px -2px 0 #fff,inset 2px 2px 0 #808080}
+.status div:first-child{flex:1}
+.task{position:absolute;left:0;right:0;bottom:0;height:56px;background:#c0c0c0;box-shadow:inset 0 2px 0 #fff;display:flex;align-items:center;padding:0 8px;gap:10px}
+.start{height:42px;padding:0 16px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:22px}
+.start img{width:30px;height:30px}
+.tab{height:42px;padding:0 18px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:21px;min-width:280px}
+.tab img{width:28px;height:28px}
+.tray{margin-left:auto;height:40px;display:flex;align-items:center;padding:0 16px;font-size:21px;box-shadow:inset -2px -2px 0 #fff,inset 2px 2px 0 #808080}
+</style></head><body>
+<div class="icons">
+  <div class="ico"><img src="components/icons/assets/3ac3e9ba67c0338b.png"><span>My Portfolio</span></div>
+  <div class="ico"><img src="components/icons/assets/18e89b59ea5a4312.png"><span>Projects</span></div>
+  <div class="ico"><img src="components/icons/assets/510637b654b3c877.png"><span>Skills Prompt</span></div>
+</div>
+<div class="win raised">
+  <div class="bar"><img src="components/icons/assets/3ac3e9ba67c0338b.png">My Portfolio<div class="btns"><i></i><i></i><i></i></div></div>
+  <div class="menu"><span>File</span><span>View</span><span>Help</span></div>
+  <div class="body">
+    <img src="components/icons/assets/3ac3e9ba67c0338b.png">
+    <div>
+      <h1>Kunal Kumar</h1>
+      <div class="sub">Lead Software Engineer &middot; Industrial IoT &middot; AI Agents &middot; Pune</div>
+      <div class="tags"><b>C# / .NET</b><b>Azure</b><b>IoT Hub</b><b>M365 Copilot</b><b>MCP</b><b>Claude Code</b></div>
+    </div>
+  </div>
+  <div class="status"><div>Double-click a desktop icon to open it</div><div>kunalkr.dev</div></div>
+</div>
+<div class="task">
+  <div class="start raised"><img src="components/icons/assets/3ac3e9ba67c0338b.png">Start</div>
+  <div class="tab raised"><img src="components/icons/assets/3ac3e9ba67c0338b.png">My Portfolio</div>
+  <div class="tray">08:45 AM</div>
+</div>
+</body></html>
