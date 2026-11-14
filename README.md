@@ -181,9 +181,10 @@ Almost everything a visitor reads lives in class fields near the top of the
 Replace the file in `site/assets/` to swap the résumé PDF. The profile photo is
 `site/assets/kunal-photo.jpg` (192 px, used in About Me and the résumé viewer).
 
-To regenerate `site/og.png` after a copy change: serve `site/`, open
-`build/og-source.html` from that origin, screenshot at 1200×630, save over
-`site/og.png`.
+To regenerate `site/og.png` (the link-preview image, 1200×630): serve `site/`, open it at a
+1200×630 viewport with device scale 2, turn the computer on and back off (so the screensaver and LED
+show), hide the hint, credits link, Enter button and résumé tag, screenshot, and scale the
+2400×1260 capture down to 1200×630. Then refresh LinkedIn's cache in its Post Inspector.
 
 ---
 
