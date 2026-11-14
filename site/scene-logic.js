@@ -186,3 +186,50 @@ export function byteShare(loaded, total, expected) {
 export function blocksFor(share, capacity) {
   return Math.max(0, Math.min(capacity, Math.round(clamp01(share) * capacity)));
 }
+
+/* ------------------------------------------------------------ screensaver */
+
+/* Starfield on the desk's monitor, matching the desktop's own screensaver (index.html startSaver). */
+export const STARFIELD = {
+  count: 220,          // stars in the field
+  respawnZ: 0.02,      // a star this close to the viewer starts again far away
+  spread: 0.35,        // share of the screen a star at depth 1 spans from the centre
+  maxSize: 3.4,        // pixel size of a star right at the viewer
+  speedPerSecond: 0.36, // depth covered per second (the desktop's 0.006 per frame at 60 fps)
+};
+
+/**
+ * createStars - a fresh starfield: each star at a random spot (x, y in -1..1) and depth (z in 0..1).
+ * Params: count - number of stars; rand - () => number in [0, 1), e.g. Math.random.
+ * Returns: [{ x, y, z }].
+ * Usage: createStars(STARFIELD.count, Math.random)
+ */
+export function createStars(count, rand) {
+  return Array.from({ length: count }, () => ({ x: rand() * 2 - 1, y: rand() * 2 - 1, z: rand() }));
+}
+
+/**
+ * advanceStars - moves every star towards the viewer; one that arrives respawns far away at a new spot.
+ * Params: stars - from createStars (changed in place); dz - depth to move; rand - as for createStars.
+ * Usage: advanceStars(stars, STARFIELD.speedPerSecond * seconds, Math.random)
+ */
+export function advanceStars(stars, dz, rand) {
+  for (const s of stars) {
+    s.z -= dz;
+    if (s.z <= STARFIELD.respawnZ) { s.x = rand() * 2 - 1; s.y = rand() * 2 - 1; s.z = 1; }
+  }
+}
+
+/**
+ * projectStar - where and how big a star is drawn on a w x h screen.
+ * Params: star - { x, y, z }; w, h - screen size in pixels.
+ * Returns: { x, y, size, shade } (shade 0..3, dim to white) or null when it falls off the screen.
+ * Usage: projectStar({ x: 0, y: 0, z: 1 }, 320, 240) -> { x: 160, y: 120, size: 1, shade: 0 }
+ */
+export function projectStar(star, w, h) {
+  const x = w / 2 + (star.x / star.z) * w * STARFIELD.spread;
+  const y = h / 2 + (star.y / star.z) * h * STARFIELD.spread;
+  if (x < 0 || x > w || y < 0 || y > h) return null;
+  const size = Math.max(1, Math.round((1 - star.z) * STARFIELD.maxSize));
+  return { x: Math.floor(x), y: Math.floor(y), size, shade: Math.min(3, size - 1) };
+}

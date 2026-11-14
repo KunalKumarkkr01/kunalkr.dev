@@ -10,7 +10,7 @@
  * three.js is imported lazily so the Enter button and #desktop links work before
  * (or without) WebGL. All files are same-origin (vendor/three, assets/models).
  */
-import { entryMode, createViewState, easeInOutCubic, formatTime, clampToView, initialTheme, shouldRender, framesPerSecond, nextQuality, loadPercent, byteShare, blocksFor } from './scene-logic.js';
+import { entryMode, createViewState, easeInOutCubic, formatTime, clampToView, initialTheme, shouldRender, framesPerSecond, nextQuality, loadPercent, byteShare, blocksFor, createStars, advanceStars, projectStar, STARFIELD } from './scene-logic.js';
 import { addMakerBits } from './desk-props.js';
 
 /* Timings (ms) and camera framing. */
@@ -146,15 +146,28 @@ const LAMP_HEAD = { glowSize: 0.2, beamLength: 0.62, beamSpread: 0.2, mouthLift:
 const LAMP = { colour: 0xffc68a, angleDeg: 38, penumbra: 0.65, distance: 3, decay: 1.4, reach: [0.28, -0.75, 0.18], bulbRadius: 0.016 };
 /* Loading dialog's progress bar: each blue block's width and the gap between blocks (px), as in Win95. */
 const LOADER_BLOCK = { width: 10, gap: 2, inset: 2 };
-/* Picture of the desktop shown on the 3D monitor once it has been switched on. */
-const SCREEN_IMAGE = 'assets/desk-screen.jpg';
+/* Screensaver drawn on the 3D monitor once the PC is on: canvas size (4:3, low-res like a CRT) and star greys. */
+const SAVER_CANVAS = { width: 320, height: 240 };
+const STAR_SHADES = ['#4a4a4a', '#8f8f8f', '#d0d0d0', '#ffffff'];
+/* The monitor's power LED, left of the power knob, in Monitor_6's coordinates (measured from the model's
+   vertices); lit green with a soft glow while the PC is on. */
+const POWER_LED = { local: [0.1545, 0.08435, -0.1166], radius: 0.0036, colour: 0x3ccf62, glowSize: 0.018, glowOpacity: 0.35 };
+/* Retro click sounds, synthesised with Web Audio (no files): square-wave blips sliding from one pitch to
+   another. `power` is a rising two-note chirp for turning the computer on. */
+const BLIPS = {
+  click: [{ wave: 'square', from: 880, to: 440, ms: 60 }],
+  power: [{ wave: 'square', from: 523, to: 523, ms: 80 }, { wave: 'square', from: 784, to: 1046, ms: 120 }],
+};
+const BLIP_VOLUME = 0.05;
 
 const view = createViewState(entryMode(location.href) === 'computer' ? 'computer' : 'loading');
 const ui = buildLayer();
 let three = null;          // { THREE, renderer, scene, camera, screenMesh, pickables, raf, ... }
 let flight = null;         // active camera animation
 let music = null;          // active easter-egg playback
-let screenOn = false;      // the 3D monitor shows the desktop once it has been powered on
+let screenOn = false;      // the PC has been powered on: the 3D monitor shows the screensaver and the LED is lit
+let saver = null;          // { stars, canvas, texture, last } - the 3D monitor's screensaver
+let audio = null;          // AudioContext for click sounds, created on the first click (browsers require a gesture)
 let hideTimer = 0;         // pending end-of-fade for the desk layer
 let loading = null;        // in-flight loadScene() promise, so two loads never overlap
 let desktopInert = false;  // wanted inert state of #dc-root (applied once it exists)
@@ -347,17 +360,17 @@ function buildLayer() {
     np: root.querySelector('.desk-np'),
   };
   parts.enter.addEventListener('click', onEnterButton);
-  parts.tag.querySelector('button').addEventListener('click', () => setResumeOpen(!parts.tag.classList.contains('is-open')));
+  parts.tag.querySelector('button').addEventListener('click', () => { playBlip('click'); setResumeOpen(!parts.tag.classList.contains('is-open')); });
   // Clicking anywhere else, or Escape, folds the résumé tag back.
   document.addEventListener('pointerdown', e => { if (!parts.tag.contains(e.target)) setResumeOpen(false); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setResumeOpen(false); });
-  parts.np.querySelector('.np-play').addEventListener('click', () => toggleMusic());
-  parts.np.querySelector('.np-stop').addEventListener('click', () => stopMusic());
+  parts.np.querySelector('.np-play').addEventListener('click', () => { playBlip('click'); toggleMusic(); });
+  parts.np.querySelector('.np-stop').addEventListener('click', () => { playBlip('click'); stopMusic(); });
   parts.np.querySelector('.np-bar').addEventListener('click', e => seekMusic(e.currentTarget, e.clientX));
-  parts.credits.addEventListener('click', () => track(EVENT.credits));
+  parts.credits.addEventListener('click', () => { playBlip('click'); track(EVENT.credits); });
   const [resumeDownload, resumeOpen] = parts.tag.querySelectorAll('.desk-tag-actions a');
-  resumeDownload.addEventListener('click', () => track(EVENT.resumeDownload, { from: 'desk' }));
-  resumeOpen.addEventListener('click', () => track(EVENT.resumeOpen, { from: 'desk' }));
+  resumeDownload.addEventListener('click', () => { playBlip('click'); track(EVENT.resumeDownload, { from: 'desk' }); });
+  resumeOpen.addEventListener('click', () => { playBlip('click'); track(EVENT.resumeOpen, { from: 'desk' }); });
   return parts;
 }
 
@@ -377,6 +390,7 @@ function setResumeOpen(on) {
  * Flies in when the desk is ready, otherwise goes straight to the computer.
  */
 function onEnterButton() {
+  playBlip('power');
   track(EVENT.monitorOn, { via: 'button' });
   if (view.state === 'desk') return startFlyIn();
   if (view.request('skip') !== 'computer') return;
@@ -1346,6 +1360,7 @@ function bindPointer(ctx) {
     if (view.state !== 'desk') return;
     const o = pick(e);
     if (!o) return;
+    playBlip(o.userData.kind === 'monitor' ? 'power' : 'click');
     if (o.userData.kind === 'monitor') { track(EVENT.monitorOn, { via: 'monitor' }); startFlyIn(); }
     if (o.userData.kind === 'speaker') toggleMusic();
     if (o.userData.kind === 'resume') setResumeOpen(true);
@@ -1498,6 +1513,7 @@ function startLoop() {
     placeTags();
     easeCardHalos();
     stepTheme(three, now - (three.lastFrame || now));
+    stepScreensaver(now);
     three.lastFrame = now;
     three.renderer.render(three.scene, three.camera);
   };
@@ -1752,9 +1768,10 @@ function stepSpeakers(now) {
 }
 
 /**
- * switchScreenOn - after the first power-on, the 3D monitor shows a picture of the desktop:
- * a textured quad laid over the CRT glass (a child of the monitor, so it moves with it), inset by
- * the same margin as the live desktop so flying in and out lines up.
+ * switchScreenOn - after the first power-on the PC stays on: the 3D monitor shows the starfield
+ * screensaver (a canvas-textured quad over the CRT glass, a child of the monitor so it moves with it,
+ * inset by the same margin as the live desktop so flying in and out lines up) and the power LED glows.
+ * Before the first power-on the screen stays dark.
  */
 function switchScreenOn() {
   screenOn = true;
@@ -1765,15 +1782,92 @@ function switchScreenOn() {
   g.setAttribute('position', new THREE.BufferAttribute(new Float32Array([...tl, ...tr, ...br, ...bl]), 3));
   g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array([0, 1, 1, 1, 1, 0, 0, 0]), 2));
   g.setIndex([0, 3, 2, 0, 2, 1]);
-  const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0x000000 }));
+  const canvas = document.createElement('canvas');
+  canvas.width = SAVER_CANVAS.width;
+  canvas.height = SAVER_CANVAS.height;
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  // The screen is seen at an angle from the desk; anisotropic filtering keeps the stars crisp.
+  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  const mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ map: texture, toneMapped: false }));
   monitor.add(mesh);
   three.screenMesh = mesh;
-  new THREE.TextureLoader().load(SCREEN_IMAGE, tex => {
-    tex.colorSpace = THREE.SRGBColorSpace;
-    // The screen is seen at an angle from the desk; without anisotropic filtering the text smears.
-    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-    mesh.material = new THREE.MeshBasicMaterial({ map: tex, toneMapped: false, color: 0xcfd8d6 });
-  });
+  saver = { stars: createStars(STARFIELD.count, Math.random), canvas, texture, last: 0 };
+  addPowerLed(three);
+}
+
+/**
+ * stepScreensaver - moves the 3D monitor's stars on by the time since the last frame and redraws them.
+ * Skipped while the visitor is at the computer (the live desktop covers the glass) and before power-on.
+ * Params: now - the frame's timestamp (ms).
+ */
+function stepScreensaver(now) {
+  if (!saver || view.state === 'computer') return;
+  const seconds = saver.last ? Math.min(0.1, (now - saver.last) / 1000) : 0;
+  saver.last = now;
+  advanceStars(saver.stars, STARFIELD.speedPerSecond * seconds, Math.random);
+  const g = saver.canvas.getContext('2d'), w = saver.canvas.width, h = saver.canvas.height;
+  g.fillStyle = '#000';
+  g.fillRect(0, 0, w, h);
+  for (const star of saver.stars) {
+    const p = projectStar(star, w, h);
+    if (!p) continue;
+    g.fillStyle = STAR_SHADES[p.shade];
+    g.fillRect(p.x, p.y, p.size, p.size);
+  }
+  saver.texture.needsUpdate = true;
+}
+
+/**
+ * addPowerLed - lights the monitor's power LED: a small green disc on the chin plus a soft glow sprite.
+ * Params: ctx - the three context (uses THREE and monitor).
+ * Usage: called once from switchScreenOn, when the PC is first powered on.
+ */
+function addPowerLed(ctx) {
+  const { THREE, monitor } = ctx;
+  const at = new THREE.Vector3(...POWER_LED.local);
+  const disc = new THREE.Mesh(
+    new THREE.CircleGeometry(POWER_LED.radius, 24),
+    new THREE.MeshBasicMaterial({ color: POWER_LED.colour, toneMapped: false }),
+  );
+  disc.position.copy(at);
+  disc.rotation.y = Math.PI / 2; // face the monitor's front (+X)
+  const glow = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: radialGlowTexture(THREE), color: POWER_LED.colour, transparent: true, opacity: POWER_LED.glowOpacity,
+    blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+  }));
+  glow.position.copy(at);
+  glow.scale.setScalar(POWER_LED.glowSize);
+  monitor.add(disc, glow);
+}
+
+/**
+ * playBlip - plays one of the retro click sounds in BLIPS (Web Audio square-wave blips, no files).
+ * Silently does nothing where Web Audio is unavailable or blocked.
+ * Params: name - 'click' (any clickable thing) or 'power' (turning the computer on).
+ * Usage: playBlip('click')
+ */
+function playBlip(name) {
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return;
+  try {
+    audio = audio || new Ctx();
+    if (audio.state === 'suspended') audio.resume();
+    let at = audio.currentTime;
+    for (const note of BLIPS[name]) {
+      const seconds = note.ms / 1000;
+      const osc = audio.createOscillator(), gain = audio.createGain();
+      osc.type = note.wave;
+      osc.frequency.setValueAtTime(note.from, at);
+      osc.frequency.exponentialRampToValueAtTime(note.to, at + seconds);
+      gain.gain.setValueAtTime(BLIP_VOLUME, at);
+      gain.gain.exponentialRampToValueAtTime(0.0001, at + seconds);
+      osc.connect(gain).connect(audio.destination);
+      osc.start(at);
+      osc.stop(at + seconds);
+      at += seconds;
+    }
+  } catch (e) { /* audio blocked: clicks stay silent */ }
 }
 
 /**
