@@ -56,7 +56,8 @@ To teach BIT something new, add an entry to `BIT_INTENTS` with its trigger phras
 ## Built with
 
 Plain static files: [three.js](https://threejs.org/) for the desk, a small template runtime for
-the desktop (`support.js`), and nginx in Docker to serve it. No build step, no external requests.
+the desktop (`support.js`), and nginx in Docker to serve it. No build step, and no third-party requests —
+the only other host is my own self-hosted [Umami](https://umami.is/) analytics.
 3D models are CC-BY 4.0 from Sketchfab — see [credits](site/assets/models/CREDITS.md).
 
 ---
@@ -65,7 +66,7 @@ the desktop (`support.js`), and nginx in Docker to serve it. No build step, no e
 
 | Path | What it is |
 |------|------------|
-| `site/` | **The deployable root.** Plain static files, no build step, no external requests. |
+| `site/` | **The deployable root.** Plain static files, no build step, no third-party requests. |
 | `_export/` | Untouched extraction of the original design export zip. Reference only — git-ignored, never deployed. |
 | `build/` | The `patch_*.py` scripts that turn the raw export into `site/`, plus `og-source.html`. |
 | `Dockerfile`, `nginx.conf` | Production image: nginx serving `site/`. |
@@ -138,7 +139,27 @@ The export loaded React, ReactDOM and three webfonts from `unpkg.com` and
 - `site/fonts/` — MS Sans Serif regular/bold (from `98.css`) and VT323
 
 The page makes **zero third-party requests**, which is what lets `nginx.conf`
-lock the CSP to `'self'`.
+lock the CSP to `'self'` — plus one exception, my own analytics server (below).
+
+## Analytics
+
+Visits and interactions are counted by a self-hosted [Umami](https://umami.is/) instance at
+`analytics.kunalkr.dev` (open source, cookie-free, so no consent banner). It records page views,
+country, device, browser and referrer — never who a visitor is — and these interactions:
+
+| Event | When | Details sent |
+|-------|------|--------------|
+| `monitor-on` | the computer is turned on | `via`: monitor or button |
+| `open-app` | a desktop window is opened (not the automatic welcome window) | `app` id |
+| `bit-question` | a question is asked in BIT | `topic` it matched, or `no-match` — never the question itself |
+| `resume-download` / `resume-open` | the résumé is downloaded or opened | `from`: desk or desktop |
+| `profile-card` | the GitHub or LinkedIn card is clicked | `site` |
+| `song-play`, `lamp-toggle`, `credits-open`, `contact-send` | the speakers, lamp, credits link, Contact → Send | `theme` for the lamp |
+
+Events go through a small `track()` helper in `scene.js` and `index.html` that does nothing when
+the script is missing (local development, ad blockers). The script only counts on `kunalkr.dev`
+(`data-domains`) and respects Do Not Track. The CSP allows `analytics.kunalkr.dev` in `script-src`
+and `connect-src` only.
 
 ---
 
@@ -317,7 +338,7 @@ Cloudflare's edge.
 
 - [ ] `https://kunalkr.dev` shows the 3D desk, padlock valid; clicking the monitor
       flies in and boots; the monitor's power button flies back out
-- [ ] DevTools → Network shows **no** request off `kunalkr.dev`
+- [ ] DevTools → Network shows no request off `kunalkr.dev` except `analytics.kunalkr.dev`
 - [ ] Resume.pdf's *Save As...* downloads the PDF
 - [ ] Contact → Send opens a mail client addressed to the real address
 - [ ] Contact window's GitHub and LinkedIn rows open the real profiles

@@ -42,6 +42,12 @@ check "CSP header is sent"             "$(header / Content-Security-Policy | cut
 # texture is blocked and the 3D desk renders white.
 check "CSP lets the 3D loader read its textures" \
   "$(header / Content-Security-Policy | tr ';' '\n' | grep -o "connect-src[^;]*" | grep -c "blob:")" "1"
+# Self-hosted Umami: the page loads its script and posts events to it.
+ANALYTICS_HOST="https://analytics.kunalkr.dev"
+check "CSP allows the analytics script"   "$(header / Content-Security-Policy | tr ';' '
+' | grep -o "script-src[^;]*" | grep -c "$ANALYTICS_HOST")" "1"
+check "CSP allows sending analytics events"   "$(header / Content-Security-Policy | tr ';' '
+' | grep -o "connect-src[^;]*" | grep -c "$ANALYTICS_HOST")" "1"
 check "nosniff header is sent"         "$(header /scene.js X-Content-Type-Options)" "nosniff"
 
 [ "$failures" -eq 0 ] && echo "all smoke checks passed" || echo "$failures smoke check(s) failed"
