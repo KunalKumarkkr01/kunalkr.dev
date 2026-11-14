@@ -6,7 +6,7 @@
 # Build context is the repo root:
 #   docker build -t kunalos .
 #   docker run --rm -p 8080:80 kunalos   # then open http://localhost:8080
-FROM nginx:1.27-alpine
+FROM nginx:1.29-alpine
 
 # Replace the stock server block: caching policy, gzip and security headers.
 COPY nginx.conf /etc/nginx/conf.d/default.conf
