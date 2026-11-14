@@ -157,6 +157,7 @@ const POWER_LED = { local: [0.1545, 0.08435, -0.1166], radius: 0.0036, colour: 0
 const BLIPS = {
   click: [{ wave: 'square', from: 880, to: 440, ms: 60 }],
   power: [{ wave: 'square', from: 523, to: 523, ms: 80 }, { wave: 'square', from: 784, to: 1046, ms: 120 }],
+  powerOff: [{ wave: 'square', from: 784, to: 784, ms: 80 }, { wave: 'square', from: 523, to: 330, ms: 140 }],
 };
 const BLIP_VOLUME = 0.05;
 
@@ -175,6 +176,7 @@ let rootWatch = null;      // waits for support.js to create #dc-root
 let embedded = false;      // the desktop is drawn on the 3D monitor's glass (canvas kept visible)
 
 window.addEventListener('kunal:exit', onExitRequested);
+window.kunalSound = { play: playBlip };
 document.addEventListener('visibilitychange', onVisibility);
 
 if (view.state === 'computer') {
@@ -920,6 +922,7 @@ function addSmoothButtons(THREE, monitor) {
   const recess = new THREE.MeshStandardMaterial({ color: KNOB.recess, roughness: 0.7 });
   const plain = new THREE.MeshStandardMaterial({ color: KNOB.colour, roughness: 0.5 });
   let power = null;
+  const keys = [];
   for (const b of CHIN_BUTTONS) {
     const bezel = frontAt(b.y, b.z + b.ring * 1.6);
     const oldFront = frontAt(b.y, b.z);
@@ -935,9 +938,10 @@ function addSmoothButtons(THREE, monitor) {
     }
     ring.position.set((bezel + oldFront) / 2 + 0.0006, b.y, b.z);
     cap.position.set(oldFront + KNOB.capDepth / 2 - 0.0005, b.y, b.z);
-    if (b.icon === 'power') power = { centre: [oldFront + KNOB.capDepth - 0.0005, b.y, b.z], radius: b.ring };
+    const button = { centre: [oldFront + KNOB.capDepth - 0.0005, b.y, b.z], radius: b.ring };
+    if (b.icon === 'power') power = button; else keys.push(button);
   }
-  return power;
+  return { power, keys };
 }
 
 /**
@@ -1288,17 +1292,22 @@ function hideByPrefix(root, prefixes) {
 }
 
 /**
- * screenGeometry - the CRT glass and power knob in world space.
- * Params: monitor - the CRT; knob - the drawn power knob from addSmoothButtons ({ centre, radius }, monitor-local).
- * Returns: { corners: { tl, tr, br, bl }, power (knob face centre), powerRim (top of its ring) } as Vector3s.
+ * screenGeometry - the CRT glass and chin buttons in world space.
+ * Params: monitor - the CRT; buttons - from addSmoothButtons: { power, keys: [4] }, each { centre, radius }
+ *         in monitor-local coordinates.
+ * Returns: { corners: { tl, tr, br, bl }, power, powerRim, keys: [{ centre, rim }] } as Vector3s
+ *          (rim = the top of a button's ring, used for its on-screen size).
  */
-function screenGeometry(THREE, monitor, knob) {
+function screenGeometry(THREE, monitor, buttons) {
   monitor.updateMatrixWorld(true);
   const world = p => monitor.localToWorld(new THREE.Vector3(...p));
+  const rimOf = b => world([b.centre[0], b.centre[1] + b.radius, b.centre[2]]);
   const corners = {};
   for (const k of Object.keys(SCREEN_LOCAL)) corners[k] = world(SCREEN_LOCAL[k]);
-  const [x, y, z] = knob.centre;
-  return { corners, power: world(knob.centre), powerRim: world([x, y + knob.radius, z]) };
+  return {
+    corners, power: world(buttons.power.centre), powerRim: rimOf(buttons.power),
+    keys: buttons.keys.map(b => ({ centre: world(b.centre), rim: rimOf(b) })),
+  };
 }
 
 /** aimKeyLight - centres the shadow-casting light on the computer. */
@@ -1404,8 +1413,8 @@ function setEmbedded(on) {
 }
 
 /**
- * placeEmbeddedScreen - projects the 3D glass and power button to the page and hands their
- * pixel boxes to index.html as CSS variables (--es-* screen, --ep-* power button).
+ * placeEmbeddedScreen - projects the 3D glass and chin buttons to the page and hands their pixel
+ * boxes to index.html as CSS variables (--es-* screen, --ep-* power button, --ek0..3-* small keys).
  */
 function placeEmbeddedScreen() {
   // The camera may have just been moved (end of the fly-in, resize); its matrices only refresh on
@@ -1426,6 +1435,12 @@ function placeEmbeddedScreen() {
   css.setProperty('--ep-l', p.x - size / 2 + 'px');
   css.setProperty('--ep-t', p.y - size / 2 + 'px');
   css.setProperty('--ep-s', size + 'px');
+  three.screen.keys.forEach((key, i) => {
+    const c = toPixels(key.centre), d = 2 * Math.abs(c.y - toPixels(key.rim).y);
+    css.setProperty('--ek' + i + '-l', c.x - d / 2 + 'px');
+    css.setProperty('--ek' + i + '-t', c.y - d / 2 + 'px');
+    css.setProperty('--ek' + i + '-s', d + 'px');
+  });
 }
 
 /** toPixels - a world point projected to page pixels for the current camera. */
@@ -1828,8 +1843,11 @@ function addPowerLed(ctx) {
   const at = new THREE.Vector3(...POWER_LED.local);
   const disc = new THREE.Mesh(
     new THREE.CircleGeometry(POWER_LED.radius, 24),
-    new THREE.MeshBasicMaterial({ color: POWER_LED.colour, toneMapped: false }),
+    // Always drawn on top: the chin is angled, so a flat disc would otherwise half-sink into it.
+    // Nothing on the desk ever sits in front of the LED.
+    new THREE.MeshBasicMaterial({ color: POWER_LED.colour, toneMapped: false, depthTest: false }),
   );
+  disc.renderOrder = 1;
   disc.position.copy(at);
   disc.rotation.y = Math.PI / 2; // face the monitor's front (+X)
   const glow = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -1844,10 +1862,11 @@ function addPowerLed(ctx) {
 /**
  * playBlip - plays one of the retro click sounds in BLIPS (Web Audio square-wave blips, no files).
  * Silently does nothing where Web Audio is unavailable or blocked.
- * Params: name - 'click' (any clickable thing) or 'power' (turning the computer on).
+ * Params: name - 'click' (any clickable thing), 'power' (turning the computer on) or 'powerOff'.
  * Usage: playBlip('click')
  */
 function playBlip(name) {
+  if (!BLIPS[name]) return;
   const Ctx = window.AudioContext || window.webkitAudioContext;
   if (!Ctx) return;
   try {
