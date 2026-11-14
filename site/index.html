@@ -47,6 +47,7 @@ window.__resources = {
 <!-- 3D desk landing: three.js is vendored under vendor/three (see VERSION) and loaded lazily by scene.js. -->
 <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }</script>
 <script type="module" src="./scene.js" onerror="window.__kunalEnterPending = true; window.dispatchEvent(new Event('kunal:enter'));"></script>
+<script defer src="https://analytics.kunalkr.dev/script.js" data-website-id="bde56357-4af1-4710-9a25-27d7a9c6b7c9" data-domains="kunalkr.dev" data-do-not-track="true"></script>
 </head>
 <body>
 <x-dc>
@@ -395,7 +396,7 @@ html.embedded .crt-power-btn:hover{box-shadow:0 0 0 2px rgba(255,226,160,.55),0 
               <button style="width:22px;height:21px;border:0;padding:0;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;cursor:default;font-size:11px;font-weight:700" onClick="{{ zoomIn }}">+</button>
               <div style="width:2px;height:18px;margin:0 4px;box-shadow:inset 1px 0 0 #808080,inset -1px 0 0 #fff"></div>
               <span style="font-family:Consolas,'Courier New',monospace;color:#404040">Kunal_Kumar.pdf · 3 pages</span>
-              <a href="assets/Kunal_Kumar_Resume.pdf" download="Kunal_Kumar.pdf" style="margin-left:auto;height:21px;padding:0 12px;display:flex;align-items:center;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;color:#000;text-decoration:none;font-size:11px">Save As...</a>
+              <a href="assets/Kunal_Kumar_Resume.pdf" download="Kunal_Kumar.pdf" onClick="{{ resumeSaved }}" style="margin-left:auto;height:21px;padding:0 12px;display:flex;align-items:center;background:#c0c0c0;box-shadow:inset -1px -1px 0 #0a0a0a,inset 1px 1px 0 #fff,inset -2px -2px 0 #808080,inset 2px 2px 0 #dfdfdf;color:#000;text-decoration:none;font-size:11px">Save As...</a>
             </div>
             <div style="flex:1;min-height:0;margin:4px 2px 2px;background:#808080;overflow:auto;box-shadow:inset 1px 1px 0 #808080,inset -1px -1px 0 #fff,inset 2px 2px 0 #0a0a0a,inset -2px -2px 0 #dfdfdf">
               <div style="padding:16px;display:flex;justify-content:center">
@@ -836,6 +837,12 @@ const OPEN_VERB = IS_TOUCH ? 'Tap' : 'Double-click';
 const BIT_START_Z = 5;
 /* On phones every window opens maximised, so BIT keeps a tray-level stack slot above them. */
 const BIT_TOP_Z = 9600;
+/* Interaction names sent to Umami (self-hosted analytics at analytics.kunalkr.dev). */
+const EVENT = { openApp: 'open-app', bitQuestion: 'bit-question', resumeDownload: 'resume-download', contactSend: 'contact-send' };
+/* The topic recorded for a BIT question that matched nothing. */
+const NO_MATCH = 'no-match';
+/* Opened by the desktop itself at boot, so not a visitor's choice. */
+const AUTO_OPENED_APP = 'welcome';
 
 /* Below this viewport width a floating window is narrower than it is usable, so new windows open maximised. */
 const MAXIMISE_BELOW_PX = 700;
@@ -1570,6 +1577,18 @@ class Component extends DCLogic {
    * bitReply('which cloud stack?') -> 'Cloud Platforms: Azure Functions, ...'
    */
   bitReply(question) {
+    const best = this.bitMatch(question);
+    if (!best) return 'I only know what is on this desktop, and that one is outside it. Try asking about Kunal\'s stack, his cloud or backend work, a project like the industrial IoT platform or Hatch Ignite, his education, or how to reach him.';
+    return best.say.call(this);
+  }
+
+  /*
+   * bitMatch - the BIT_INTENTS entry that best matches a question (scoring described on bitReply).
+   * Params: question - the visitor's text.
+   * Returns: the winning intent, or null when no trigger phrase appears.
+   * Usage: bitMatch('which cloud stack?').on[0] -> the matched topic's first trigger phrase.
+   */
+  bitMatch(question) {
     const q = ' ' + String(question).toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim() + ' ';
     let best = null, bestScore = 0;
     for (const intent of this.BIT_INTENTS) {
@@ -1580,8 +1599,17 @@ class Component extends DCLogic {
       }
       if (score > bestScore) { bestScore = score; best = intent; }
     }
-    if (!best) return 'I only know what is on this desktop, and that one is outside it. Try asking about Kunal\'s stack, his cloud or backend work, a project like the industrial IoT platform or Hatch Ignite, his education, or how to reach him.';
-    return best.say.call(this);
+    return best;
+  }
+
+  /*
+   * track - records one interaction in Umami (window.umami, loaded from analytics.kunalkr.dev).
+   * Does nothing when the script is absent: local development, or a visitor's ad blocker.
+   * Params: name - one of EVENT; data - optional details, e.g. { app: 'settings' }.
+   * Usage: this.track(EVENT.openApp, { app: id })
+   */
+  track(name, data) {
+    if (window.umami) window.umami.track(name, data);
   }
 
   /*
@@ -1596,6 +1624,8 @@ class Component extends DCLogic {
     if (!text || this.state.chatBusy) return;
     this.setState(s => ({ chat: [...s.chat, { who: 'you', text }], chatInput: '', chatBusy: true }));
     const reply = this.bitReply(text);
+    const topic = this.bitMatch(text);
+    this.track(EVENT.bitQuestion, { topic: topic ? topic.on[0] : NO_MATCH });
     clearTimeout(this.botT);
     this.botT = setTimeout(
       () => this.setState(s => ({ chat: [...s.chat, { who: 'bot', text: reply }], chatBusy: false })),
@@ -1778,6 +1808,7 @@ class Component extends DCLogic {
     const app = this.APPS.find(a => a.id === id);
     const ex = this.state.wins.find(w => w.app === id);
     if (ex) return this.setState(s => ({ z: s.z + 1, startOpen: false, startSub: null, ctx: null, wins: s.wins.map(w => w.id === ex.id ? { ...w, min: false, z: s.z + 1 } : w) }));
+    if (id !== AUTO_OPENED_APP) this.track(EVENT.openApp, { app: id });
     const scr = this.screenSize(), vw = scr.w, vh = scr.h - TASKBAR_PX, n = this.state.wins.length;
     const w = Math.min(app.w, vw - 24), h = Math.min(app.h, vh - 24);
     const x = id === 'welcome' ? Math.round((vw - w) / 2) : Math.min(120 + n * 28, Math.max(8, vw - w - 12));
@@ -2093,7 +2124,8 @@ class Component extends DCLogic {
 
       mailStatus: s.mailStatus,
       contactEmail: CONTACT.email,
-      sendMail: e => { e.preventDefault(); const f = new FormData(e.target);
+      resumeSaved: () => this.track(EVENT.resumeDownload, { from: 'desktop' }),
+      sendMail: e => { e.preventDefault(); const f = new FormData(e.target); this.track(EVENT.contactSend);
         window.location.href = 'mailto:' + CONTACT.email + '?subject=' + encodeURIComponent(f.get('subject')) + '&body=' + encodeURIComponent(f.get('body') + '\n\n— ' + f.get('from'));
         this.setState({ mailStatus: 'Handing off to your mail client...' }); },
 

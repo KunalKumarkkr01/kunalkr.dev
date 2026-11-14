@@ -58,7 +58,10 @@ function testMonitor() {
   ok(m.includes('zoom:{{ uiScale }}'), 'root is zoomed by uiScale');
   ok(/<svg[\s>]/.test(m), 'bezel is inline SVG');
   ok(!m.includes('<div style="position:fixed;inset:0;overflow:hidden;background:#000'), 'root no longer pinned to the viewport');
-  ok(!/<(img|script|image|use)[^>]+(src|href)="https?:/i.test(m), 'no external images/scripts in markup');
+  // The only off-site load allowed is the self-hosted Umami analytics script.
+  const ANALYTICS_SCRIPT = 'https://analytics.kunalkr.dev/script.js';
+  const external = (m.match(/<(img|script|image|use)[^>]+(src|href)="https?:[^"]*"/gi) || []).filter(t => !t.includes('src="' + ANALYTICS_SCRIPT + '"'));
+  ok(external.length === 0, 'no external images/scripts in markup (except the self-hosted analytics script)', external.join(' '));
   const c = makeComponent();
   ok(c.state.uiScale === 1, 'uiScale defaults to 1');
   const el = { id: 'screen' };
@@ -374,6 +377,49 @@ function testPhoneDesktop() {
   }
 }
 
+/**
+ * testAnalytics - the desktop reports interactions to Umami (window.umami.track): which app was
+ * opened and which topic a BIT question matched. The visitor's own words are never sent, and with
+ * no Umami script (local dev, an ad blocker) nothing breaks.
+ */
+function testAnalytics() {
+  section('analytics events (Umami)');
+  stubWindow(1366, 768);
+  const timers = fakeTimers();
+  const flush = () => timers.timeouts.forEach(t => { if (!t.cleared) { t.cleared = true; t.fn(); } });
+  const sent = [];
+  window.umami = { track: (name, data) => sent.push({ name, data }) };
+  try {
+    const c = makeComponent();
+    c.state.phase = 'desktop';
+    c.open('settings');
+    ok(sent.some(e => e.name === 'open-app' && e.data.app === 'settings'), 'opening a window records open-app with its id', JSON.stringify(sent));
+    const before = sent.length;
+    c.open('settings');
+    ok(sent.length === before, 'bringing an already open window forward is not counted again');
+    c.open('welcome');
+    ok(!sent.some(e => e.data && e.data.app === 'welcome'), 'the welcome window (opened automatically at boot) is not counted');
+
+    c.askBot('which cloud stack?');
+    flush();
+    const asked = sent.filter(e => e.name === 'bit-question');
+    ok(asked.length === 1 && typeof asked[0].data.topic === 'string' && asked[0].data.topic !== 'no-match',
+      'a BIT question records the topic it matched', JSON.stringify(asked));
+    ok(!JSON.stringify(sent).includes('which cloud stack'), "the visitor's own words are never sent");
+    c.askBot('zzzz qqqq');
+    flush();
+    ok((sent.filter(e => e.name === 'bit-question').pop() || { data: {} }).data.topic === 'no-match', 'an unmatched question records no-match');
+
+    delete window.umami;
+    let threw = false;
+    try { c.open('mail'); c.askBot('hello'); flush(); } catch (e) { threw = true; }
+    ok(!threw, 'without the Umami script (local dev, ad blocker) nothing throws');
+  } finally {
+    timers.restore();
+    delete global.window;
+  }
+}
+
 function main() {
   testEdgeRemoved();
   testProfileContent();
@@ -384,6 +430,7 @@ function main() {
   testDeskQuiet();
   testFirstDesktop();
   testPhoneDesktop();
+  testAnalytics();
   console.log('\n' + (failures ? failures + ' of ' + checks + ' checks FAILED' : 'all ' + checks + ' checks passed'));
   process.exit(failures ? 1 : 0);
 }

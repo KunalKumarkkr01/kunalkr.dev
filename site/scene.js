@@ -136,6 +136,11 @@ const THEMES = {
 const THEME_MS = 700;
 /* The visitor's lamp choice is remembered; a first visit opens dark with the lamp on (initialTheme). */
 const THEME_STORAGE_KEY = 'desk-theme';
+/* Interaction names sent to Umami (self-hosted analytics at analytics.kunalkr.dev). */
+const EVENT = {
+  monitorOn: 'monitor-on', lamp: 'lamp-toggle', songPlay: 'song-play', profileCard: 'profile-card',
+  resumeDownload: 'resume-download', resumeOpen: 'resume-open', credits: 'credits-open',
+};
 /* Lamp head when on: a glow at the shade's mouth (size m), a faint beam (length m) and a warm light inside the shade. */
 const LAMP_HEAD = { glowSize: 0.2, beamLength: 0.62, beamSpread: 0.2, mouthLift: 0.035, innerRange: 0.35 };
 const LAMP = { colour: 0xffc68a, angleDeg: 38, penumbra: 0.65, distance: 3, decay: 1.4, reach: [0.28, -0.75, 0.18], bulbRadius: 0.016 };
@@ -168,6 +173,16 @@ if (view.state === 'computer') {
 }
 
 /* ------------------------------------------------------------------ bridge */
+
+/**
+ * track - records one visitor interaction in Umami (window.umami, loaded from analytics.kunalkr.dev).
+ * Does nothing when the script is absent: local development, or a visitor's ad blocker.
+ * Params: name - one of EVENT; data - optional details, e.g. { theme: 'night' }.
+ * Usage: track(EVENT.lamp, { theme: 'day' })
+ */
+function track(name, data) {
+  if (window.umami) window.umami.track(name, data);
+}
 
 /**
  * requestEnter - tells the desktop to wake up.
@@ -339,6 +354,10 @@ function buildLayer() {
   parts.np.querySelector('.np-play').addEventListener('click', () => toggleMusic());
   parts.np.querySelector('.np-stop').addEventListener('click', () => stopMusic());
   parts.np.querySelector('.np-bar').addEventListener('click', e => seekMusic(e.currentTarget, e.clientX));
+  parts.credits.addEventListener('click', () => track(EVENT.credits));
+  const [resumeDownload, resumeOpen] = parts.tag.querySelectorAll('.desk-tag-actions a');
+  resumeDownload.addEventListener('click', () => track(EVENT.resumeDownload, { from: 'desk' }));
+  resumeOpen.addEventListener('click', () => track(EVENT.resumeOpen, { from: 'desk' }));
   return parts;
 }
 
@@ -358,6 +377,7 @@ function setResumeOpen(on) {
  * Flies in when the desk is ready, otherwise goes straight to the computer.
  */
 function onEnterButton() {
+  track(EVENT.monitorOn, { via: 'button' });
   if (view.state === 'desk') return startFlyIn();
   if (view.request('skip') !== 'computer') return;
   hideLayer();
@@ -1326,11 +1346,14 @@ function bindPointer(ctx) {
     if (view.state !== 'desk') return;
     const o = pick(e);
     if (!o) return;
-    if (o.userData.kind === 'monitor') startFlyIn();
+    if (o.userData.kind === 'monitor') { track(EVENT.monitorOn, { via: 'monitor' }); startFlyIn(); }
     if (o.userData.kind === 'speaker') toggleMusic();
     if (o.userData.kind === 'resume') setResumeOpen(true);
-    if (o.userData.kind === 'link') window.open(o.userData.url, '_blank', 'noopener');
-    if (o.userData.kind === 'lamp') applyTheme(three, three.lamp.target ? 0 : 1);
+    if (o.userData.kind === 'link') { track(EVENT.profileCard, { site: o.userData.label }); window.open(o.userData.url, '_blank', 'noopener'); }
+    if (o.userData.kind === 'lamp') {
+      applyTheme(three, three.lamp.target ? 0 : 1);
+      track(EVENT.lamp, { theme: three.lamp.target ? 'night' : 'day' });
+    }
   });
 }
 
@@ -1786,6 +1809,7 @@ function toggleMusic() {
 function startMusic() {
   const audio = new Audio(NOW_PLAYING.src);
   music = { audio, dismissed: false };
+  track(EVENT.songPlay);
   for (const type of ['timeupdate', 'loadedmetadata', 'play', 'pause']) audio.addEventListener(type, updateBanner);
   audio.addEventListener('ended', stopMusic);
   resumeMusic();
