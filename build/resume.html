@@ -28,7 +28,7 @@
   p{margin:0}
   .summary{color:#2a3038}
 
-  .skills{display:grid;grid-template-columns:118px 1fr;gap:2px 10px}
+  .skills{display:grid;grid-template-columns:132px 1fr;gap:2px 10px}
   .skills dt{font-weight:600}
   .skills dd{margin:0;color:#2a3038}
 
@@ -68,40 +68,42 @@
 </header>
 
 <h2>Summary</h2>
-<p class="summary">.NET backend engineer and tech lead with 5+ years building APIs and backends for systems where timing and
-reliability are visible to users — from projector-based gaming lanes that must stay in sync to industrial IoT telemetry.
-Currently Lead Software Engineer at Dynamisch, leading a team of 6 on an industrial IoT platform: I own the backend, oversee
-architecture across the IoT and front-end layers, and run code reviews and releases. Phases 1 and 2 shipped in 24 weeks while
-absorbing client change requests mid-delivery. I also led AI-assisted development enablement at Blue Ridge, training the whole
-organisation to use Claude Code in daily engineering work.</p>
+<p class="summary">Lead Software Engineer with 5+ years building .NET and Azure backends for systems where timing and reliability
+are visible to users, from synced multi-projector game lanes to industrial IoT telemetry. Leads a team of 6 on a greenfield
+industrial IoT platform for a global equipment manufacturer, owning the backend, the architecture and releases, and built its
+AI agent in Microsoft 365 Copilot. Brings teams up to speed on AI-assisted development with Claude Code.</p>
 
 <h2>Skills</h2>
 <dl class="skills">
-  <dt>Backend</dt><dd>C#, .NET, ASP.NET Core, REST and WebSocket APIs, Node.js</dd>
-  <dt>Cloud &amp; IoT</dt><dd>Azure (IoT Hub, Entra ID / Azure AD, Azure DevOps CI/CD), AWS Lambda, CDN</dd>
+  <dt>Backend</dt><dd>C#, .NET, ASP.NET Core, REST and WebSocket APIs, microservices, event-driven systems, Node.js</dd>
+  <dt>Cloud &amp; IoT</dt><dd>Azure: IoT Hub, Functions, App Services, API Management, Key Vault, Entra ID; AWS Lambda; CDN caching</dd>
   <dt>Data</dt><dd>SQL Server / Azure SQL, MySQL, SQLite, Redis</dd>
+  <dt>DevOps</dt><dd>Azure DevOps and GitHub Actions CI/CD, Docker, SonarQube</dd>
   <dt>AI &amp; agents</dt><dd>Microsoft 365 Copilot agents, Model Context Protocol (MCP) servers, Claude Code, OpenAI Whisper</dd>
-  <dt>Front end &amp; more</dt><dd>React (Vite), TypeScript, Phaser.js, Electron, Unity, Python / OpenCV</dd>
-  <dt>Leadership</dt><dd>Leading teams of 6–16, architecture, code reviews, release ownership, mentoring</dd>
+  <dt>Front end &amp; real-time</dt><dd>React (Vite), TypeScript, Unity, Phaser.js, Electron, Python / OpenCV</dd>
+  <dt>Leadership</dt><dd>Teams of 6–16, architecture, code reviews, release ownership, mentoring</dd>
 </dl>
 
 <h2>Experience</h2>
 
 <div class="job">
   <div class="job-head"><span><span class="role">Lead Software Engineer</span> · <span class="org">Dynamisch</span></span><span class="dates">Feb 2026 – Present · Pune</span></div>
-  <p class="context">Greenfield industrial IoT platform for a global industrial equipment manufacturer. Leading 6 engineers.</p>
+  <p class="context">The industrial IoT platform architected at Shwaira (below), carried forward for the same client. Leading 6 engineers.</p>
   <ul>
-    <li>Own the backend and oversee architecture across the IoT, backend and front-end layers.</li>
-    <li>Rolled out Phase 1 to production, then built and rolled out Phase 2 while absorbing client change requests mid-delivery; now leading Phase 3.</li>
-    <li>Led development of the platform's AI agent in Microsoft 365 Copilot: built an MCP server that exposes the portal's existing functionality as tools, so users can query a device's data in plain language from Copilot.</li>
-    <li>Run code reviews across the project and own the release process.</li>
-    <li><b>AI consulting — Blue Ridge Global</b> (supply-chain planning software): trained the entire organisation to use Claude Code in daily engineering and built an internal site for a shared skills repository. Worked with senior management and tech leads to turn product knowledge into reusable skills, giving junior engineers senior-level context — bug triage time went from weeks to hours.</li>
+    <li>Own the backend and the architecture across the IoT, backend and front-end layers; run code reviews and own releases.</li>
+    <li>Took Phases 1 and 2 to production; now leading Phase 3.</li>
+    <li>Led the platform's AI agent in Microsoft 365 Copilot: built an MCP server that exposes the portal's features as tools, so users can ask about a device's data in plain language.</li>
+  </ul>
+  <p class="context" style="margin-top:5px"><b style="font-style:normal;color:var(--ink)">AI consulting · Blue Ridge Global</b> (supply-chain planning software)</p>
+  <ul>
+    <li>Trained the entire engineering organisation to use Claude Code day to day, and built an internal site for a shared skills repository.</li>
+    <li>Turned senior product knowledge into reusable skills with management and tech leads, giving junior engineers senior-level context: bug triage went from weeks to hours.</li>
   </ul>
 </div>
 
 <div class="job">
-  <div class="job-head"><span><span class="role">Lead Software Engineer</span> · <span class="org">SHWAIRA</span></span><span class="dates">Oct 2025 – Jan 2026 · Pune</span></div>
-  <p class="context">Greenfield industrial IoT platform for a global industrial equipment manufacturer, built from scratch.</p>
+  <div class="job-head"><span><span class="role">Lead Software Engineer</span> · <span class="org">Shwaira</span></span><span class="dates">Oct 2025 – Jan 2026 · Pune</span></div>
+  <p class="context">Greenfield industrial IoT platform for a global industrial equipment manufacturer, from scratch.</p>
   <ul>
     <li>Designed the platform architecture: .NET backend on Azure, Azure IoT Hub for device connectivity, React (Vite) front end, CI/CD in Azure DevOps.</li>
     <li>Led the 6-person project team and built the entire backend as the sole backend developer.</li>
@@ -118,7 +120,7 @@ organisation to use Claude Code in daily engineering work.</p>
     <ul>
       <li>Led a 6-person cross-functional team (front end, backend, data, design, DevOps) while being the sole backend developer.</li>
       <li>Designed and built the entire backend in ASP.NET Core on Azure, including the REST APIs behind the monitoring dashboard.</li>
-      <li>Designed the database schema that the data team's pipeline loaded sensor data into and my APIs served to the dashboard.</li>
+      <li>Designed the database schema that the data team's pipeline loaded sensor data into and the backend APIs served to the dashboard.</li>
       <li>Implemented Azure AD (Entra ID) authentication and set up backend CI/CD in Azure DevOps.</li>
     </ul>
   </div>
@@ -127,7 +129,7 @@ organisation to use Claude Code in daily engineering work.</p>
     <div class="job-head"><span class="role">Software Engineer (SDE 2)</span><span class="dates">Jan 2023 – Mar 2024</span></div>
     <p class="context">Hatch Early Learning: two early-learning game products for preschools.</p>
     <ul>
-      <li><b>IgniteTable</b> (Jan – May 2023), a multi-touch table where 4 children play on one screen: led a 6-person team on a stack new to all of us (Phaser.js and TypeScript in an Electron app) and delivered 36 games within the client's deadline using a templated game-creation pipeline.</li>
+      <li><b>IgniteTable</b> (Jan – May 2023), a multi-touch table where 4 children play on one screen: led a 6-person team on a stack new to everyone (Phaser.js and TypeScript in an Electron app) and delivered 36 games within the client's deadline using a templated game-creation pipeline.</li>
       <li><b>Hatch Ignite</b> (May 2023 – Mar 2024), a Unity platform played by 60,000+ children across US preschools: led a 16-person team (8 developers, 5 QA, 3 designers) — code reviews, client calls and mentoring.</li>
       <li>Led a long-pending accessibility overhaul across 500+ games (3 months to build, 1 of testing and rollout): built the proofs of concept for keyboard play and colour-blind-friendly highlighting, and personally built closed captioning — an OpenAI Whisper pipeline generating English and Spanish captions synced to game audio.</li>
       <li>Built a test-automation framework that cut regression testing from 10–12 days to 7–8 days.</li>
@@ -138,8 +140,8 @@ organisation to use Claude Code in daily engineering work.</p>
   <div class="sub">
     <div class="job-head"><span class="role">Junior Software Engineer</span><span class="dates">Aug 2021 – Dec 2022</span></div>
     <ul>
-      <li><b>FIT:MATCH × Savage X Fenty</b> (Feb – Dec 2022), in-store body-scan fitting: built the Unity iOS app that renders the iPhone LiDAR body scan as an interactive 3D point cloud, sends it to the cloud matching API and shows the best-fitting products; built the in-store kiosk app (Unity on Android with an Intel NUC and RealSense sensors), integrated with the NUC's local C# server over REST and WebSockets.</li>
-      <li><b>Projected axe-throwing platform</b> (Aug 2021 – Feb 2022), running fully offline at the venue: built the game UI, lane connection screens and local lane APIs in Unity; built the multi-lane match mode (up to 3 lanes plus a shared scoreboard, each on its own projector, kept in sync); local storage in SQLite; supported on-site installation at the first venue (10 lanes).</li>
+      <li><b>FIT:MATCH × Savage X Fenty</b> (Feb – Dec 2022), in-store body-scan fitting: built the Unity iOS app that turns an iPhone LiDAR scan into an interactive 3D point cloud and shows the best-fitting products, and the in-store kiosk app (Android, Intel NUC, RealSense) talking to a local C# server over REST and WebSockets.</li>
+      <li><b>Projected axe-throwing platform</b> (Aug 2021 – Feb 2022), fully offline at the venue: built the Unity game UI and local lane APIs, and a multi-lane match mode keeping up to 3 projectors and a shared scoreboard in sync; SQLite storage; on-site install at the first venue (10 lanes).</li>
     </ul>
   </div>
 </div>
