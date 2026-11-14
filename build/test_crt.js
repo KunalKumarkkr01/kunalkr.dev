@@ -378,7 +378,22 @@ function testPhoneDesktop() {
 }
 
 /**
- * testAnalytics - the desktop reports interactions to Umami (window.umami.track): which app was
+ * testResumePageCount - every place the desktop states the résumé's page count (the BIOS POST line
+ * and the document viewer's toolbar) matches the real PDF in site/assets.
+ */
+function testResumePageCount() {
+  section('résumé page count');
+  const pdf = fs.readFileSync(path.join(__dirname, '..', 'site', 'assets', 'Kunal_Kumar_Resume.pdf'), 'latin1');
+  const pages = (pdf.match(/\/Type\s*\/Page[^s]/g) || []).length;
+  const stated = [...readIndex().matchAll(/(\d+) pages?\)?</g)].map(m => Number(m[1]));
+  const bios = readIndex().match(/RESUME\.PDF loaded \((\d+) pages?\)/);
+  ok(pages > 0, 'the résumé PDF has pages', String(pages));
+  ok(bios && Number(bios[1]) === pages, 'BIOS line states the real page count', (bios && bios[1]) + ' vs ' + pages);
+  ok(stated.length >= 1 && stated.every(n => n === pages), 'document viewer states the real page count', stated.join(',') + ' vs ' + pages);
+}
+
+/**
+ * testAnalytics -the desktop reports interactions to Umami (window.umami.track): which app was
  * opened and which topic a BIT question matched. The visitor's own words are never sent, and with
  * no Umami script (local dev, an ad blocker) nothing breaks.
  */
@@ -431,6 +446,7 @@ function main() {
   testFirstDesktop();
   testPhoneDesktop();
   testAnalytics();
+  testResumePageCount();
   console.log('\n' + (failures ? failures + ' of ' + checks + ' checks FAILED' : 'all ' + checks + ' checks passed'));
   process.exit(failures ? 1 : 0);
 }
