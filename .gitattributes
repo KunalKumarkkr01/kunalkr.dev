@@ -1,0 +1,7 @@
+# Files that run on Linux (nginx, Docker, bash, GitHub Actions) keep LF line endings
+# even in a Windows checkout, so `bash build/smoke_test.sh` and local Docker builds work.
+* text=auto
+*.sh text eol=lf
+*.conf text eol=lf
+*.yml text eol=lf
+Dockerfile text eol=lf
