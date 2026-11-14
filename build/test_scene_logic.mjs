@@ -4,7 +4,7 @@
  * Usage:  node build/test_scene_logic.mjs
  * Exits non-zero if any check fails.
  */
-import { entryMode, createViewState, easeInOutCubic, formatTime, clampToView, initialTheme, shouldRender, framesPerSecond, nextQuality, loadPercent, byteShare, blocksFor } from '../site/scene-logic.js';
+import { entryMode, createViewState, easeInOutCubic, formatTime, clampToView, initialTheme, shouldRender, framesPerSecond, nextQuality, loadPercent, byteShare, blocksFor, createStars, advanceStars, projectStar } from '../site/scene-logic.js';
 
 let failures = 0;
 let checks = 0;
@@ -103,6 +103,25 @@ ok(byteShare(0, 0, 0) === 0, 'nothing known yet: 0');
 ok(blocksFor(0.5, 20) === 10, 'half way: half the blocks');
 ok(blocksFor(1.7, 20) === 20 && blocksFor(-0.2, 20) === 0, 'block count stays within the bar');
 ok(blocksFor(1, 0) === 0, 'a bar with no room shows no blocks');
+
+console.log('\nscreensaver starfield');
+/** seq - a stand-in for Math.random that returns the given values in turn (then repeats). */
+const seq = (...v) => { let i = 0; return () => v[i++ % v.length]; };
+const made = createStars(3, seq(0, 0.5, 0.25));
+ok(made.length === 3, 'creates the requested number of stars');
+ok(made.every(st => st.x >= -1 && st.x <= 1 && st.y >= -1 && st.y <= 1 && st.z >= 0 && st.z <= 1), 'stars start inside the unit field', JSON.stringify(made));
+const field = [{ x: 0.1, y: 0.2, z: 0.5 }];
+advanceStars(field, 0.1, seq(0.5));
+ok(Math.abs(field[0].z - 0.4) < 1e-9 && field[0].x === 0.1, 'a star moves towards the viewer by dz');
+const close = [{ x: 0.9, y: 0.9, z: 0.03 }];
+advanceStars(close, 0.05, seq(0.75, 0.25));
+ok(close[0].z === 1 && close[0].x === 0.5 && close[0].y === -0.5, 'a star that reaches the viewer respawns far away at a new spot', JSON.stringify(close));
+const mid = projectStar({ x: 0, y: 0, z: 1 }, 320, 240);
+ok(mid && mid.x === 160 && mid.y === 120, 'a star straight ahead is drawn at the centre', JSON.stringify(mid));
+const far = projectStar({ x: 0.2, y: 0.2, z: 0.9 }, 320, 240), near = projectStar({ x: 0.02, y: 0.02, z: 0.1 }, 320, 240);
+ok(far && near && near.size > far.size && near.shade >= far.shade, 'nearer stars are bigger and brighter', JSON.stringify({ far, near }));
+ok([far, near].every(p => p.shade >= 0 && p.shade <= 3 && p.size >= 1), 'size at least 1 px, shade one of 4 greys');
+ok(projectStar({ x: 0.9, y: 0.9, z: 0.05 }, 320, 240) === null, 'a star off the edge of the screen is not drawn');
 
 console.log('\n' + (failures ? failures + ' of ' + checks + ' checks FAILED' : 'all ' + checks + ' checks passed'));
 process.exit(failures ? 1 : 0);

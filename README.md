@@ -259,8 +259,13 @@ desktop ignores keys and pauses the screensaver and Snake.
   (`@container (max-width:480px)`), says "Tap the screen to start up", BIT stays above the maximised
   windows, Solitaire uses smaller cards (`SOL_CARD`), and the power knob gets a 12px invisible tap margin.
   Taskbar buttons shrink to share the strip on every screen size (`TASK_BUTTON_PX`).
-- **3D screen picture:** `assets/desk-screen.jpg`, a capture of the desktop shown on the
-  3D monitor after the first visit.
+- **3D monitor:** dark until the computer is first turned on. After that the PC stays on: the desk's
+  monitor shows the starfield screensaver (same look as the desktop's, drawn into a canvas texture by
+  `stepScreensaver()`, star maths in `scene-logic.js`) and the power LED left of the knob glows green
+  (`addPowerLed()`). Clicking the monitor flies in and the live desktop replaces the screensaver.
+- **Click sounds:** every clickable thing on the desk gives a short retro square-wave blip, synthesised
+  with Web Audio (`playBlip()`, `BLIPS` in `scene.js`, no audio files); turning the computer on plays a
+  rising two-note chirp.
 - **CSP:** `nginx.conf` allows `blob:` in `img-src` so GLB textures can decode.
 
 ## The résumé PDF
