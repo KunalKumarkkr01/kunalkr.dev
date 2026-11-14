@@ -378,6 +378,37 @@ function testPhoneDesktop() {
 }
 
 /**
+ * testMonitorButtons - the monitor's own buttons sound like the desk's: the power button plays the
+ * power-off chirp, and the four small chin buttons (real buttons over the drawn keys) give the retro
+ * click. Sounds come from the desk scene (window.kunalSound); without it nothing breaks.
+ */
+function testMonitorButtons() {
+  section('monitor buttons: sounds');
+  const m = markup(readIndex());
+  const keys = m.match(/<button class="crt-key"[^>]*onClick="\{\{ chinKey \}\}"/g) || [];
+  ok(keys.length === 4, 'four clickable chin buttons over the drawn keys', String(keys.length));
+  stubWindow(1366, 768);
+  const played = [];
+  window.dispatchEvent = () => true;
+  global.Event = class { constructor(type) { this.type = type; } };
+  window.kunalSound = { play: name => played.push(name) };
+  try {
+    const c = makeComponent();
+    c.renderVals().chinKey();
+    ok(played.includes('click'), 'a chin button plays the click', played.join(','));
+    c.renderVals().powerOff();
+    ok(played.includes('powerOff'), 'the power button plays the power-off chirp', played.join(','));
+    delete window.kunalSound;
+    let threw = false;
+    try { c.renderVals().chinKey(); c.renderVals().powerOff(); } catch (e) { threw = true; }
+    ok(!threw, 'without the desk scene loaded nothing throws');
+  } finally {
+    delete global.window;
+    delete global.Event;
+  }
+}
+
+/**
  * testResumePageCount - every place the desktop states the résumé's page count (the BIOS POST line
  * and the document viewer's toolbar) matches the real PDF in site/assets.
  */
@@ -447,6 +478,7 @@ function main() {
   testPhoneDesktop();
   testAnalytics();
   testResumePageCount();
+  testMonitorButtons();
   console.log('\n' + (failures ? failures + ' of ' + checks + ' checks FAILED' : 'all ' + checks + ' checks passed'));
   process.exit(failures ? 1 : 0);
 }

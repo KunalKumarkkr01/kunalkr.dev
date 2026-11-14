@@ -112,6 +112,12 @@ a{color:#000080}a:hover{color:#7b61ff}
 .crt-power{position:absolute;right:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .42);width:auto}
 /* Hit area over the big power key (the right-most 52/190 of the control strip). */
 .crt-power-btn{position:absolute;right:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .42);aspect-ratio:52/46;padding:0;border:0;border-radius:8px;background:transparent;cursor:pointer;pointer-events:auto}
+/* The four small chin keys: invisible buttons over the drawn keys, so they can be pressed (they only click). */
+.crt-keys{position:absolute;right:0;top:50%;transform:translateY(-50%);height:calc(var(--crt-chin) * .42);aspect-ratio:190/46;pointer-events:none}
+.crt-key{position:absolute;top:30.4%;width:10%;height:32.6%;padding:0;border:0;border-radius:3px;background:transparent;cursor:pointer;pointer-events:auto}
+.crt-key:nth-child(1){left:3.7%}.crt-key:nth-child(2){left:16.3%}.crt-key:nth-child(3){left:28.9%}.crt-key:nth-child(4){left:41.6%}
+.crt-key:active{background:rgba(0,0,0,.12)}
+.crt-key:focus-visible{outline:2px dashed #3a352c;outline-offset:1px}
 .crt-power-btn:focus-visible{outline:2px dashed #3a352c;outline-offset:2px}
 /* On touch screens the knob is small (about 24 px on a phone): an invisible margin makes it a comfortable tap target. */
 @media (pointer:coarse){.crt-power-btn::after{content:'';position:absolute;inset:-12px}}
@@ -127,7 +133,14 @@ a{color:#000080}a:hover{color:#7b61ff}
 /* Embedded: scene.js draws the real 3D monitor and lays the desktop over its glass (--es-*), with the
  * power button on its chin (--ep-*). The CSS frame above stays for narrow screens and #desktop links. */
 html.embedded .crt-room{background:transparent;pointer-events:none;z-index:1}
-html.embedded .crt-body,html.embedded .crt-grain,html.embedded .crt-funnel,html.embedded .crt-chin > :not(.crt-power-btn){display:none}
+html.embedded .crt-body,html.embedded .crt-grain,html.embedded .crt-funnel,html.embedded .crt-chin > :not(.crt-power-btn):not(.crt-keys){display:none}
+html.embedded .crt-keys{position:static;transform:none;height:auto;aspect-ratio:auto}
+html.embedded .crt-key{position:fixed;border-radius:50%}
+html.embedded .crt-key:nth-child(1){left:var(--ek0-l);top:var(--ek0-t);width:var(--ek0-s);height:var(--ek0-s)}
+html.embedded .crt-key:nth-child(2){left:var(--ek1-l);top:var(--ek1-t);width:var(--ek1-s);height:var(--ek1-s)}
+html.embedded .crt-key:nth-child(3){left:var(--ek2-l);top:var(--ek2-t);width:var(--ek2-s);height:var(--ek2-s)}
+html.embedded .crt-key:nth-child(4){left:var(--ek3-l);top:var(--ek3-t);width:var(--ek3-s);height:var(--ek3-s)}
+html.embedded .crt-key:hover{box-shadow:0 0 0 2px rgba(255,226,160,.45)}
 html.embedded .crt-screen{left:var(--es-l);top:var(--es-t);width:var(--es-w);height:var(--es-h);right:auto;bottom:auto;pointer-events:auto;box-shadow:none;border-radius:8px}
 html.embedded .crt-power-btn{position:fixed;left:var(--ep-l);top:var(--ep-t);width:var(--ep-s);height:var(--ep-s);right:auto;transform:none;aspect-ratio:auto;border-radius:50%}
 html.embedded .crt-power-btn:hover{box-shadow:0 0 0 2px rgba(255,226,160,.55),0 0 10px rgba(255,226,160,.35)}
@@ -175,6 +188,12 @@ html.embedded .crt-power-btn:hover{box-shadow:0 0 0 2px rgba(255,226,160,.55),0 
     <line x1="163" y1="11.5" x2="163" y2="21" stroke="#5f5744" stroke-width="2.2" stroke-linecap="round"/>
   </svg>
   <button class="crt-power-btn" type="button" aria-label="Power off and return to the desk" title="Power off" onClick="{{ powerOff }}"></button>
+  <div class="crt-keys">
+    <button class="crt-key" type="button" aria-label="Monitor menu" onClick="{{ chinKey }}"></button>
+    <button class="crt-key" type="button" aria-label="Monitor left" onClick="{{ chinKey }}"></button>
+    <button class="crt-key" type="button" aria-label="Monitor right" onClick="{{ chinKey }}"></button>
+    <button class="crt-key" type="button" aria-label="Monitor select" onClick="{{ chinKey }}"></button>
+  </div>
 </div>
 <div class="crt-screen" ref="{{ screenRefFn }}">
 <div style="position:absolute;inset:0;zoom:{{ uiScale }};overflow:hidden;container-type:size;background:#000;font-family:'MS Sans Serif','Pixelated MS Sans Serif',Tahoma,Geneva,Verdana,sans-serif;font-size:11px;line-height:12px;color:#000;user-select:none">
@@ -1696,10 +1715,20 @@ class Component extends DCLogic {
    * Usage: chin power button and Start > Shut Down.
    */
   exitComputer() {
+    this.sound('powerOff');
     if (this.state.snake && this.state.snake.running) this.snakePause();
     if (this.state.saver) this.stopSaver();
     this.setState({ onDesk: true, startOpen: false, startSub: null, ctx: null });
     window.dispatchEvent(new Event('kunal:exit'));
+  }
+  /*
+   * sound - plays one of the desk's retro click sounds (window.kunalSound, published by scene.js).
+   * Does nothing when the desk scene is not loaded.
+   * Params: name - 'click', 'power' or 'powerOff'.
+   * Usage: this.sound('click')
+   */
+  sound(name) {
+    if (window.kunalSound) window.kunalSound.play(name);
   }
   openWelcome() { if (this.props.showWelcome !== false && !this.state.wins.length) this.open('welcome'); }
   banner() {
@@ -2053,7 +2082,7 @@ class Component extends DCLogic {
     return {
       stop, wallColor, scanlinesOn: this.props.scanlines ?? false,
       screenRefFn: this.screenRefFn, uiScale: s.uiScale,
-      poweringOn: s.phase === 'poweron', powerOff: () => this.exitComputer(),
+      poweringOn: s.phase === 'poweron', powerOff: () => this.exitComputer(), chinKey: () => this.sound('click'),
       posting: s.phase === 'post', splashing: s.phase === 'splash', ready: s.phase === 'desktop',
       // Phones have no keyboard: a tap on the BIOS screen skips straight to the desktop.
       bootStart: IS_TOUCH ? 'Tap the screen to start up' : 'Press ENTER to start up',
