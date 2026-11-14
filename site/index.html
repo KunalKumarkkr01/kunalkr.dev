@@ -3,6 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+/* While the 3D desk is on its way (scene.js adds #desk-layer), keep the flat CRT frame from painting, so it
+   cannot flash on screen first; the page shows the desk's own dark background meanwhile. */
+html.desk-pending,html.desk-pending body{background:#15130f}
+html.desk-pending body > :not(#desk-layer){visibility:hidden}
+</style>
+<script id="desk-pending">
+/* Marks a normal visit as "desk pending" before the first paint. #desktop / ?desktop links skip the desk
+   (same rule as entryMode() in scene-logic.js) and are not marked. scene.js clears the mark once its layer
+   exists; the timeout un-hides the page even if the desk never loads. */
+(function () {
+  var DESK_PENDING_MAX_MS = 15000;
+  if (/#desktop$|[?&]desktop(=|&|#|$)/.test(location.href)) return;
+  document.documentElement.classList.add('desk-pending');
+  setTimeout(function () { document.documentElement.classList.remove('desk-pending'); }, DESK_PENDING_MAX_MS);
+})();
+</script>
 <title>Kunal Kumar — Lead Software Engineer</title>
 <meta name="description" content="The portfolio of Kunal Kumar, Lead Software Engineer in Pune, India — built as a Windows 95 desktop. .NET and Azure backends, industrial IoT platforms, and AI agents in Microsoft 365 Copilot.">
 <meta name="author" content="Kunal Kumar">
@@ -46,7 +63,7 @@ window.__resources = {
 <script src="./support.js"></script>
 <!-- 3D desk landing: three.js is vendored under vendor/three (see VERSION) and loaded lazily by scene.js. -->
 <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }</script>
-<script type="module" src="./scene.js" onerror="window.__kunalEnterPending = true; window.dispatchEvent(new Event('kunal:enter'));"></script>
+<script type="module" src="./scene.js" onerror="document.documentElement.classList.remove('desk-pending'); window.__kunalEnterPending = true; window.dispatchEvent(new Event('kunal:enter'));"></script>
 <script defer src="https://analytics.kunalkr.dev/script.js" data-website-id="bde56357-4af1-4710-9a25-27d7a9c6b7c9" data-domains="kunalkr.dev" data-do-not-track="true"></script>
 </head>
 <body>
