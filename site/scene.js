@@ -163,6 +163,7 @@ const BLIP_VOLUME = 0.05;
 
 const view = createViewState(entryMode(location.href) === 'computer' ? 'computer' : 'loading');
 const ui = buildLayer();
+document.documentElement.classList.remove('desk-pending'); // the desk layer now covers the page (see index.html <head>)
 let three = null;          // { THREE, renderer, scene, camera, screenMesh, pickables, raf, ... }
 let flight = null;         // active camera animation
 let music = null;          // active easter-egg playback

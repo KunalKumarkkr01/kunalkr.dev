@@ -378,6 +378,39 @@ function testPhoneDesktop() {
 }
 
 /**
+ * testNoCrtFlash - on a normal visit the flat CRT frame must not paint before the 3D desk layer
+ * covers it: an inline <head> script marks <html class="desk-pending"> (not for #desktop links), CSS
+ * hides everything but the desk layer meanwhile, and scene.js / the load-failure fallback clear it.
+ */
+function testNoCrtFlash() {
+  section('no CRT flash before the desk');
+  const html = readIndex();
+  const head = html.split('<body>')[0];
+  const script = (head.match(/<script id="desk-pending">([\s\S]*?)<\/script>/) || [])[1];
+  ok(!!script, 'an inline desk-pending script sits in <head>');
+  ok(head.indexOf('id="desk-pending"') < head.indexOf('<link'), 'it runs before anything else loads');
+  /** run - executes the head script for one address; returns { pending, timers }. */
+  const run = href => {
+    const classes = new Set(), timers = [];
+    const fake = { location: { href }, document: { documentElement: { classList: { add: c => classes.add(c), remove: c => classes.delete(c) } } },
+      setTimeout: (fn, ms) => timers.push({ fn, ms }) };
+    new Function('location', 'document', 'setTimeout', script)(fake.location, fake.document, fake.setTimeout);
+    return { pending: classes.has('desk-pending'), timers, clear: () => timers.forEach(t => t.fn()), classes };
+  };
+  if (script) {
+    const visit = run('https://kunalkr.dev/');
+    ok(visit.pending, 'a normal visit hides the flat CRT until the desk is up');
+    ok(!run('https://kunalkr.dev/#desktop').pending && !run('https://kunalkr.dev/?desktop').pending, '#desktop / ?desktop links show the computer straight away');
+    visit.clear();
+    ok(!visit.classes.has('desk-pending'), 'a safety timeout un-hides the page even if the desk never loads');
+  }
+  ok(/html\.desk-pending body\s*>\s*:not\(#desk-layer\)\{visibility:hidden\}/.test(html), 'CSS hides everything except the desk layer while pending');
+  const scene = fs.readFileSync(path.join(__dirname, '..', 'site', 'scene.js'), 'utf8');
+  ok(/const ui = buildLayer\(\);\s*\n\s*document\.documentElement\.classList\.remove\('desk-pending'\)/.test(scene), 'scene.js clears it as soon as the desk layer exists');
+  ok(/scene\.js" onerror="[^"]*classList\.remove\('desk-pending'\)/.test(html), 'a failed scene.js load clears it too');
+}
+
+/**
  * testMonitorButtons - the monitor's own buttons sound like the desk's: the power button plays the
  * power-off chirp, and the four small chin buttons (real buttons over the drawn keys) give the retro
  * click. Sounds come from the desk scene (window.kunalSound); without it nothing breaks.
@@ -479,6 +512,7 @@ function main() {
   testAnalytics();
   testResumePageCount();
   testMonitorButtons();
+  testNoCrtFlash();
   console.log('\n' + (failures ? failures + ' of ' + checks + ' checks FAILED' : 'all ' + checks + ' checks passed'));
   process.exit(failures ? 1 : 0);
 }
