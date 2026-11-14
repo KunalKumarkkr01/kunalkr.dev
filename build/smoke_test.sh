@@ -27,7 +27,8 @@ check() {
 }
 
 check "home page is served"            "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/")" "200"
-check "missing path is a 404"          "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/no-such-page")" "404"
+check "credits keep the CC-BY attribution" "$(curl -s "$BASE_URL/credits.html" | grep -c 'by SeverDoes3D (https://sketchfab.com/SeverDoes3D) licensed under CC-BY-4.0')" "1"
+check "missing path is a 404"         "$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/no-such-page")" "404"
 check "page revalidates"               "$(header / Cache-Control)" "$REVALIDATE"
 check "scene.js revalidates"           "$(header /scene.js Cache-Control)" "$REVALIDATE"
 check "résumé PDF revalidates"         "$(header /assets/Kunal_Kumar_Resume.pdf Cache-Control)" "$REVALIDATE"
