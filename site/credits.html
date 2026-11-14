@@ -7,129 +7,46 @@
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="dark">
 <style>
-  :root{
-    --bg:#0f0d0b; --surface:#1a1714; --surface-hover:#221e1a; --border:#2e2924;
-    --text:#ece6dc; --muted:#a69d90; --accent:#f2b04c; --accent-soft:rgba(242,176,76,.12);
-    --radius:14px;
-  }
+  :root{--bg:#0f0d0b; --line:#2e2924; --text:#ece6dc; --muted:#a69d90; --accent:#f2b04c}
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0; min-height:100vh; color:var(--text); line-height:1.6;
-    font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    background:var(--bg) radial-gradient(1200px 600px at 15% -10%,rgba(242,176,76,.10),transparent 60%);
-  }
-  main{max-width:880px; margin:0 auto; padding:56px 16px 72px}
+  body{margin:0; background:var(--bg); color:var(--text);
+    font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:860px; margin:0 auto; padding:40px 16px 56px}
   a{color:var(--accent); text-decoration:none}
   a:hover{text-decoration:underline; text-underline-offset:3px}
-  a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
-
-  .back{
-    display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--muted);
-    padding:8px 14px; border:1px solid var(--border); border-radius:999px; transition:.15s;
-  }
-  .back:hover{color:var(--text); border-color:var(--accent); text-decoration:none}
-
-  header{margin:32px 0 40px}
-  .eyebrow{font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin:0 0 8px}
-  h1{font-size:clamp(32px,6vw,44px); line-height:1.1; margin:0 0 12px; letter-spacing:-.02em}
-  .lead{color:var(--muted); margin:0; max-width:60ch}
-
-  section{margin-top:44px}
-  h2{font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 14px}
-  .grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr))}
-
-  .card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:20px 22px; transition:background .15s,border-color .15s;
-  }
-  .card:hover{background:var(--surface-hover); border-color:#3d362f}
-  .card h3{font-size:17px; margin:0 0 4px; line-height:1.35}
-  .card h3 a{color:var(--text)}
-  .by{color:var(--muted); font-size:14px; margin:0 0 14px}
-  .by a{color:var(--muted); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--border)}
-  .by a:hover{color:var(--accent)}
-  .tag{
-    display:inline-block; font-size:12px; font-weight:600; padding:3px 10px; border-radius:999px;
-    background:var(--accent-soft); color:var(--accent); margin-bottom:12px;
-  }
-  .tag.closed{background:rgba(255,255,255,.06); color:var(--muted)}
-  .changes{font-size:14px; color:var(--text); opacity:.85; margin:0}
-
-  .note{
-    margin-top:18px; font-size:13px; color:var(--muted); padding:14px 18px;
-    border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0;
-  }
-  footer{margin-top:56px; padding-top:24px; border-top:1px solid var(--border); color:var(--muted); font-size:14px}
+  .back{font-size:14px; color:var(--muted)}
+  h1{font-size:26px; margin:20px 0 4px; letter-spacing:-.01em}
+  .lead{color:var(--muted); margin:0 0 24px}
+  .scroll{overflow-x:auto}
+  table{width:100%; min-width:600px; border-collapse:collapse; font-size:14px}
+  th,td{text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line)}
+  th{font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+  td.licence{white-space:nowrap; color:var(--muted)}
+  .note{margin:20px 0 0; font-size:13px; color:var(--muted)}
 </style>
 </head>
 <body>
 <main>
   <a class="back" href="./">&larr; Back to the desk</a>
+  <h1>Credits</h1>
+  <p class="lead">Third-party work used on the desk.</p>
 
-  <header>
-    <p class="eyebrow">kunalkr.dev</p>
-    <h1>Credits</h1>
-    <p class="lead">The desk is built from other people's work. Here is whose, under what licence, and what I changed.</p>
-  </header>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Work</th><th>Author</th><th>Licence</th><th>Changes</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://sketchfab.com/3d-models/office-assets-16c1a779bb0a4055a26367741d39e059">Office - Assets</a> (3D model)</td><td><a href="https://sketchfab.com/SeverDoes3D">SeverDoes3D</a></td><td class="licence"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td><td>Textures resized. Some props hidden; the computer, keyboard and mouse straightened and moved; two wall frames given posters.</td></tr>
+        <tr><td><a href="https://sketchfab.com/3d-models/computer-desk-ff0674f66e11462e8b3417dee2b58ac9">Computer Desk</a> (3D model)</td><td>CR!STALLL</td><td class="licence"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td><td>Textures resized. Speakers reused; desk set shown with its computer swapped and the chair moved.</td></tr>
+        <tr><td><a href="https://en.wikipedia.org/wiki/File:Friends_Season_1_DVD.jpg">Friends season 1 cover</a></td><td>Warner Bros.</td><td class="licence">&copy; Warner Bros.</td><td>Cropped to the front of the cover.</td></tr>
+        <tr><td><a href="https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg">Forrest Gump theatrical poster</a></td><td>Paramount Pictures</td><td class="licence">&copy; Paramount Pictures</td><td>Padded to fit an upright frame.</td></tr>
+        <tr><td>&ldquo;Shoot to Thrill&rdquo; (song)</td><td>AC/DC</td><td class="licence">&copy; Not freely licensed</td><td>None.</td></tr>
+        <tr><td><a href="https://music.apple.com/us/album/iron-man-2/575998519">Iron Man 2 album cover</a></td><td>Columbia Records / Marvel</td><td class="licence">&copy; Not freely licensed</td><td>Small copy for the now-playing banner.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <section aria-labelledby="models">
-    <h2 id="models">3D models</h2>
-    <div class="grid">
-      <article class="card">
-        <h3><a href="https://sketchfab.com/3d-models/office-assets-16c1a779bb0a4055a26367741d39e059">Office - Assets</a></h3>
-        <p class="by">by <a href="https://sketchfab.com/SeverDoes3D">SeverDoes3D</a> on Sketchfab</p>
-        <span class="tag"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
-        <p class="changes">Textures resized. Some props hidden; the computer, keyboard and mouse straightened and moved; two wall frames given posters.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://sketchfab.com/3d-models/computer-desk-ff0674f66e11462e8b3417dee2b58ac9">Computer Desk</a></h3>
-        <p class="by">by CR!STALLL on Sketchfab</p>
-        <span class="tag"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
-        <p class="changes">Textures resized. Speakers reused; desk set shown with its computer swapped and the chair moved.</p>
-      </article>
-    </div>
-    <p class="note">This work is based on "Office - Assets" (https://sketchfab.com/3d-models/office-assets-16c1a779bb0a4055a26367741d39e059)
-      by SeverDoes3D (https://sketchfab.com/SeverDoes3D) licensed under CC-BY-4.0.</p>
-  </section>
-
-  <section aria-labelledby="posters">
-    <h2 id="posters">Wall posters</h2>
-    <div class="grid">
-      <article class="card">
-        <h3><a href="https://en.wikipedia.org/wiki/File:Friends_Season_1_DVD.jpg">Friends season 1 cover</a></h3>
-        <p class="by">Warner Bros.</p>
-        <span class="tag closed">&copy; Warner Bros.</span>
-        <p class="changes">Cropped to the front of the cover.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg">Forrest Gump theatrical poster</a></h3>
-        <p class="by">Paramount Pictures</p>
-        <span class="tag closed">&copy; Paramount Pictures</span>
-        <p class="changes">Padded to fit an upright frame.</p>
-      </article>
-    </div>
-  </section>
-
-  <section aria-labelledby="music">
-    <h2 id="music">Music</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>&ldquo;Shoot to Thrill&rdquo;</h3>
-        <p class="by">AC/DC</p>
-        <span class="tag closed">&copy; Not freely licensed</span>
-        <p class="changes">Played by the speakers, unchanged.</p>
-      </article>
-      <article class="card">
-        <h3><a href="https://music.apple.com/us/album/iron-man-2/575998519">Iron Man 2 album cover</a></h3>
-        <p class="by">Columbia Records / Marvel</p>
-        <span class="tag closed">&copy; Not freely licensed</span>
-        <p class="changes">Small copy for the now-playing banner.</p>
-      </article>
-    </div>
-  </section>
-
-  <footer>The portrait and the bike photo are my own.</footer>
+  <p class="note">This work is based on "Office - Assets" (https://sketchfab.com/3d-models/office-assets-16c1a779bb0a4055a26367741d39e059)
+    by SeverDoes3D (https://sketchfab.com/SeverDoes3D) licensed under CC-BY-4.0.</p>
 </main>
 </body>
 </html>
