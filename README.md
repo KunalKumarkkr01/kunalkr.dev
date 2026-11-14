@@ -257,6 +257,7 @@ chrome --headless=new --no-pdf-header-footer --print-to-pdf=site/assets/Kunal_Ku
 node build/test_crt.js             # Edge removal, profile content, CRT frame, UI scale, geometry, desk/computer bridge, quiet desktop on the desk
 node build/test_scene_logic.mjs    # entry mode, view state machine, easing, song time, banner clamp, lamp theme, render pacing, quality steps
 node build/test_solitaire.js       # Solitaire rules (below)
+bash build/smoke_test.sh           # against a running image: status codes, caching, security headers, .glb gzip
 ```
 
 `build/dc_harness.js` loads the shipped dc-script for the first one, the same way the
@@ -272,13 +273,32 @@ reproduce a failure exactly.
 
 ## Deploying
 
-Any host that runs a Docker image works. With [Dokploy](https://dokploy.com/) it is a plain
-Dockerfile application:
+`main` is production. Every change reaches it through a pull request:
 
-1. **Dokploy → new project → Application**, source `git`, build type `Dockerfile`.
-2. Container port **80**.
-3. Add domain `kunalkr.dev`, certificate **letsencrypt**.
-4. Deploy.
+```
+branch → pull request → CI (Tests + Docker build) → squash merge → Dokploy redeploys kunalkr.dev
+```
+
+1. Branch off `main`, commit, push, open a pull request.
+2. **CI** (`.github/workflows/ci.yml`) runs the three test suites and builds the production
+   image, starts it and runs `build/smoke_test.sh` against it.
+3. When both checks are green, squash-merge. Dokploy's GitHub App sees the push to `main`,
+   rebuilds the image from the `Dockerfile` and swaps the container in.
+
+**Rules on `main`** (ruleset "Protect main"): changes only through pull requests; both CI
+checks must pass on a branch that is up to date with `main`; review conversations must be
+resolved; squash merges only, so history stays linear; no force-pushes, no deletion, no
+bypass. Dependabot opens weekly pull requests for the nginx image and the CI actions.
+
+**Caching:** files that keep their name when they change (the page, `scene.js`, models,
+the résumé, photos) are sent with `Cache-Control: no-cache`, so a deploy is visible on the
+next visit and an unchanged file costs only a 304. Icons named by their content hash are
+cached for a year; vendored libraries and fonts for a week.
+
+**Dokploy setup** (already done for kunalkr.dev; for a fresh server): new project →
+Application, source **GitHub** (the Dokploy GitHub App), branch `main`, build type
+`Dockerfile`, **Autodeploy** on, container port **80**, domains `kunalkr.dev` and
+`www.kunalkr.dev` with certificate **letsencrypt**.
 
 ### ⚠️ Cloudflare and the certificate
 
@@ -319,8 +339,5 @@ Cloudflare's edge.
 - **Accessibility is weak.** Desktop icons and window controls are unlabelled
   `div`s and `button`s in the accessibility tree, and the whole thing needs a
   pointer. It is a visual toy first.
-- **The Docker image has not been built locally** — Docker Desktop was not
-  running on the authoring machine, so `nginx.conf` is unvalidated. Build it
-  once before the first deploy.
 - **The 3D desk needs WebGL** and a mouse/touch; keyboard users get the
   "Turn on the computer" button instead.

@@ -1,0 +1,12 @@
+# Weekly pull requests to keep the nginx base image and the CI actions current.
+# Each one runs CI like any other change; merging it redeploys the site.
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

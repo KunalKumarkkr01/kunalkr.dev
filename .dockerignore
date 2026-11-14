@@ -5,3 +5,6 @@ build/
 .git/
 .gitignore
 README.md
+docs/
+.github/
+*.stackdump
